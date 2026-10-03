@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Tiga Arah Tampilan — Naik Kelas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#1a1a1f;color:#eee;padding:40px 20px}
+.wrap{max-width:1240px;margin:0 auto}
+.intro{margin-bottom:40px}
+.intro h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;letter-spacing:-.03em;margin-bottom:8px}
+.intro p{color:#9a9aa5;font-size:15px;max-width:70ch;line-height:1.6}
+.opt{margin-bottom:64px}
+.tag{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.tag b{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;letter-spacing:-.02em}
+.tag span{font-size:13px;color:#7a7a85}
+.desc{color:#9a9aa5;font-size:14px;margin-bottom:16px;max-width:76ch;line-height:1.6}
+.frame{border-radius:14px;overflow:hidden;border:1px solid #33333d}
+.app{display:grid;grid-template-columns:230px 1fr;min-height:560px}
+.mono{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+.disp{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.035em;font-weight:800}
+.ol{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.bars{display:flex;flex-direction:column;gap:11px;margin-top:14px}
+.bar{display:flex;align-items:center;gap:10px;font-size:13px}
+.bar .nm{width:76px;flex:none}
+.bar .tr{flex:1;height:7px;border-radius:99px;overflow:hidden}
+.bar .fl{height:100%;border-radius:99px}
+.bar .vl{width:26px;text-align:right;font-size:12px}
+
+/* ═══ A — Genesis dikerjakan penuh ═══ */
+.a{background:#F4F4F7;color:#0A0A0A}
+.a .sb{background:#fff;border-right:1px solid #E8E8EC;padding:20px 14px;display:flex;flex-direction:column}
+.a .lg{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.03em;font-size:17px;padding:0 10px;margin-bottom:22px}
+.a .nv{display:flex;flex-direction:column;gap:2px}
+.a .nv a{padding:9px 10px;border-radius:6px;font-size:14px;color:#6B6B6B;text-decoration:none}
+.a .nv a.on{background:#F4F4F7;color:#0A0A0A;font-weight:500}
+.a .ct{margin-top:auto;background:#FEF6E7;border:1px solid #F5D9A0;border-radius:8px;padding:11px 13px}
+.a .mn{padding:34px 38px;background-image:radial-gradient(#DEDEE4 1px,transparent 1px);background-size:22px 22px}
+.a .cols{display:grid;grid-template-columns:1fr 290px;gap:30px;align-items:start}
+.a .card{background:#fff;border:1px solid #E8E8EC;border-radius:12px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.a .hero{background:#fff;border:1px solid #F5D9A0;border-left:4px solid #F59E0B;border-radius:12px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,.07)}
+.a .btn{display:inline-block;background:#6366F1;color:#fff;padding:12px 24px;border-radius:6px;font-weight:500;font-size:14px;box-shadow:0 4px 12px rgba(99,102,241,.35)}
+.a .chip{font-size:10px;letter-spacing:.06em;text-transform:uppercase;background:#F4F4F7;color:#6B6B6B;padding:3px 8px;border-radius:4px}
+
+/* ═══ B — Sidebar gelap ═══ */
+.b{background:#F7F7F9;color:#15151A}
+.b .sb{background:#15151A;padding:20px 14px;display:flex;flex-direction:column}
+.b .lg{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.03em;font-size:17px;color:#fff;padding:0 10px;margin-bottom:4px}
+.b .sub{font-size:12px;color:#6E6E7A;padding:0 10px;margin-bottom:22px}
+.b .nv{display:flex;flex-direction:column;gap:2px}
+.b .nv a{padding:9px 10px;border-radius:6px;font-size:14px;color:#9A9AA8;text-decoration:none}
+.b .nv a.on{background:#26262F;color:#fff;font-weight:500}
+.b .ct{margin-top:auto;background:#26262F;border-radius:8px;padding:12px 13px}
+.b .mn{padding:34px 38px}
+.b .cols{display:grid;grid-template-columns:1fr 290px;gap:30px;align-items:start}
+.b .card{background:#fff;border:1px solid #E6E6EC;border-radius:12px;padding:20px}
+.b .hero{background:#15151A;color:#fff;border-radius:14px;padding:24px}
+.b .btn{display:inline-block;background:#6366F1;color:#fff;padding:12px 24px;border-radius:6px;font-weight:500;font-size:14px}
+.b .chip{font-size:10px;letter-spacing:.06em;text-transform:uppercase;background:#F2F2F6;color:#6B6B6B;padding:3px 8px;border-radius:4px}
+
+/* ═══ C — Hangat, untuk pemilik warung ═══ */
+.c{background:#F6F1E8;color:#231F1A}
+.c .sb{background:#FBF8F3;border-right:1px solid #E5DCCD;padding:20px 14px;display:flex;flex-direction:column}
+.c .lg{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.03em;font-size:18px;padding:0 10px;margin-bottom:22px;color:#1B4D3E}
+.c .nv{display:flex;flex-direction:column;gap:2px}
+.c .nv a{padding:10px 10px;border-radius:8px;font-size:14.5px;color:#6B6257;text-decoration:none}
+.c .nv a.on{background:#EBE3D6;color:#231F1A;font-weight:500}
+.c .ct{margin-top:auto;background:#1B4D3E;color:#fff;border-radius:10px;padding:12px 13px}
+.c .mn{padding:34px 38px}
+.c .cols{display:grid;grid-template-columns:1fr 290px;gap:30px;align-items:start}
+.c .card{background:#FFFDFA;border:1px solid #E5DCCD;border-radius:14px;padding:20px}
+.c .hero{background:#FFF4DB;border:1.5px solid #E8C87A;border-radius:16px;padding:24px}
+.c .btn{display:inline-block;background:#1B4D3E;color:#fff;padding:13px 26px;border-radius:10px;font-weight:700;font-size:15px}
+.c .chip{font-size:10px;letter-spacing:.06em;text-transform:uppercase;background:#EFE8DB;color:#6B6257;padding:3px 8px;border-radius:5px}
+</style></head><body><div class="wrap">
+
+<div class="intro">
+<h1>Tiga arah tampilan — layar Diagnosis</h1>
+<p>Isi dan logikanya sama persis di ketiganya. Yang berbeda hanya rasa: warna dasar, kedalaman permukaan, bentuk sudut, dan nada hurufnya. Tunjuk saja mana yang terasa benar — tidak perlu dijelaskan kenapa.</p>
+</div>
+
+<!-- A -->
+<div class="opt">
+<div class="tag"><b>A · Genesis dikerjakan penuh</b><span>bersih, profesional, netral</span></div>
+<p class="desc">Sistem desain yang kamu kasih, tapi dijalankan sampai habis: latar bertitik halus, kartu benar-benar terangkat dengan bayangan, tombol bercahaya indigo, dan pita kuning di sisi kotak titik mentok. Paling aman, paling mirip perkakas kerja.</p>
+<div class="frame"><div class="app a">
+<div class="sb"><div class="lg">Naik Kelas</div>
+<div class="nv"><a>Beranda</a><a>Survei</a><a class="on">Diagnosis</a><a>Kalkulator</a><a>Peta Jalan</a></div>
+<div class="ct"><div class="ol" style="color:#8a6d1f">Kelas 0</div><div style="font-weight:700;font-size:15px;margin-top:2px">Bertahan</div></div></div>
+<div class="mn">
+<div style="font-size:13px;color:#6B6B6B">Usaha Anda ada di</div>
+<div class="disp" style="font-size:31px;margin:3px 0 20px">Kelas 0 — Bertahan</div>
+<div class="cols"><div>
+<div class="hero"><div class="ol" style="color:#8a6d1f">Yang menahan usaha Anda</div>
+<div class="disp" style="font-size:22px;margin:7px 0 10px">Margin dan Penetapan Harga</div>
+<div style="font-size:14.5px;line-height:1.6">Harga jual Anda belum dihitung dari biaya bahan. Anda mungkin sudah bekerja keras setiap hari untuk keuntungan yang sangat tipis.</div></div>
+<div style="font-weight:700;font-size:15px;margin:24px 0 12px">2 langkah berikutnya</div>
+<div class="card" style="margin-bottom:10px"><div style="display:flex;justify-content:space-between"><div style="font-weight:700;font-size:15px">1. Hitung biaya bahan untuk satu porsi</div><span class="chip">Margin</span></div>
+<div style="font-size:13.5px;color:#6B6B6B;margin-top:6px">Ini angka yang menentukan apakah harga Anda sudah benar atau justru merugi.</div>
+<div style="font-size:12.5px;color:#9C9C9C;margin-top:9px">Gratis · 15 menit/hari · sendiri</div></div>
+<div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:700;font-size:15px">2. Tinjau ulang harga jual Anda</div><span class="chip">Margin</span></div>
+<div style="font-size:13.5px;color:#6B6B6B;margin-top:6px">Harga bahan naik tiap tahun. Kalau harga jual diam, untung Anda menipis sendiri.</div></div>
+<div style="margin-top:22px"><span class="btn">Hitung Untung Sebenarnya →</span></div>
+</div>
+<div class="card"><div class="ol" style="color:#9C9C9C">Rincian skor</div><div class="bars">
+<div class="bar"><span class="nm">Keuangan</span><span class="tr" style="background:#E8E8EC"><span class="fl" style="width:100%;background:#9C9C9C"></span></span><span class="vl mono">100</span></div>
+<div class="bar"><span class="nm">Harga</span><span class="tr" style="background:#E8E8EC"><span class="fl" style="width:3%;background:#F59E0B"></span></span><span class="vl mono">0</span></div>
+<div style="font-size:12px;color:#B8860B;padding-left:86px;margin-top:-4px">← dibenahi lebih dahulu</div>
+<div class="bar"><span class="nm">Pelanggan</span><span class="tr" style="background:#E8E8EC"><span class="fl" style="width:3%;background:#9C9C9C"></span></span><span class="vl mono">0</span></div>
+<div class="bar"><span class="nm">Kapasitas</span><span class="tr" style="background:#E8E8EC"><span class="fl" style="width:100%;background:#9C9C9C"></span></span><span class="vl mono">100</span></div>
+<div class="bar"><span class="nm">Jangkauan</span><span class="tr" style="background:#E8E8EC"><span class="fl" style="width:100%;background:#9C9C9C"></span></span><span class="vl mono">100</span></div>
+</div></div></div></div></div></div></div>
+
+<!-- B -->
+<div class="opt">
+<div class="tag"><b>B · Sidebar gelap</b><span>tegas, berstruktur, terasa seperti produk</span></div>
+<p class="desc">Sidebar gelap memberi kerangka yang langsung terbaca dan membuat area isi terasa seperti kertas kerja. Kotak titik mentok dibalik jadi gelap — bukan kuning — supaya ia jadi satu-satunya hal yang dilihat lebih dulu. Paling "jadi produk" di antara ketiganya.</p>
+<div class="frame"><div class="app b">
+<div class="sb"><div class="lg">Naik Kelas</div><div class="sub">Diagnosis usaha</div>
+<div class="nv"><a>Beranda</a><a>Survei</a><a class="on">Diagnosis</a><a>Kalkulator</a><a>Peta Jalan</a></div>
+<div class="ct"><div class="ol" style="color:#8A8A98">Kelas 0</div><div style="font-weight:700;font-size:15px;color:#fff;margin-top:2px">Bertahan</div></div></div>
+<div class="mn">
+<div style="font-size:13px;color:#6B6B76">Usaha Anda ada di</div>
+<div class="disp" style="font-size:31px;margin:3px 0 20px">Kelas 0 — Bertahan</div>
+<div class="cols"><div>
+<div class="hero"><div class="ol" style="color:#F5C361">Yang menahan usaha Anda</div>
+<div class="disp" style="font-size:23px;margin:8px 0 11px;color:#fff">Margin dan Penetapan Harga</div>
+<div style="font-size:14.5px;line-height:1.6;color:#C9C9D4">Harga jual Anda belum dihitung dari biaya bahan. Anda mungkin sudah bekerja keras setiap hari untuk keuntungan yang sangat tipis.</div></div>
+<div style="font-weight:700;font-size:15px;margin:24px 0 12px">2 langkah berikutnya</div>
+<div class="card" style="margin-bottom:10px"><div style="display:flex;justify-content:space-between"><div style="font-weight:700;font-size:15px">1. Hitung biaya bahan untuk satu porsi</div><span class="chip">Margin</span></div>
+<div style="font-size:13.5px;color:#6B6B6B;margin-top:6px">Ini angka yang menentukan apakah harga Anda sudah benar atau justru merugi.</div>
+<div style="font-size:12.5px;color:#9C9C9C;margin-top:9px">Gratis · 15 menit/hari · sendiri</div></div>
+<div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:700;font-size:15px">2. Tinjau ulang harga jual Anda</div><span class="chip">Margin</span></div>
+<div style="font-size:13.5px;color:#6B6B6B;margin-top:6px">Harga bahan naik tiap tahun. Kalau harga jual diam, untung Anda menipis sendiri.</div></div>
+<div style="margin-top:22px"><span class="btn">Hitung Untung Sebenarnya →</span></div>
+</div>
+<div class="card"><div class="ol" style="color:#9C9C9C">Rincian skor</div><div class="bars">
+<div class="bar"><span class="nm">Keuangan</span><span class="tr" style="background:#ECECF2"><span class="fl" style="width:100%;background:#15151A"></span></span><span class="vl mono">100</span></div>
+<div class="bar"><span class="nm">Harga</span><span class="tr" style="background:#ECECF2"><span class="fl" style="width:3%;background:#F59E0B"></span></span><span class="vl mono">0</span></div>
+<div style="font-size:12px;color:#B8860B;padding-left:86px;margin-top:-4px">← dibenahi lebih dahulu</div>
+<div class="bar"><span class="nm">Pelanggan</span><span class="tr" style="background:#ECECF2"><span class="fl" style="width:3%;background:#15151A"></span></span><span class="vl mono">0</span></div>
+<div class="bar"><span class="nm">Kapasitas</span><span class="tr" style="background:#ECECF2"><span class="fl" style="width:100%;background:#15151A"></span></span><span class="vl mono">100</span></div>
+<div class="bar"><span class="nm">Jangkauan</span><span class="tr" style="background:#ECECF2"><span class="fl" style="width:100%;background:#15151A"></span></span><span class="vl mono">100</span></div>
+</div></div></div></div></div></div></div>
+
+<!-- C -->
+<div class="opt">
+<div class="tag"><b>C · Hangat</b><span>disetel untuk pemilik warung, bukan developer</span></div>
+<p class="desc">Latar kertas hangat, sudut lebih bulat, huruf sedikit lebih besar, dan hijau tua menggantikan indigo sebagai warna tindakan. Nadanya lebih mendampingi daripada menilai — penting karena halaman ini sering menyampaikan kabar yang tidak enak. Paling jauh dari Genesis, tapi paling dekat dengan penggunamu.</p>
+<div class="frame"><div class="app c">
+<div class="sb"><div class="lg">Naik Kelas</div>
+<div class="nv"><a>Beranda</a><a>Survei</a><a class="on">Diagnosis</a><a>Kalkulator</a><a>Peta Jalan</a></div>
+<div class="ct"><div class="ol" style="color:#A8C9B8">Kelas 0</div><div style="font-weight:700;font-size:15px;margin-top:2px">Bertahan</div></div></div>
+<div class="mn">
+<div style="font-size:13.5px;color:#6B6257">Usaha Anda ada di</div>
+<div class="disp" style="font-size:32px;margin:3px 0 20px;color:#1B4D3E">Kelas 0 — Bertahan</div>
+<div class="cols"><div>
+<div class="hero"><div class="ol" style="color:#8A6B1A">Yang menahan usaha Anda</div>
+<div class="disp" style="font-size:23px;margin:8px 0 11px">Margin dan Penetapan Harga</div>
+<div style="font-size:15px;line-height:1.65">Harga jual Anda belum dihitung dari biaya bahan. Anda mungkin sudah bekerja keras setiap hari untuk keuntungan yang sangat tipis.</div></div>
+<div style="font-weight:700;font-size:15.5px;margin:24px 0 12px">2 langkah berikutnya</div>
+<div class="card" style="margin-bottom:10px"><div style="display:flex;justify-content:space-between"><div style="font-weight:700;font-size:15.5px">1. Hitung biaya bahan untuk satu porsi</div><span class="chip">Margin</span></div>
+<div style="font-size:14px;color:#6B6257;margin-top:6px">Ini angka yang menentukan apakah harga Anda sudah benar atau justru merugi.</div>
+<div style="font-size:13px;color:#9A8F7F;margin-top:9px">Gratis · 15 menit/hari · sendiri</div></div>
+<div class="card"><div style="display:flex;justify-content:space-between"><div style="font-weight:700;font-size:15.5px">2. Tinjau ulang harga jual Anda</div><span class="chip">Margin</span></div>
+<div style="font-size:14px;color:#6B6257;margin-top:6px">Harga bahan naik tiap tahun. Kalau harga jual diam, untung Anda menipis sendiri.</div></div>
+<div style="margin-top:22px"><span class="btn">Hitung Untung Sebenarnya →</span></div>
+</div>
+<div class="card"><div class="ol" style="color:#9A8F7F">Rincian skor</div><div class="bars">
+<div class="bar"><span class="nm">Keuangan</span><span class="tr" style="background:#EFE8DB"><span class="fl" style="width:100%;background:#1B4D3E"></span></span><span class="vl mono">100</span></div>
+<div class="bar"><span class="nm">Harga</span><span class="tr" style="background:#EFE8DB"><span class="fl" style="width:3%;background:#D99A1F"></span></span><span class="vl mono">0</span></div>
+<div style="font-size:12.5px;color:#8A6B1A;padding-left:86px;margin-top:-4px">← dibenahi lebih dahulu</div>
+<div class="bar"><span class="nm">Pelanggan</span><span class="tr" style="background:#EFE8DB"><span class="fl" style="width:3%;background:#1B4D3E"></span></span><span class="vl mono">0</span></div>
+<div class="bar"><span class="nm">Kapasitas</span><span class="tr" style="background:#EFE8DB"><span class="fl" style="width:100%;background:#1B4D3E"></span></span><span class="vl mono">100</span></div>
+<div class="bar"><span class="nm">Jangkauan</span><span class="tr" style="background:#EFE8DB"><span class="fl" style="width:100%;background:#1B4D3E"></span></span><span class="vl mono">100</span></div>
+</div></div></div></div></div></div></div>
+
+</div></body></html>
