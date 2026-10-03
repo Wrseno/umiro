@@ -4,7 +4,7 @@ Aplikasi web yang mendiagnosis **penyebab sebuah usaha mikro tidak bertumbuh**, 
 
 Dikembangkan untuk **SIFest Digital Innovation Challenge 2026**, track Digital Economy.
 
-> Masalah yang dijawab: 99,70% UMKM terdaftar di Indonesia masih berstatus mikro dan hanya 3,51% yang memiliki pencatatan keuangan. Panduan digitalisasi yang beredar luas seluruhnya menyerang satu faktor yang sama, yaitu jangkauan — padahal hambatan sebenarnya sering berada pada margin atau kapasitas. Rinciannya pada [`PRD.md`](PRD.md) dan [`PROPOSAL-RINGKAS.md`](PROPOSAL-RINGKAS.md).
+> Masalah yang dijawab: 99,70% UMKM terdaftar di Indonesia masih berstatus mikro dan hanya 3,51% yang memiliki pencatatan keuangan. Panduan digitalisasi yang beredar luas seluruhnya menyerang satu faktor yang sama, yaitu jangkauan — padahal hambatan sebenarnya sering berada pada margin atau kapasitas. Rinciannya pada `PRD.md` dan `PROPOSAL-RINGKAS.md`.
 
 ## Cara menjalankan
 
@@ -74,7 +74,7 @@ Penyusunnya memakai model berjenjang gratis di OpenRouter, dengan rantai cadanga
 | Komponen | Pilihan |
 |---|---|
 | Kerangka | Next.js 16 (App Router), TypeScript |
-| Tampilan | Tailwind CSS v4, token dari [`genesis-DESIGN.md`](genesis-DESIGN.md) |
+| Tampilan | Tailwind CSS v4, token dari `genesis-DESIGN.md` |
 | Huruf | General Sans (display), DM Sans (teks), JetBrains Mono (angka) |
 | Penyusunan Peta Jalan | Model berjenjang gratis di OpenRouter, dipanggil lewat `fetch` dengan structured output dan rantai cadangan antar-model |
 | Uji | Vitest |
@@ -86,9 +86,9 @@ Basis data Neon Postgres direncanakan untuk penyimpanan riwayat dan pemulihan li
 
 | Berkas | Isi |
 |---|---|
-| [`PRD.md`](PRD.md) | Dokumen persyaratan produk, user story, acceptance criteria, lampiran rumus |
-| [`PROPOSAL-RINGKAS.md`](PROPOSAL-RINGKAS.md) | Proposal untuk Online Round |
-| [`genesis-DESIGN.md`](genesis-DESIGN.md) | Sistem desain |
+| `PRD.md` | Dokumen persyaratan produk, user story, acceptance criteria, lampiran rumus |
+| `PROPOSAL-RINGKAS.md` | Proposal untuk Online Round |
+| `genesis-DESIGN.md` | Sistem desain |
 | `design/wireframe-naik-kelas.excalidraw` | Wireframe seluruh layar |
 
 ## Lisensi pustaka
