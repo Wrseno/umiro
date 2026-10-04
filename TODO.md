@@ -5,9 +5,9 @@
 ## Current Position
 
 Sprint: —
-Phase: Spec baseline + Landing vertical slice
-Unit: 001 shell/Landing live; 002–005 rute placeholder
-Stage: Specifying (001 UI draf jalan, design/tasks formal belum)
+Phase: Design/tasks MVP units selesai (001 DESIGNED+IMPLEMENTED; 002–005 DRAFT, gate katalog/ADR)
+Unit: 001 shell/Landing live; 002–005 rute placeholder + design/tasks tertulis
+Stage: Designing (tasks 001 IMPLEMENTED, 002–005 DRAFT menunggu gate)
 Current Task: —
 
 ## Completed
@@ -48,3 +48,4 @@ Epic→unit selesai; lanjut design satu unit tiap PO approve.
 - PRD §8 final fresh: hierarki Scrum Guide, US-01–US-20 ID = urutan, AC Given-When-Then biner, traceability §8.9. Tanpa jejak ID/kode lama.
 - Turunan fresh: specs 001–006 rev 4, product/backlog.md, product/capability-map.md, .sdd/traceability/requirements.md. Lint + typecheck bersih.
 - Kesesuaian PRD↔spec terverifikasi programatis: 20 US, 22 blok, 77 AC cocok semua; AC-17-01–AC-20-01 ditambah ke 006; owner tunggal US-08→003, US-10→004; specs rev 5.
+- Unit-to-work dilengkapi: design.md 001–005 + tasks.md 001–005 selaras kode nyata (001 DESIGNED/IMPLEMENTED live; 002–005 DRAFT dengan gate katalog/ADR eksplisit). Semua US-01–13 MVP tercatat di unit-to-work. Lint + typecheck bersih.
