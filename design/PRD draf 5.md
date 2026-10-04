@@ -1,19 +1,19 @@
-# Dokumen Persyaratan Produk (PRD) — UIRO (Usaha dan Growth)
+# Dokumen Persyaratan Produk (PRD) — UMIRO (Usaha Mikro dan Growth)
 
-| Atribut | Keterangan |
-|---|---|
-| Nama Produk | UIRO (Usaha dan Growth) |
-| Kompetisi | SIFest Digital Innovation Challenge 2026 |
-| Track | Digital Economy |
-| Versi | 5.0 |
-| Status | Draf 5 — siap ditinjau; kerangka diagnosis dan ambang masih perlu validasi lapangan |
-| Terakhir Diperbarui | 4 Oktober 2026 |
+| Atribut             | Keterangan                                                                          |
+| ------------------- | ----------------------------------------------------------------------------------- |
+| Nama Produk         | UMIRO (Usaha Mikro dan Growth)                                                      |
+| Kompetisi           | SIFest Digital Innovation Challenge 2026                                            |
+| Track               | Digital Economy                                                                     |
+| Versi               | 5.0                                                                                 |
+| Status              | Draf 5 — siap ditinjau; kerangka diagnosis dan ambang masih perlu validasi lapangan |
+| Terakhir Diperbarui | 4 Oktober 2026                                                                      |
 
 ## 1. Ringkasan Eksekutif
 
-UIRO adalah aplikasi web yang membantu pelaku usaha mikro memahami kondisi usaha, menemukan hambatan pertumbuhan yang paling mendesak, lalu memilih tindakan yang realistis. Produk tidak menjanjikan prediksi keberhasilan. Kerangka diagnosis dan kategori keluaran di bawah ini merupakan **usulan produk yang masih perlu divalidasi** melalui wawancara dan uji penggunaan.
+UMIRO adalah aplikasi web yang membantu pelaku usaha mikro memahami kondisi usaha, menemukan hambatan pertumbuhan yang paling mendesak, lalu memilih tindakan yang realistis. Produk tidak menjanjikan prediksi keberhasilan. Kerangka diagnosis dan kategori keluaran di bawah ini merupakan **usulan produk yang masih perlu divalidasi** melalui wawancara dan uji penggunaan.
 
-MVP terdiri dari lima halaman: Landing, Survey, Diagnosis, Financial Calculator, dan Roadmap. Survey menghasilkan ringkasan indikator dan bottleneck indikatif yang disimpan pada `localStorage` browser agar dapat dibaca halaman Diagnosis, Calculator, dan tautan konteks Roadmap. Penyimpanan bersifat lokal: hasil hilang jika data situs dihapus dan tidak otomatis tersedia pada browser atau perangkat lain.
+MVP terdiri dari lima halaman: Landing, Survey, Diagnosis, Financial Calculator, dan Roadmap. Survey menyimpan jawaban dan ringkasan diagnosis pada `localStorage` browser. Hanya Survey → Diagnosis yang memiliki alur langsung: setelah submit valid, pengguna diarahkan ke Diagnosis. Financial Calculator dan Roadmap tidak membaca atau mengubah hasil diagnosis pada MVP; keduanya dibuka melalui tautan biasa atau navigasi.
 
 MVP juga memuat roadmap pertumbuhan UMKM yang luas dan statis. Roadmap menjelaskan langkah survival, improvement, dan growth, tanpa kelas pengguna, status terkunci, pelacakan progres, atau penyelesaian tindakan. Halaman AI Recommendation dan UMKM Mindmap berada di luar MVP. Conversational AI yang memahami topik roadmap serta jawaban survey/indikator diagnosis adalah kemampuan masa depan yang dipertimbangkan, bukan fitur MVP dan bukan Won't Have.
 
@@ -71,12 +71,12 @@ Jobs-to-be-done:
 
 Empat lever digunakan sebagai lensa penjelasan, bukan persamaan finansial presisi:
 
-| Lever | Pertanyaan diagnostik | Contoh intervensi |
-|---|---|---|
-| Margin & unit economics | Apakah tiap penjualan menyisakan kontribusi setelah biaya variabel? | Hitung HPP, tinjau harga, kurangi pemborosan |
-| Retensi & relasi pelanggan | Apakah pembeli kembali dan mudah dihubungi secara etis? | Kualitas produk, pengingat pembelian ulang, layanan |
-| Reach & acquisition | Apakah calon pembeli yang relevan dapat menemukan usaha? | Kanal lokal, katalog, kemitraan, konten |
-| Capacity & operating system | Apakah usaha dapat melayani permintaan tanpa seluruh beban berada pada pemilik? | SOP sederhana, batching, pembagian kerja |
+| Lever                       | Pertanyaan diagnostik                                                           | Contoh intervensi                                   |
+| --------------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Margin & unit economics     | Apakah tiap penjualan menyisakan kontribusi setelah biaya variabel?             | Hitung HPP, tinjau harga, kurangi pemborosan        |
+| Retensi & relasi pelanggan  | Apakah pembeli kembali dan mudah dihubungi secara etis?                         | Kualitas produk, pengingat pembelian ulang, layanan |
+| Reach & acquisition         | Apakah calon pembeli yang relevan dapat menemukan usaha?                        | Kanal lokal, katalog, kemitraan, konten             |
+| Capacity & operating system | Apakah usaha dapat melayani permintaan tanpa seluruh beban berada pada pemilik? | SOP sederhana, batching, pembagian kerja            |
 
 Keempat lever saling memengaruhi. Tidak ada urutan universal bahwa margin selalu harus dibenahi lebih dahulu. Produk dapat menampilkan margin sebagai prioritas bila indikator data menunjukkan risiko, tetapi keputusan akhir harus dijelaskan sebagai rekomendasi berbasis aturan dan perlu diuji pada pengguna.
 
@@ -84,31 +84,31 @@ Keempat lever saling memengaruhi. Tidak ada urutan universal bahwa margin selalu
 
 Roadmap memakai tiga tahap naratif berikut agar cakupannya mudah dipahami:
 
-| Tahap naratif | Fokus | Contoh keluaran |
-|---|---|---|
-| Survival | Menjaga arus kas, mengurangi kebocoran, mengetahui angka dasar, dan mempertahankan operasi | Pisahkan uang, hitung biaya, pilih produk utama, hindari keputusan yang memperbesar rugi |
-| Improvement | Membuat operasi lebih sehat dan berulang | Tinjau harga, tingkatkan retensi, rapikan proses, uji kanal dengan biaya rendah |
-| Growth | Meningkatkan jangkauan dan kapasitas secara terkendali | Delegasi, SOP, kanal baru, pengukuran dan eksperimen |
+| Tahap naratif | Fokus                                                                                      | Contoh keluaran                                                                          |
+| ------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| Survival      | Menjaga arus kas, mengurangi kebocoran, mengetahui angka dasar, dan mempertahankan operasi | Pisahkan uang, hitung biaya, pilih produk utama, hindari keputusan yang memperbesar rugi |
+| Improvement   | Membuat operasi lebih sehat dan berulang                                                   | Tinjau harga, tingkatkan retensi, rapikan proses, uji kanal dengan biaya rendah          |
+| Growth        | Meningkatkan jangkauan dan kapasitas secara terkendali                                     | Delegasi, SOP, kanal baru, pengukuran dan eksperimen                                     |
 
 Tahap ini hanya pengelompokan konten roadmap dan tidak menentukan akses atau perilaku pengguna.
 
 ### 5.2a Rujukan Churchill–Lewis dan konteks skala UMKM
 
-Model *The Five Stages of Small-Business Growth* karya Neil C. Churchill dan Virginia L. Lewis diterbitkan di *Harvard Business Review* pada 1983. Artikel aslinya menggunakan istilah *small business*, bukan klasifikasi hukum UMKM Indonesia berdasarkan batas omzet atau jumlah karyawan. Skala dianalisis melalui ukuran usaha, keragaman, kompleksitas manajemen, struktur organisasi, sistem formal, tujuan strategis, dan keterlibatan pemilik.
+Model _The Five Stages of Small-Business Growth_ karya Neil C. Churchill dan Virginia L. Lewis diterbitkan di _Harvard Business Review_ pada 1983. Artikel aslinya menggunakan istilah _small business_, bukan klasifikasi hukum UMKM Indonesia berdasarkan batas omzet atau jumlah karyawan. Skala dianalisis melalui ukuran usaha, keragaman, kompleksitas manajemen, struktur organisasi, sistem formal, tujuan strategis, dan keterlibatan pemilik.
 
-Dalam konteks UIRO, model ini dapat dipakai sebagai **rujukan konseptual untuk membaca rentang perjalanan usaha dari mikro hingga menengah**, bukan sebagai bukti bahwa setiap tahap setara secara hukum dengan kategori Mikro, Kecil, atau Menengah:
+Dalam konteks UMIRO, model ini dapat dipakai sebagai **rujukan konseptual untuk membaca rentang perjalanan usaha dari mikro hingga menengah**, bukan sebagai bukti bahwa setiap tahap setara secara hukum dengan kategori Mikro, Kecil, atau Menengah:
 
-| Tahap Churchill–Lewis | Kecenderungan konteks UMKM | Relevansi terhadap UIRO |
-|---|---|---|
-| Existence | Sering menyerupai usaha mikro yang sedang membuktikan produk, pelanggan, dan arus kas. | Menjadi konteks tambahan, tetapi pengguna primer UIRO umumnya sudah berjualan. |
-| Survival | Sering menyerupai usaha mikro yang sudah memiliki pelanggan dan berfokus menjaga arus kas serta kelangsungan operasi. | Sangat relevan untuk isi roadmap dan masalah utama produk. |
-| Success | Dapat mencerminkan usaha kecil yang sudah stabil, menghasilkan laba, dan mulai mendelegasikan pekerjaan. | Relevan untuk materi improvement dan kesiapan sistem, tetapi tidak dipakai sebagai label hasil survey. |
-| Take-off | Dapat mencerminkan usaha yang mulai memperbesar penjualan, kapasitas, modal, dan struktur manajemen. | Relevan untuk materi growth yang terkendali; bukan target wajib semua pengguna. |
-| Resource Maturity | Dapat menyerupai usaha menengah yang memiliki sistem, sumber daya, dan manajemen lebih formal. | Menjadi konteks lanjutan roadmap, bukan sasaran MVP atau klaim kondisi pengguna. | |
+| Tahap Churchill–Lewis | Kecenderungan konteks UMKM                                                                                            | Relevansi terhadap UMIRO                                                                               |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Existence             | Sering menyerupai usaha mikro yang sedang membuktikan produk, pelanggan, dan arus kas.                                | Menjadi konteks tambahan, tetapi pengguna primer UMIRO umumnya sudah berjualan.                        |
+| Survival              | Sering menyerupai usaha mikro yang sudah memiliki pelanggan dan berfokus menjaga arus kas serta kelangsungan operasi. | Sangat relevan untuk isi roadmap dan masalah utama produk.                                             |
+| Success               | Dapat mencerminkan usaha kecil yang sudah stabil, menghasilkan laba, dan mulai mendelegasikan pekerjaan.              | Relevan untuk materi improvement dan kesiapan sistem, tetapi tidak dipakai sebagai label hasil survey. |
+| Take-off              | Dapat mencerminkan usaha yang mulai memperbesar penjualan, kapasitas, modal, dan struktur manajemen.                  | Relevan untuk materi growth yang terkendali; bukan target wajib semua pengguna.                        |
+| Resource Maturity     | Dapat menyerupai usaha menengah yang memiliki sistem, sumber daya, dan manajemen lebih formal.                        | Menjadi konteks lanjutan roadmap, bukan sasaran MVP atau klaim kondisi pengguna.                       |
 
-Pemetaan mikro–kecil–menengah tersebut adalah **interpretasi praktis lintas konteks**, bukan klasifikasi yang dinyatakan secara eksplisit oleh Churchill dan Lewis. Usaha dapat melompati, berhenti, kembali, atau berkembang tidak linear antar tahap. Karena itu, UIRO tidak boleh menyimpulkan skala hukum usaha, kelayakan kredit, atau status formal hanya dari jawaban survey.
+Pemetaan mikro–kecil–menengah tersebut adalah **interpretasi praktis lintas konteks**, bukan klasifikasi yang dinyatakan secara eksplisit oleh Churchill dan Lewis. Usaha dapat melompati, berhenti, kembali, atau berkembang tidak linear antar tahap. Karena itu, UMIRO tidak boleh menyimpulkan skala hukum usaha, kelayakan kredit, atau status formal hanya dari jawaban survey.
 
-Sumber utama model adalah artikel HBR asli (Churchill & Lewis, 1983). Sumber sekunder dapat menjelaskan penerapannya di Indonesia, tetapi tidak membuktikan validitas instrumen scoring UIRO. Pemetaan ini perlu diuji melalui wawancara dan review ahli UMKM sebelum dipakai sebagai logika diagnosis.
+Sumber utama model adalah artikel HBR asli (Churchill & Lewis, 1983). Sumber sekunder dapat menjelaskan penerapannya di Indonesia, tetapi tidak membuktikan validitas instrumen scoring UMIRO. Pemetaan ini perlu diuji melalui wawancara dan review ahli UMKM sebelum dipakai sebagai logika diagnosis.
 
 ### 5.3 Bottleneck dan indikator
 
@@ -118,31 +118,31 @@ Diagnosis menampilkan satu bottleneck **indikatif**: area dengan sinyal risiko p
 
 Survey mengusulkan tujuh kategori berikut:
 
-| Kode | Kategori | Variabel/indikator display |
-|---|---|---|
-| F | Financial clarity | pemisahan uang, pencatatan, pengetahuan biaya, pengetahuan surplus |
-| M | Margin & pricing | cara menentukan harga, biaya per unit, frekuensi review harga, potongan kanal |
-| R | Retention | pembeli berulang, pengenalan pelanggan, alasan pembelian ulang |
-| A | Reach | sumber pelanggan baru, kanal penjualan, keterlihatan lokal/digital |
-| C | Capacity | jam kerja, batas produksi, ketergantungan pada pemilik, bantuan/SOP |
-| S | Stability & constraints | kestabilan permintaan, modal yang dapat dipakai, waktu tersedia |
-| G | Goal & direction | target penghasilan, tujuan utama, horizon keputusan |
+| Kode | Kategori                | Variabel/indikator display                                                    |
+| ---- | ----------------------- | ----------------------------------------------------------------------------- |
+| F    | Financial clarity       | pemisahan uang, pencatatan, pengetahuan biaya, pengetahuan surplus            |
+| M    | Margin & pricing        | cara menentukan harga, biaya per unit, frekuensi review harga, potongan kanal |
+| R    | Retention               | pembeli berulang, pengenalan pelanggan, alasan pembelian ulang                |
+| A    | Reach                   | sumber pelanggan baru, kanal penjualan, keterlihatan lokal/digital            |
+| C    | Capacity                | jam kerja, batas produksi, ketergantungan pada pemilik, bantuan/SOP           |
+| S    | Stability & constraints | kestabilan permintaan, modal yang dapat dipakai, waktu tersedia               |
+| G    | Goal & direction        | target penghasilan, tujuan utama, horizon keputusan                           |
 
-F–C adalah dimensi diagnostik utama. S adalah konteks pembatas untuk menyaring tindakan. G adalah konteks arah untuk memilih contoh tindakan. Display indicators bukan gate tahap dan bukan bukti bottleneck tunggal. Ambang, bobot, jumlah pertanyaan, serta hubungan indikator dengan bottleneck adalah keputusan rancangan yang harus diuji dan dapat berubah.
+F–C adalah dimensi diagnostik utama. S dan G hanya konteks diagnosis pada MVP: S dapat ditampilkan untuk membantu pengguna memahami keterbatasannya, sedangkan G dapat ditampilkan sebagai tujuan pengguna. Keduanya tidak menyaring tindakan, mengubah scoring, mengubah isi, mengubah urutan, atau membatasi akses Financial Calculator/Roadmap pada MVP. Display indicators bukan gate tahap dan bukan bukti bottleneck tunggal. Ambang, bobot, jumlah pertanyaan, serta hubungan indikator dengan bottleneck adalah keputusan rancangan yang harus diuji dan dapat berubah.
 
 ## 6. Gambaran Solusi dan Inventaris Halaman
 
 MVP memiliki halaman berikut:
 
-| Halaman | Rute | Fungsi MVP |
-|---|---|---|
-| Landing | `/` | Menjelaskan masalah, batasan hasil, dan CTA ke Survey. |
-| Survey | `/survey` | Pertanyaan singkat satu per layar, progres, navigasi mundur, dan penyimpanan lokal sementara. |
-| Diagnosis | `/diagnosis` | Menampilkan ringkasan indikator, bottleneck indikatif, alasan, ketidakpastian bila ada, dan langkah awal. Memuat tautan ke roadmap dan kalkulator. |
-| Financial Calculator | `/kalkulator` | Menghitung margin kontribusi, estimasi laba bersih, titik impas, dan target penjualan berdasarkan input pengguna. |
-| Roadmap | `/roadmap` | Panduan baca-saja survival, improvement, dan growth untuk empat growth levers; tidak memiliki kelas, status terkunci, atau pelacakan progres. |
+| Halaman              | Rute          | Fungsi MVP                                                                                                                                         |
+| -------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Landing              | `/`           | Menjelaskan masalah, batasan hasil, dan CTA ke Survey.                                                                                             |
+| Survey               | `/survey`     | Pertanyaan singkat satu per layar, progres, navigasi mundur, dan penyimpanan lokal sementara.                                                      |
+| Diagnosis            | `/diagnosis`  | Menampilkan ringkasan indikator, bottleneck indikatif, alasan, ketidakpastian bila ada, dan langkah awal. Memuat tautan ke roadmap dan kalkulator. |
+| Financial Calculator | `/kalkulator` | Menghitung margin kontribusi, estimasi laba bersih, titik impas, dan target penjualan berdasarkan input pengguna.                                  |
+| Roadmap              | `/roadmap`    | Panduan baca-saja survival, improvement, dan growth untuk empat growth levers; tidak memiliki kelas, status terkunci, atau pelacakan progres.      |
 
-Roadmap adalah halaman MVP nyata, bukan bagian tersamar pada Landing atau Diagnosis. Kontennya luas dan statis; Diagnosis hanya menautkan pengguna ke bagian roadmap yang relevan.
+Roadmap adalah halaman MVP nyata, bukan bagian tersamar pada Landing atau Diagnosis. Kontennya luas dan statis. Diagnosis menautkan ke `/roadmap` tanpa mengirim parameter filter, skor, atau bottleneck; personalisasi hubungan Diagnosis → Roadmap merupakan future scope AI.
 
 Halaman tambahan non-MVP:
 
@@ -150,120 +150,308 @@ Halaman tambahan non-MVP:
 - `/mindmap`: UMKM Mindmap, memvisualisasikan hubungan area usaha dan tindakan.
 - `/chat`: Conversational AI, percakapan yang terhubung pada topik roadmap, jawaban survey, dan indikator diagnosis. Ini future scope/Should consider, bukan MVP dan bukan Won't Have.
 
-Alur utama: Landing → Survey → Diagnosis → Financial Calculator. Diagnosis dan navigasi menyediakan akses langsung ke Roadmap. Jika data lokal tidak tersedia atau hasil belum ada, Diagnosis menampilkan ajakan mengisi Survey; tidak ada pemulihan lintas perangkat.
+Alur MVP:
+
+```text
+Landing
+  ↓ CTA ke /survey
+Survey
+  ↓ submit valid; redirect otomatis
+Diagnosis
+  ├─ tautan biasa → Financial Calculator
+  └─ tautan biasa → Roadmap
+```
+
+Aturan hubungan halaman:
+
+1. `Survey → Diagnosis` adalah hubungan langsung. Setelah seluruh jawaban wajib valid dan tersimpan, sistem otomatis mengarahkan pengguna ke `/diagnosis`.
+2. `Diagnosis → Financial Calculator` hanya tautan biasa. Financial Calculator berdiri sendiri, memakai input manual, dan tidak membaca atau mengubah hasil diagnosis.
+3. `Diagnosis → Roadmap` hanya tautan biasa pada MVP. Roadmap selalu menampilkan konten statis penuh dan tidak difilter oleh skor, bottleneck, atau jawaban survey.
+4. Personalisasi topik Roadmap berdasarkan hasil Diagnosis hanya tersedia pada fitur AI pasca-MVP, setelah persetujuan pengguna.
+5. Financial Calculator dan Roadmap dapat dibuka langsung melalui navigasi tanpa menyelesaikan Survey. Diagnosis tanpa hasil lokal valid hanya menampilkan CTA kembali ke Survey.
 
 ## 7. Metrik Keberhasilan
 
 Target berikut adalah target uji MVP, bukan klaim performa yang sudah tercapai:
 
-| Tujuan | Indikator | Target awal |
-|---|---|---|
-| Penyelesaian | Pengguna uji menyelesaikan Survey tanpa bantuan | ≥80% dari 5 pengguna |
-| Pemahaman | Pengguna dapat menjelaskan bottleneck sebagai indikasi, bukan kepastian | ≥80% dari 5 pengguna |
-| Relevansi | Pengguna menilai minimal satu langkah awal relevan dan realistis | ≥4 dari 5 pengguna |
-| Keuangan | Pengguna dapat menyebut margin/titik impas setelah kalkulator | ≥80% dari 5 pengguna |
-| Keandalan lokal | Hasil tetap tersedia setelah berpindah halaman pada browser yang sama | 100% pengujian manual |
-| Kejelasan batasan | Pengguna memahami hasil lokal hilang jika data situs dihapus atau browser/perangkat diganti | 100% pengguna uji memahami |
-| Roadmap | Pengguna dapat menemukan bagian Survival, Improvement, dan Growth serta satu tindakan yang sesuai konteks | ≥80% dari 5 pengguna |
+| Tujuan            | Indikator                                                                                                 | Target awal                |
+| ----------------- | --------------------------------------------------------------------------------------------------------- | -------------------------- |
+| Penyelesaian      | Pengguna uji menyelesaikan Survey tanpa bantuan                                                           | ≥80% dari 5 pengguna       |
+| Pemahaman         | Pengguna dapat menjelaskan bottleneck sebagai indikasi, bukan kepastian                                   | ≥80% dari 5 pengguna       |
+| Relevansi         | Pengguna menilai minimal satu langkah awal relevan dan realistis                                          | ≥4 dari 5 pengguna         |
+| Keuangan          | Pengguna dapat menyebut margin/titik impas setelah kalkulator                                             | ≥80% dari 5 pengguna       |
+| Keandalan lokal   | Hasil tetap tersedia setelah berpindah halaman pada browser yang sama                                     | 100% pengujian manual      |
+| Kejelasan batasan | Pengguna memahami hasil lokal hilang jika data situs dihapus atau browser/perangkat diganti               | 100% pengguna uji memahami |
+| Roadmap           | Pengguna dapat menemukan bagian Survival, Improvement, dan Growth serta satu tindakan yang sesuai konteks | ≥80% dari 5 pengguna       |
 
 Validasi jangka panjang, dampak rupiah, akurasi bottleneck, dan peningkatan pendapatan belum dapat diklaim dari MVP.
 
-## 8. User Stories dan Acceptance Criteria
+## 8. Product Backlog
 
-### US-01 — Landing
+Product Goal: membantu pemilik usaha mikro memahami sinyal kondisi usahanya dan memilih langkah awal melalui diagnosis indikatif, kalkulator mandiri, dan roadmap umum.
 
-Sebagai pemilik usaha, saya ingin memahami manfaat dan batasan produk, agar saya dapat memutuskan apakah Survey relevan.
+Product Backlog adalah satu daftar User Story (US) terurut menurut nilai, risiko, pembelajaran, dan dependensi. Epic hanya mengelompokkan US berdasarkan outcome. Acceptance Criteria (AC) berada di dalam US sebagai kondisi verifikasi, bukan level backlog terpisah. **Setiap US memiliki scope dan prioritas MoSCoW sendiri**; prioritas tidak diwariskan dari Epic dan tidak menggantikan ordering backlog.
 
-- AC-LND-01: Landing menjelaskan lima halaman MVP dan CTA menuju `/survey`.
-- AC-LND-02: Landing menyatakan diagnosis bersifat indikatif dan bukan audit/konsultasi.
-- AC-LND-03: Landing menjelaskan hasil tersimpan lokal pada browser dan keterbatasan penghapusan/pergantian browser atau perangkat.
+```text
+Product Goal
+└── Product Backlog (ordered list of US)
+    ├── Epic (optional outcome grouping)
+    │   └── User Story (value-bearing item; owns scope + MoSCoW)
+    │       └── Acceptance Criteria (testable conditions)
+    └── Refinement may split US into smaller US/tasks
+```
 
-### US-02 — Survey
+AC bukan task. Estimasi, owner, status, sprint, dan task teknis ditetapkan saat backlog refinement/project tracking. Scrum Guide menggambarkan Product Backlog sebagai daftar terurut tunggal dan menekankan transparansi/refinement; MoSCoW di sini teknik scope, bukan hierarki Scrum.
 
-Sebagai pemilik usaha, saya ingin menjawab pertanyaan singkat dengan bahasa sehari-hari, agar saya dapat memberi konteks tanpa memahami istilah bisnis.
+Prioritas MoSCoW berlaku bagi seluruh US dalam backlog, termasuk Future dan Won't. `Must` = MVP wajib; `Should` = MVP penting, pangkas bila kendala; `Could` = MVP opsional; `Won't for MVP` = tidak dikerjakan di MVP, bukan larangan permanen; `Future` = pasca-MVP, belum disetujui untuk implementasi. Setiap baris ringkasan US mencatat prioritasnya; tabel prioritas mandiri tidak digunakan.
+
+### Epic grouping
+
+| Epic                      | Outcome                                            | US           |
+| ------------------------- | -------------------------------------------------- | ------------ |
+| E-01 Orientasi/navigasi   | Memahami produk dan berpindah halaman              | US-01, US-06 |
+| E-02 Survey/lokal         | Mengisi, menyimpan Survey, meneruskan ke Diagnosis | US-02, US-07 |
+| E-03 Diagnosis            | Memahami indikator, bottleneck, uncertainty        | US-03        |
+| E-04 Financial Calculator | Menghitung dari input manual                       | US-04, US-08 |
+| E-05 Roadmap              | Membaca panduan umum statis                        | US-05        |
+| E-06 Eksplorasi pasca-MVP | Validasi AI dan mindmap                            | US-09–US-11  |
+| E-07 Opsi MVP Could       | Peningkatan opsional bila kapasitas tersisa        | US-12–US-14  |
+| E-08 Batas scope Won't    | Kapabilitas yang tidak dibangun pada MVP           | US-15–US-18  |
+| E-09 Quality/validation   | Bantuan pengguna dan verifikasi aturan             | US-19–US-20  |
+
+### Ringkasan User Story dan MoSCoW
+
+Urutan adalah rekomendasi awal, dapat berubah setelah validasi. Detail dan AC hanya authoritative pada story terkait di bawah.
+
+| Order | Epic | US    | Outcome                                         | Scope          | MoSCoW        |
+| ----: | ---- | ----- | ----------------------------------------------- | -------------- | ------------- |
+|     1 | E-01 | US-01 | Memahami nilai, batas, CTA                      | MVP            | Must          |
+|     2 | E-02 | US-02 | Mengisi Survey                                  | MVP            | Must          |
+|     3 | E-02 | US-07 | Menyimpan jawaban, redirect ke Diagnosis        | MVP            | Must          |
+|     4 | E-03 | US-03 | Membaca diagnosis indikatif                     | MVP            | Must          |
+|     5 | E-04 | US-04 | Menghitung dari input manual                    | MVP            | Must          |
+|     6 | E-05 | US-05 | Membaca Roadmap statis                          | MVP            | Must          |
+|     7 | E-01 | US-06 | Menavigasi lima halaman                         | MVP            | Must          |
+|     8 | E-04 | US-08 | Membandingkan direct vs platform sales          | MVP bila waktu | Should        |
+|     9 | E-06 | US-09 | Rekomendasi AI dari Survey/Roadmap              | Pasca-MVP      | Future        |
+|    10 | E-06 | US-10 | Chat topik Roadmap dengan konteks disetujui     | Pasca-MVP      | Future        |
+|    11 | E-06 | US-11 | Mindmap hubungan area usaha                     | Pasca-MVP      | Future        |
+|    12 | E-07 | US-12 | Transisi Survey yang membantu orientasi         | MVP bila waktu | Could         |
+|    13 | E-07 | US-13 | Simulasi skenario harga/biaya                   | MVP bila waktu | Could         |
+|    14 | E-07 | US-14 | Ekspor/print hasil lokal setelah review privasi | MVP bila waktu | Could         |
+|    15 | E-08 | US-15 | Akun, backend, recovery, dan sinkronisasi       | Di luar MVP    | Won't for MVP |
+|    16 | E-08 | US-16 | Pencatatan transaksi harian                     | Di luar MVP    | Won't for MVP |
+|    17 | E-08 | US-17 | Integrasi marketplace/pembayaran                | Di luar MVP    | Won't for MVP |
+|    18 | E-08 | US-18 | Dashboard pendamping dan komunitas              | Di luar MVP    | Won't for MVP |
+|    19 | E-09 | US-19 | Bantuan istilah/bahasa sehari-hari              | MVP bila waktu | Should        |
+|    20 | E-09 | US-20 | Verifikasi manual diagnosis dan scoring         | MVP            | Must          |
+
+### Epic E-07 — Opsi MVP berprioritas Could
+
+#### US-12 — Menggunakan transisi Survey (MVP bila waktu · Could)
+
+Sebagai pengguna, saya ingin transisi antarpertanyaan yang tidak mengganggu agar orientasi Survey lebih mudah.
+
+- AC-MOTION-01: Transisi tidak mengubah jawaban, progres, validasi, atau urutan pertanyaan.
+- AC-MOTION-02: Pengguna dapat menyelesaikan Survey tanpa menunggu animasi.
+- AC-MOTION-03: Animasi dapat dihentikan atau dihormati saat reduced motion aktif.
+
+#### US-13 — Membandingkan skenario harga/biaya (MVP bila waktu · Could)
+
+Sebagai pengguna Calculator, saya ingin membandingkan beberapa skenario harga/biaya agar dapat melihat perbedaan hasil tanpa kehilangan input utama.
+
+- AC-SCEN-01: Skenario hanya menggunakan input manual Calculator dan tidak membaca Diagnosis.
+- AC-SCEN-02: Setiap skenario menampilkan asumsi dan hasil dengan rumus yang sama seperti Calculator utama.
+- AC-SCEN-03: Skenario tidak mengubah hasil tersimpan utama tanpa tindakan eksplisit pengguna.
+
+#### US-14 — Mengekspor atau mencetak hasil lokal (MVP bila waktu · Could)
+
+Sebagai pengguna, saya ingin mencetak atau menyalin hasil lokal agar dapat membawanya ke diskusi offline.
+
+- AC-EXPORT-01: Ekspor/print hanya menggunakan data yang tersedia lokal dan tidak mengirimnya ke server.
+- AC-EXPORT-02: Output menyertakan disclaimer bahwa diagnosis indikatif dan kalkulator bukan laporan keuangan.
+- AC-EXPORT-03: Fitur tidak aktif sebelum review privasi dan pengujian penghapusan data lokal.
+
+### Epic E-08 — Batasan scope Won't for MVP
+
+Stories di Epic ini wajib tercatat agar batas rilis transparan. Semua berstatus **Won't for MVP**; artinya tidak dibangun pada rilis ini, bukan larangan permanen. Jika Product Owner kelak mengaktifkan story, scope dan acceptance criteria implementasinya harus dirinci sebelum masuk ke rilis.
+
+#### US-15 — Akun dan sinkronisasi lintas perangkat (Won't for MVP)
+
+Akun, backend persistence, kode pemulihan, dan sinkronisasi lintas perangkat tidak dibangun pada MVP.
+
+#### US-16 — Pencatatan transaksi harian (Won't for MVP)
+
+Pencatatan transaksi harian tidak dibangun pada MVP; produk tetap berupa diagnosis berkala dan kalkulator manual.
+
+#### US-17 — Integrasi marketplace dan pembayaran (Won't for MVP)
+
+Integrasi marketplace atau layanan pembayaran tidak dibangun pada MVP.
+
+#### US-18 — Dashboard pendamping dan komunitas (Won't for MVP)
+
+Dashboard multi-UMKM dan fitur komunitas tidak dibangun pada MVP.
+
+### Epic E-09 — Quality and validation
+
+#### US-19 — Memahami istilah dan contoh pengisian (MVP bila waktu · Should)
+
+Sebagai pengguna dengan literasi bisnis terbatas, saya ingin mendapat bantuan istilah dan contoh agar dapat menjawab Survey serta membaca Calculator dengan benar.
+
+- AC-HELP-01: Istilah HPP, margin kontribusi, dan titik impas memiliki penjelasan singkat saat pertama digunakan.
+- AC-HELP-02: Contoh pengisian tidak dianggap sebagai jawaban pengguna dan dapat ditutup.
+- AC-HELP-03: Bantuan tidak mengubah scoring atau hasil kalkulator.
+
+#### US-20 — Memverifikasi aturan diagnosis dan scoring (MVP · Must)
+
+Sebagai tim produk, saya ingin menguji aturan diagnosis pada kasus terkontrol agar hasil deterministik dapat dijelaskan sebelum digunakan.
+
+- AC-VERIFY-01: Kasus uji mencakup margin nol/negatif, retensi rendah, kapasitas terbatas, keuangan tidak jelas, seri skor dekat, dan data tidak cukup.
+- AC-VERIFY-02: Setiap kasus mencatat input, hasil yang diharapkan, hasil aktual, dan alasan perbedaan.
+- AC-VERIFY-03: Perubahan bobot atau ambang memicu pengulangan kasus uji terkait.
+- AC-VERIFY-04: Hasil uji tidak dipresentasikan sebagai validasi statistik pengguna.
+
+### Traceability
+
+#### US-01 — Memahami produk di Landing (MVP · Must)
+
+Sebagai pemilik usaha, saya ingin memahami manfaat dan batasan UMIRO agar dapat memutuskan apakah Survey relevan.
+
+- AC-LND-01: Landing menjelaskan tujuan UMIRO dan lima halaman MVP serta CTA ke `/survey`.
+- AC-LND-02: Landing menyatakan diagnosis indikatif, bukan audit/konsultasi, keputusan kredit, klasifikasi hukum UMKM, penentu pajak, atau kepatuhan.
+- AC-LND-03: Landing menjelaskan data lokal dapat hilang jika data situs dihapus atau browser/perangkat diganti.
+- AC-LND-04: Landing tidak mengklaim Calculator/Roadmap dipersonalisasi pada MVP.
+
+#### US-06 — Menavigasi halaman (MVP · Must)
+
+Sebagai pengguna, saya ingin mencapai tiap halaman tanpa kebingungan.
+
+- AC-NAV-01: Navigasi menyediakan Landing, Survey, Diagnosis, Financial Calculator, Roadmap.
+- AC-NAV-02: Halaman aktif dan label tautan dapat dikenali.
+- AC-NAV-03: Survey valid tersimpan mengarahkan otomatis hanya ke `/diagnosis`.
+- AC-NAV-04: Diagnosis → Calculator dan Diagnosis → Roadmap hanya tautan biasa; kedua halaman juga dapat dibuka tanpa Survey.
+- AC-NAV-05: Navigasi berfungsi pada mobile dan desktop.
+
+### Epic E-02 — Survey dan persistensi lokal
+
+#### US-02 — Mengisi Survey (MVP · Must)
+
+Sebagai pemilik usaha, saya ingin menjawab pertanyaan singkat dengan bahasa sehari-hari agar dapat memberi konteks usaha.
 
 - AC-SVY-01: Survey menampilkan satu pertanyaan per layar, progres, tombol Kembali, dan pilihan jawaban.
-- AC-SVY-02: Pertanyaan mencakup kategori F, M, R, A, C, S, dan G; jumlah final ditentukan setelah uji durasi maksimal tiga menit.
-- AC-SVY-03: Setiap jawaban tersimpan lokal dan tidak hilang saat berpindah pertanyaan.
-- AC-SVY-04: Pilihan “Belum tahu/Belum pernah menghitung” tersedia bila relevan dan diperlakukan sebagai sinyal ketidakjelasan.
-- AC-SVY-05: Pengguna tidak dapat menyelesaikan Survey tanpa menjawab pertanyaan wajib.
-- AC-SVY-06: Setelah selesai, jawaban dan hasil scoring tersimpan dalam `localStorage` dengan payload berversi, lalu pengguna diarahkan ke Diagnosis.
+- AC-SVY-02: Pertanyaan mencakup F/M/R/A/C sebagai kategori diagnostik dan S/G sebagai konteks; jumlah final diuji terhadap durasi maksimal tiga menit.
+- AC-SVY-03: Jawaban tidak hilang ketika pengguna maju atau kembali.
+- AC-SVY-04: “Belum tahu/Belum pernah menghitung” tersedia bila relevan dan ditafsirkan sesuai aturan pertanyaan.
+- AC-SVY-05: Semua pertanyaan wajib dijawab sebelum submit.
+- AC-SVY-06: HPP dan istilah teknis dijelaskan dengan bahasa sehari-hari.
 
-### US-03 — Diagnosis
+#### US-07 — Menyimpan Survey dan menuju Diagnosis (MVP · Must)
 
-Sebagai pemilik usaha, saya ingin melihat area yang perlu diperiksa lebih dahulu, agar saya dapat memilih langkah awal yang realistis.
+Sebagai pengguna, saya ingin jawaban tersimpan lalu melihat diagnosis langsung.
 
-- AC-DIA-01: Diagnosis membaca hasil dari `localStorage` browser yang sama.
-- AC-DIA-02: Diagnosis menampilkan indikator per kategori, satu bottleneck indikatif, alasan pemilihan, dan tingkat ketidakpastian bila data berdekatan/tidak cukup.
-- AC-DIA-03: Diagnosis membedakan indikator display dari aturan scoring; hasil tidak menentukan akses ke konten.
-- AC-DIA-04: Langkah awal mengacu pada bottleneck dan mempertimbangkan S serta G sebagai konteks, tanpa menjanjikan hasil.
-- AC-DIA-05: Diagnosis menyediakan tautan ke Financial Calculator dan roadmap statis.
-- AC-DIA-06: Akses tanpa hasil `localStorage` yang valid menampilkan CTA kembali ke Survey.
+- AC-SAVE-01: Jawaban dan versi katalog Survey tersimpan di `localStorage`.
+- AC-SAVE-02: Kegagalan penyimpanan menampilkan pesan dan tidak menyatakan sukses.
+- AC-SAVE-03: Setelah jawaban valid, sistem menghitung hasil deterministik dan menyimpan payload berversi.
+- AC-SAVE-04: Setelah penyimpanan sukses, sistem mengarahkan pengguna ke `/diagnosis`.
+- AC-SAVE-05: Submit tidak membuka Calculator/Roadmap dan tidak mengirim jawaban ke server/AI pada MVP.
 
-### US-04 — Financial Calculator
+### Epic E-03 — Diagnosis indikatif
 
-Sebagai pemilik usaha, saya ingin menghitung margin dan kebutuhan penjualan, agar keputusan harga dan target memakai angka usaha saya sendiri.
+#### US-03 — Membaca Diagnosis dan uncertainty (MVP · Must)
 
-- AC-CAL-01: Input mencakup harga jual/unit, biaya variabel/unit, unit terjual/hari, hari operasional/bulan, biaya tetap/bulan, dan target laba bersih opsional.
-- AC-CAL-02: Pengguna dapat memasukkan biaya variabel per unit atau total biaya produksi beserta jumlah unit hasil produksi; jika biaya produksi dibagi nol, sistem menolak perhitungan.
-- AC-CAL-03: Sistem menampilkan margin kontribusi/unit, estimasi laba bersih bulanan, titik impas unit/hari, dan unit/hari untuk target bila terdefinisi.
-- AC-CAL-04: Sistem menolak nilai negatif untuk harga, biaya, volume, hari operasi, dan biaya tetap. Harga nol atau hari operasi nol menghasilkan validasi, bukan hasil numerik.
-- AC-CAL-05: Jika margin kontribusi `M ≤ 0`, sistem menyatakan penjualan tambahan tidak memperbaiki hasil dan tidak menampilkan titik impas atau target berbasis volume.
-- AC-CAL-06: Jika biaya tetap `F = 0` dan `M > 0`, titik impas ditampilkan sebagai 0 unit/hari. Jika target laba `T` kurang dari atau sama dengan estimasi laba saat ini, kebutuhan target tidak boleh ditampilkan negatif; UI menyatakan target sudah tercapai.
-- AC-CAL-07: Hasil memakai pembulatan unit ke atas dan format Rupiah; UI menyatakan pajak, penyusutan, dan tenaga kerja pemilik tidak tercakup bila tidak dimasukkan.
-- AC-CAL-08: Hasil kalkulator disimpan lokal pada browser yang sama dan tetap dapat dipakai tanpa hasil diagnosis.
+Sebagai pemilik usaha, saya ingin memahami indikator dan area yang perlu diperiksa tanpa klaim kepastian palsu.
 
-### US-05 — Roadmap statis
+- AC-DIA-01: Diagnosis membaca payload Survey valid dari `localStorage` browser yang sama.
+- AC-DIA-02: Diagnosis menampilkan indikator F/M/R/A/C tanpa label lulus/gagal.
+- AC-DIA-03: Setiap indikator yang mendasari hasil dikaitkan dengan jawaban/sinyal sumber.
+- AC-DIA-04: S/G hanya konteks; pada MVP tidak mengubah skor, Calculator, atau Roadmap.
+- AC-DIA-05: Bottleneck tunggal tampil hanya jika syarat data dan selisih skor terpenuhi.
+- AC-DIA-06: Jika selisih dua skor teratas ≤10 atau data valid kategori bersaing kurang dari separuh indikator, tampil “belum cukup jelas” dan maksimal dua area pemeriksaan.
+- AC-DIA-07: Tampilkan maksimal dua langkah awal beserta alasan dan disclaimer bukan jaminan.
+- AC-DIA-08: Tanpa payload valid, tampil CTA Survey, bukan skor default.
+- AC-DIA-09: Tautan Calculator/Roadmap tidak membawa parameter atau personalisasi.
 
-Sebagai pemilik usaha, saya ingin membaca langkah survival, improvement, dan growth, agar saya dapat memilih pembelajaran lanjutan sesuai kondisi.
+### Epic E-04 — Financial Calculator mandiri
 
-- AC-RMP-01: `/roadmap` menampilkan bagian Survival, Improvement, dan Growth serta tindakan terkait empat growth levers.
-- AC-RMP-02: Roadmap mencakup langkah biaya rendah, langkah perbaikan, serta langkah growth; konten tidak hanya membahas pemasaran digital.
-- AC-RMP-03: Roadmap bersifat baca-saja; tidak ada kelas pengguna, penanda progres, status terkunci, penyelesaian tindakan, atau syarat akses.
-- AC-RMP-04: Tindakan ditulis sebagai opsi/contoh yang perlu disesuaikan, bukan instruksi universal atau jaminan hasil.
-- AC-RMP-05: Pengguna dapat membuka Roadmap tanpa mengisi Survey; tautan dari Diagnosis boleh menyorot topik relevan tanpa menyembunyikan bagian lain.
+#### US-04 — Menghitung hasil dengan input manual (MVP · Must)
 
-### US-06 — Navigasi dan batas lokal
+Sebagai pemilik usaha, saya ingin memasukkan angka sendiri untuk melihat margin, estimasi laba, titik impas, dan target.
 
-- AC-NAV-01: Navigasi menghubungkan Landing, Survey, Diagnosis, Financial Calculator, dan Roadmap.
-- AC-NAV-02: Layout responsif pada ponsel.
-- AC-NAV-03: Penghapusan data situs atau perpindahan browser/perangkat diperlakukan sebagai tidak adanya hasil tersimpan.
+- AC-CAL-01: Input mencakup harga/unit, biaya variabel/unit atau biaya batch dan unit batch, volume/hari, hari operasi/bulan, biaya tetap/bulan, target laba opsional.
+- AC-CAL-02: Nilai negatif, non-finite, format invalid, harga nol, hari operasi nol, dan unit batch nol ditolak dengan pesan jelas.
+- AC-CAL-03: Hasil valid menampilkan margin kontribusi/unit dan estimasi laba bersih bulanan.
+- AC-CAL-04: Jika `M>0` dan `D>0`, titik impas memakai `ceil(F/(M×D))`; jika `F=0`, hasil nol.
+- AC-CAL-05: Jika target tercapai, tambahan unit nol, bukan negatif.
+- AC-CAL-06: Jika `M≤0`, impas/target volume tidak ditampilkan sebagai hasil valid.
+- AC-CAL-07: Kalkulator hanya memakai input manual; tidak membaca/menulis/menafsirkan Diagnosis.
+- AC-CAL-08: Perubahan input memperbarui hasil tanpa reload.
+- AC-CAL-09: Hasil disimpan lokal; payload rusak tidak ditampilkan sebagai hasil terkini.
+- AC-CAL-10: Batas pajak, penyusutan, dan tenaga kerja pemilik dinyatakan bila tidak diinput.
 
-## 9. Prioritas MoSCoW
+#### US-08 — Membandingkan direct sales dan platform (MVP · Should)
 
-### Must Have (MVP)
+Sebagai pemilik usaha yang memakai platform, saya ingin melihat dampak potongan pada margin.
 
-1. Landing dengan proposisi nilai dan batasan.
-2. Survey kategori F/M/R/A/C/S/G, progres, validasi, dan penyimpanan lokal.
-3. Diagnosis indikator, bottleneck indikatif, penjelasan, ketidakpastian, dan langkah awal.
-4. Financial Calculator dengan margin, estimasi hasil bersih, titik impas, dan target.
-5. Roadmap statis survival/improvement/growth untuk empat growth levers.
-6. Navigasi responsif dan penanganan penyimpanan lokal.
+- AC-PLAT-01: Potongan opsional muncul bila pengguna memilih penjualan platform.
+- AC-PLAT-02: Perbandingan memakai input identik selain potongan.
+- AC-PLAT-03: Margin platform nol/negatif menghasilkan penjelasan, bukan titik impas menyesatkan.
 
-### Should Have (MVP bila waktu memungkinkan)
+### Epic E-05 — Roadmap statis
 
-1. Bantuan bahasa sehari-hari dan contoh pengisian.
-2. Perbandingan penjualan langsung dan potongan platform sebagai input kalkulator opsional.
-3. Ringkasan hasil yang dapat disalin manual, tanpa sinkronisasi akun.
-4. Uji manual bobot, ambang, dan perubahan input.
+#### US-05 — Membaca Roadmap umum (MVP · Must)
 
-### Could Have
+Sebagai pemilik usaha, saya ingin membaca Survival, Improvement, dan Growth agar dapat memilih materi sendiri.
 
-1. Animasi transisi survey.
-2. Simulasi beberapa skenario harga/biaya.
-3. Ekspor atau print hasil lokal, setelah privasi ditinjau.
+- AC-RMP-01: `/roadmap` menampilkan semua bagian dan empat growth levers.
+- AC-RMP-02: Konten mencakup langkah biaya rendah, perbaikan operasi, pertumbuhan; bukan pemasaran digital saja.
+- AC-RMP-03: Baca-saja; tanpa kelas pengguna, state, gate, tracking, atau penilaian otomatis.
+- AC-RMP-04: Tindakan adalah opsi kontekstual, bukan instruksi universal/jaminan.
+- AC-RMP-05: Roadmap terbuka dari navigasi atau Diagnosis tanpa hasil Survey.
+- AC-RMP-06: Tautan Diagnosis tidak membawa konteks personal; Roadmap tetap konten umum penuh.
 
-### Won't Have untuk MVP
+### Epic E-06 — Eksplorasi pasca-MVP (Future · belum disetujui)
 
-1. Akun, login, backend persistence, kode pemulihan, dan sinkronisasi lintas perangkat.
-2. Pencatatan transaksi harian.
-3. Integrasi marketplace/pembayaran.
-4. Dashboard pendamping dan komunitas.
-5. Halaman AI Recommendation dan UMKM Mindmap.
+Stories ini memerlukan consent eksplisit, minimisasi data, transparansi konteks, evaluasi, fallback non-AI, dan larangan mengganti diagnosis deterministik atau memberi keputusan finansial.
 
-Conversational AI tetap berada pada backlog masa depan yang diprioritaskan setelah validasi; fitur ini tidak termasuk daftar Won't Have permanen.
+#### US-09 — Mendapat rekomendasi AI (Future · Future)
 
-## 10. Ruang Lingkup
+Sebagai pemilik usaha yang menyetujui AI, saya ingin rekomendasi menghubungkan Survey, indikator, dan topik Roadmap.
+
+- AC-AI-REC-01: Persetujuan dan data yang dikirim dijelaskan sebelum proses.
+- AC-AI-REC-02: Rekomendasi merujuk sinyal Survey dan topik Roadmap; tidak mengubah diagnosis deterministik.
+- AC-AI-REC-03: Output menjelaskan batasan dan fallback saat layanan gagal.
+
+#### US-10 — Berdiskusi tentang Roadmap (Future · Future)
+
+Sebagai pengguna yang menyetujui AI, saya ingin berdiskusi tentang topik Roadmap dengan konteks yang saya setujui.
+
+- AC-CHAT-01: Pengguna memilih topik, meninjau konteks Survey, lalu menyetujui pemrosesan.
+- AC-CHAT-02: Chat memakai konteks disetujui saja dan tidak mengubah Survey/Diagnosis.
+- AC-CHAT-03: Tanpa konteks cukup, jawab umum dengan label atau minta data.
+- AC-CHAT-04: Gangguan AI tidak menghalangi Roadmap statis.
+
+#### US-11 — Melihat Mindmap UMKM (Future · Future)
+
+Sebagai pemilik usaha, saya ingin melihat hubungan area usaha secara visual.
+
+- AC-MAP-01: Mindmap adalah visualisasi konseptual, bukan skor tervalidasi atau diagnosis.
+- AC-MAP-02: Personalisasi memerlukan consent dan menunjukkan sumber konteks.
+
+### Traceability
+
+| Kebutuhan                      | Epic / US           | Halaman                       | AC                            |
+| ------------------------------ | ------------------- | ----------------------------- | ----------------------------- |
+| Orientasi/navigasi             | E-01 / US-01, US-06 | Landing, semua                | AC-LND, AC-NAV                |
+| Survey tersimpan → Diagnosis   | E-02 / US-02, US-07 | Survey → Diagnosis            | AC-SVY, AC-SAVE               |
+| Diagnosis dan uncertainty      | E-03 / US-03        | Diagnosis                     | AC-DIA                        |
+| Kalkulator mandiri/platform    | E-04 / US-04, US-08 | Calculator                    | AC-CAL, AC-PLAT               |
+| Roadmap statis                 | E-05 / US-05        | Roadmap                       | AC-RMP                        |
+| AI Recommendation/Chat/Mindmap | E-06 / US-09–11     | Pasca-MVP                     | AC-AI, AC-CHAT, AC-MAP        |
+| Opsi Could                     | E-07 / US-12–14     | Survey, Calculator            | AC-MOTION, AC-SCEN, AC-EXPORT |
+| Batas Won't for MVP            | E-08 / US-15–18     | Di luar MVP                   | Scope exclusions              |
+| Quality/validation             | E-09 / US-19–20     | Survey, Calculator, Diagnosis | AC-HELP, AC-VERIFY            |
+
+## 9. Ruang Lingkup
 
 ### Termasuk MVP
 
@@ -273,19 +461,19 @@ Lima halaman nyata: Landing, Survey, Diagnosis, Financial Calculator, dan Roadma
 
 Layanan AI, rekomendasi generatif, mindmap interaktif, akun, server database untuk hasil pengguna, pemulihan lintas perangkat, tracking progres roadmap dan evaluasi longitudinal.
 
-## 11. Risiko dan Mitigasi
+## 10. Risiko dan Mitigasi
 
-| Risiko | Dampak | Mitigasi |
-|---|---|---|
-| Kerangka dan bobot belum tervalidasi | Diagnosis bisa tidak relevan | Labeli sebagai usulan, uji 5–10 pengguna, revisi setelah bukti |
-| Survey terlalu panjang | Penyelesaian turun | Uji waktu, kurangi pertanyaan, pertahankan coverage kategori |
-| Pengguna salah memasukkan biaya | Hasil kalkulator menyesatkan | Contoh input, validasi, penjelasan batasan |
-| Data lokal dihapus/incognito/perangkat berganti | Hasil tidak tersedia | Pesan batasan jelas; gunakan `localStorage`; jangan klaim recovery |
-| Bottleneck tunggal terlalu menyederhanakan | Saran salah prioritas | Tampilkan alasan dan ketidakpastian; sediakan indikator lain |
-| Bahasa roadmap dianggap janji | Ekspektasi tidak realistis | Gunakan “contoh/langkah yang dapat dicoba”, bukan hasil pasti |
-| AI di masa depan mengekspos data survey | Risiko privasi | Persetujuan eksplisit, minimisasi data, kebijakan retensi, fallback lokal |
+| Risiko                                          | Dampak                       | Mitigasi                                                                  |
+| ----------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------- |
+| Kerangka dan bobot belum tervalidasi            | Diagnosis bisa tidak relevan | Labeli sebagai usulan, uji 5–10 pengguna, revisi setelah bukti            |
+| Survey terlalu panjang                          | Penyelesaian turun           | Uji waktu, kurangi pertanyaan, pertahankan coverage kategori              |
+| Pengguna salah memasukkan biaya                 | Hasil kalkulator menyesatkan | Contoh input, validasi, penjelasan batasan                                |
+| Data lokal dihapus/incognito/perangkat berganti | Hasil tidak tersedia         | Pesan batasan jelas; gunakan `localStorage`; jangan klaim recovery        |
+| Bottleneck tunggal terlalu menyederhanakan      | Saran salah prioritas        | Tampilkan alasan dan ketidakpastian; sediakan indikator lain              |
+| Bahasa roadmap dianggap janji                   | Ekspektasi tidak realistis   | Gunakan “contoh/langkah yang dapat dicoba”, bukan hasil pasti             |
+| AI di masa depan mengekspos data survey         | Risiko privasi               | Persetujuan eksplisit, minimisasi data, kebijakan retensi, fallback lokal |
 
-## 12. Teknologi dan Persistensi
+## 11. Teknologi dan Persistensi
 
 - Next.js App Router dan TypeScript.
 - Tailwind CSS dan shadcn/ui bila sudah tersedia di proyek; tidak menambah dependency tanpa kebutuhan.
@@ -296,7 +484,7 @@ Layanan AI, rekomendasi generatif, mindmap interaktif, akun, server database unt
 - Nilai uang menggunakan bilangan rupiah; validasi mencegah input negatif yang tidak bermakna dan pembagian dengan nol.
 - Build quality gate: lint, typecheck, unit test rumus kalkulator, dan production build.
 
-## 13. Keputusan dan Hal yang Perlu Validasi
+## 12. Keputusan dan Hal yang Perlu Validasi
 
 ### Keputusan produk saat ini
 
@@ -324,8 +512,11 @@ Lakukan peninjauan pakar dan uji kasus sintetis sebelum memakai scoring untuk pe
 ## Lampiran A — Proposal Scoring dan Output
 
 1. Skor indikator diagnostik pada kategori F/M/R/A/C berada pada rentang internal 0–100; definisi arah skor dan bobot setiap jawaban ditetapkan dalam katalog soal yang terversi. Nilai numerik, bobot, dan ambang tetap hipotesis yang perlu diuji, bukan validasi statistik.
+2. Pada MVP, S dan G tidak menyaring atau mengurutkan rekomendasi. Data S/G dapat ditampilkan sebagai konteks jawaban saja.
+3. Saran diagnosis adalah langkah awal berbasis aturan dan indikator; bukan personalisasi Roadmap. Halaman Roadmap tetap menampilkan isi umum statis.
+4. Financial Calculator tidak menerima nilai otomatis dari Survey atau Diagnosis; semua input dimasukkan pengguna.
 
-Aturan bottleneck awal: pilih kategori diagnostik dengan skor terendah hanya jika terdapat cukup data yang terjawab dan selisih skor terendah dengan skor berikutnya lebih besar dari 10 poin. Jika selisih ≤10 poin, atau jawaban valid kurang dari separuh indikator kategori mana pun yang bersaing, tampilkan “belum cukup jelas” beserta maksimal dua area yang perlu diperiksa; jangan paksa satu pemenang. S dan G hanya konteks untuk menyaring/menyusun contoh langkah, tidak mengubah skor diagnostik. Skala, bobot, ambang selisih, dan kecukupan data adalah hipotesis rancangan yang harus diuji, bukan nilai tervalidasi.
+Aturan bottleneck awal: pilih kategori diagnostik dengan skor terendah hanya jika terdapat cukup data yang terjawab dan selisih skor terendah dengan skor berikutnya lebih besar dari 10 poin. Jika selisih ≤10 poin, atau jawaban valid kurang dari separuh indikator kategori mana pun yang bersaing, tampilkan “belum cukup jelas” beserta maksimal dua area yang perlu diperiksa; jangan paksa satu pemenang. S dan G tidak mengubah skor diagnostik. Skala, bobot, ambang selisih, dan kecukupan data adalah hipotesis rancangan yang harus diuji, bukan nilai tervalidasi.
 
 Output Diagnosis:
 
@@ -337,14 +528,14 @@ Output Diagnosis:
 
 ## Lampiran A1 — Kasus uji aturan diagnosis
 
-| Kasus | Hasil yang diharapkan |
-|---|---|
-| Margin kontribusi nol/negatif dan jangkauan tinggi | Prioritaskan pemeriksaan margin/biaya; jangan menyarankan penambahan promosi sebagai langkah pertama. |
-| Margin positif tetapi pelanggan jarang kembali | Tampilkan sinyal retensi bila lebih kuat daripada kategori diagnostik lain. |
-| Permintaan melebihi kemampuan produksi pemilik | Tampilkan sinyal kapasitas; S menyaring tindakan menurut waktu/modal, bukan mengubah skor kategori. |
-| Keuangan tidak jelas sementara kanal penjualan banyak | Jangan biarkan jangkauan tinggi menutupi sinyal keuangan yang kuat. |
-| Dua kategori memiliki skor terendah dengan selisih ≤10 | Tampilkan “belum cukup jelas” dan dua area untuk diperiksa; jangan tetapkan bottleneck tunggal. |
-| Jawaban kategori bersaing kurang dari separuh indikator valid | Tampilkan kekurangan informasi dan jangan tetapkan kategori itu sebagai bottleneck. |
+| Kasus                                                         | Hasil yang diharapkan                                                                                 |
+| ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Margin kontribusi nol/negatif dan jangkauan tinggi            | Prioritaskan pemeriksaan margin/biaya; jangan menyarankan penambahan promosi sebagai langkah pertama. |
+| Margin positif tetapi pelanggan jarang kembali                | Tampilkan sinyal retensi bila lebih kuat daripada kategori diagnostik lain.                           |
+| Permintaan melebihi kemampuan produksi pemilik                | Tampilkan sinyal kapasitas; S menyaring tindakan menurut waktu/modal, bukan mengubah skor kategori.   |
+| Keuangan tidak jelas sementara kanal penjualan banyak         | Jangan biarkan jangkauan tinggi menutupi sinyal keuangan yang kuat.                                   |
+| Dua kategori memiliki skor terendah dengan selisih ≤10        | Tampilkan “belum cukup jelas” dan dua area untuk diperiksa; jangan tetapkan bottleneck tunggal.       |
+| Jawaban kategori bersaing kurang dari separuh indikator valid | Tampilkan kekurangan informasi dan jangan tetapkan kategori itu sebagai bottleneck.                   |
 
 ## Lampiran B — Rumus Financial Calculator
 
@@ -362,14 +553,14 @@ Rumus adalah estimasi berdasarkan input, bukan laporan keuangan. Pajak, tenaga k
 
 ### Kasus verifikasi kalkulator
 
-| Input/kondisi | Expected behavior |
-|---|---|
-| `H=10.000`, `V=7.700`, `Q=40`, `D=26`, `F=1.800.000` | `M=2.300`; estimasi laba bersih `592.000`; titik impas `31` unit/hari. |
-| `M=0` atau `M<0` | Penjelasan margin nol/negatif; tidak ada hasil impas/target berbasis volume. |
-| `F=0`, `M>0`, `D>0` | Titik impas `0` unit/hari. |
-| `D=0` atau `H=0` | Validasi input; tidak ada pembagian nol atau angka target palsu. |
-| `T` ≤ laba bersih berjalan | Target dinyatakan tercapai; tambahan unit `0`. |
-| Biaya atau volume negatif, `NaN`, atau tak hingga | Input ditolak dan hasil sebelumnya tidak diganti oleh angka invalid. |
+| Input/kondisi                                        | Expected behavior                                                            |
+| ---------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `H=10.000`, `V=7.700`, `Q=40`, `D=26`, `F=1.800.000` | `M=2.300`; estimasi laba bersih `592.000`; titik impas `31` unit/hari.       |
+| `M=0` atau `M<0`                                     | Penjelasan margin nol/negatif; tidak ada hasil impas/target berbasis volume. |
+| `F=0`, `M>0`, `D>0`                                  | Titik impas `0` unit/hari.                                                   |
+| `D=0` atau `H=0`                                     | Validasi input; tidak ada pembagian nol atau angka target palsu.             |
+| `T` ≤ laba bersih berjalan                           | Target dinyatakan tercapai; tambahan unit `0`.                               |
+| Biaya atau volume negatif, `NaN`, atau tak hingga    | Input ditolak dan hasil sebelumnya tidak diganti oleh angka invalid.         |
 
 ## Lampiran C — Roadmap Konten Statis
 
