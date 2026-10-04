@@ -188,268 +188,275 @@ Validasi jangka panjang, dampak rupiah, akurasi bottleneck, dan peningkatan pend
 
 ## 8. Product Backlog
 
-Product Goal: membantu pemilik usaha mikro memahami sinyal kondisi usahanya dan memilih langkah awal melalui diagnosis indikatif, kalkulator mandiri, dan roadmap umum.
+### 8.1 Product Goal
 
-Product Backlog adalah satu daftar User Story (US) terurut menurut nilai, risiko, pembelajaran, dan dependensi. Epic hanya mengelompokkan US berdasarkan outcome. Acceptance Criteria (AC) berada di dalam US sebagai kondisi verifikasi, bukan level backlog terpisah. **Setiap US memiliki scope dan prioritas MoSCoW sendiri**; prioritas tidak diwariskan dari Epic dan tidak menggantikan ordering backlog.
+Membantu pemilik usaha mikro memahami sinyal kondisi usahanya dan memilih langkah awal melalui diagnosis indikatif, kalkulator mandiri, dan roadmap umum.
+
+### 8.2 Cara membaca backlog
+
+Hierarki backlog mengikuti Scrum Guide: satu daftar terurut dengan Product Goal sebagai komitmen.
 
 ```text
 Product Goal
-└── Product Backlog (ordered list of US)
-    ├── Epic (optional outcome grouping)
-    │   └── User Story (value-bearing item; owns scope + MoSCoW)
-    │       └── Acceptance Criteria (testable conditions)
-    └── Refinement may split US into smaller US/tasks
+└── Product Backlog (satu daftar terurut US-01–US-20)
+    ├── Epic (kelompok outcome, opsional)
+    │   └── User Story (item bernilai; pemilik urutan + scope + MoSCoW)
+    │       └── Acceptance Criteria (kondisi uji biner)
+    └── Refinement dapat memecah US menjadi US/task lebih kecil
 ```
 
-AC bukan task. Estimasi, owner, status, sprint, dan task teknis ditetapkan saat backlog refinement/project tracking. Scrum Guide menggambarkan Product Backlog sebagai daftar terurut tunggal dan menekankan transparansi/refinement; MoSCoW di sini teknik scope, bukan hierarki Scrum.
+Konvensi penulisan:
 
-Prioritas MoSCoW berlaku bagi seluruh US dalam backlog, termasuk Future dan Won't. `Must` = MVP wajib; `Should` = MVP penting, pangkas bila kendala; `Could` = MVP opsional; `Won't for MVP` = tidak dikerjakan di MVP, bukan larangan permanen; `Future` = pasca-MVP, belum disetujui untuk implementasi. Setiap baris ringkasan US mencatat prioritasnya; tabel prioritas mandiri tidak digunakan.
+- **ID US = nomor urut backlog.** US-01 adalah urutan 1, US-20 urutan 20.
+- **Format User Story:** `Sebagai [peran], saya ingin [tujuan], agar [manfaat].`
+- **Format Acceptance Criteria:** `- [ ] **AC-<US>-<nn>** Given [konteks], When [aksi], Then [hasil terverifikasi].` Setiap AC lulus atau gagal secara biner; kata ambigu (`mendukung`, `mudah`, `cepat`) tidak dipakai tanpa ambang.
+- **MoSCoW** adalah teknik scope, bukan hierarki Scrum: `Must` = MVP wajib; `Should` = MVP penting, pangkas bila kendala; `Could` = MVP opsional; `Won't for MVP` = tidak dikerjakan di MVP, bukan larangan permanen; `Future` = pasca-MVP, belum disetujui untuk implementasi. Setiap US mencantumkan scope dan MoSCoW sendiri; prioritas tidak diwariskan dari Epic.
+- **AC bukan task.** Estimasi, owner, status, sprint, dan task teknis ditetapkan saat backlog refinement/project tracking, bukan di PRD.
 
-### Epic grouping
+### 8.3 Epic grouping
 
-| Epic                      | Outcome                                            | US           |
-| ------------------------- | -------------------------------------------------- | ------------ |
-| E-01 Orientasi/navigasi   | Memahami produk dan berpindah halaman              | US-01, US-06 |
-| E-02 Survey/lokal         | Mengisi, menyimpan Survey, meneruskan ke Diagnosis | US-02, US-07 |
-| E-03 Diagnosis            | Memahami indikator, bottleneck, uncertainty        | US-03        |
-| E-04 Financial Calculator | Menghitung dari input manual                       | US-04, US-08 |
-| E-05 Roadmap              | Membaca panduan umum statis                        | US-05        |
-| E-06 Eksplorasi pasca-MVP | Validasi AI dan mindmap                            | US-09–US-11  |
-| E-07 Opsi MVP Could       | Peningkatan opsional bila kapasitas tersisa        | US-12–US-14  |
-| E-08 Batas scope Won't    | Kapabilitas yang tidak dibangun pada MVP           | US-15–US-18  |
-| E-09 Quality/validation   | Bantuan pengguna dan verifikasi aturan             | US-19–US-20  |
+| Epic                      | Outcome                                            | US               |
+| ------------------------- | -------------------------------------------------- | ---------------- |
+| E-01 Orientasi/navigasi   | Memahami produk dan berpindah halaman              | US-01, US-07     |
+| E-02 Survey/lokal         | Mengisi, menyimpan Survey, meneruskan ke Diagnosis | US-02–US-03      |
+| E-03 Diagnosis            | Memahami indikator, bottleneck, uncertainty        | US-04            |
+| E-04 Financial Calculator | Menghitung dari input manual                       | US-05, US-09     |
+| E-05 Roadmap              | Membaca panduan umum statis                        | US-06            |
+| E-06 Eksplorasi pasca-MVP | Validasi AI dan mindmap                            | US-14–US-16      |
+| E-07 Opsi MVP Could       | Peningkatan opsional bila kapasitas tersisa        | US-11–US-13      |
+| E-08 Batas scope Won't    | Kapabilitas yang tidak dibangun pada MVP           | US-17–US-20      |
+| E-09 Quality/validation   | Bantuan pengguna dan verifikasi aturan             | US-08, US-10     |
 
-### Ringkasan User Story dan MoSCoW
+### 8.4 Ringkasan terurut (ID = urutan)
 
-Urutan adalah rekomendasi awal, dapat berubah setelah validasi. Detail dan AC hanya authoritative pada story terkait di bawah.
+Urutan adalah rekomendasi awal, dapat berubah setelah validasi. Detail dan AC hanya authoritative pada story terkait di §8.5–§8.8.
 
-| Order | Epic | US    | Outcome                                         | Scope          | MoSCoW        |
-| ----: | ---- | ----- | ----------------------------------------------- | -------------- | ------------- |
-|     1 | E-01 | US-01 | Memahami nilai, batas, CTA                      | MVP            | Must          |
-|     2 | E-02 | US-02 | Mengisi Survey                                  | MVP            | Must          |
-|     3 | E-02 | US-07 | Menyimpan jawaban, redirect ke Diagnosis        | MVP            | Must          |
-|     4 | E-03 | US-03 | Membaca diagnosis indikatif                     | MVP            | Must          |
-|     5 | E-04 | US-04 | Menghitung dari input manual                    | MVP            | Must          |
-|     6 | E-05 | US-05 | Membaca Roadmap statis                          | MVP            | Must          |
-|     7 | E-01 | US-06 | Menavigasi lima halaman                         | MVP            | Must          |
-|     8 | E-04 | US-08 | Membandingkan direct vs platform sales          | MVP bila waktu | Should        |
-|     9 | E-06 | US-09 | Rekomendasi AI dari Survey/Roadmap              | Pasca-MVP      | Future        |
-|    10 | E-06 | US-10 | Chat topik Roadmap dengan konteks disetujui     | Pasca-MVP      | Future        |
-|    11 | E-06 | US-11 | Mindmap hubungan area usaha                     | Pasca-MVP      | Future        |
-|    12 | E-07 | US-12 | Transisi Survey yang membantu orientasi         | MVP bila waktu | Could         |
-|    13 | E-07 | US-13 | Simulasi skenario harga/biaya                   | MVP bila waktu | Could         |
-|    14 | E-07 | US-14 | Ekspor/print hasil lokal setelah review privasi | MVP bila waktu | Could         |
-|    15 | E-08 | US-15 | Akun, backend, recovery, dan sinkronisasi       | Di luar MVP    | Won't for MVP |
-|    16 | E-08 | US-16 | Pencatatan transaksi harian                     | Di luar MVP    | Won't for MVP |
-|    17 | E-08 | US-17 | Integrasi marketplace/pembayaran                | Di luar MVP    | Won't for MVP |
-|    18 | E-08 | US-18 | Dashboard pendamping dan komunitas              | Di luar MVP    | Won't for MVP |
-|    19 | E-09 | US-19 | Bantuan istilah/bahasa sehari-hari              | MVP bila waktu | Should        |
-|    20 | E-09 | US-20 | Verifikasi manual diagnosis dan scoring         | MVP            | Must          |
+| US    | Epic | Outcome                                         | Scope          | MoSCoW      |
+| ----- | ---- | ----------------------------------------------- | -------------- | ----------- |
+| US-01 | E-01 | Memahami nilai, batas, CTA                      | MVP            | Must        |
+| US-02 | E-02 | Mengisi Survey                                  | MVP            | Must        |
+| US-03 | E-02 | Menyimpan jawaban, redirect ke Diagnosis        | MVP            | Must        |
+| US-04 | E-03 | Membaca diagnosis indikatif                     | MVP            | Must        |
+| US-05 | E-04 | Menghitung dari input manual                    | MVP            | Must        |
+| US-06 | E-05 | Membaca Roadmap statis                          | MVP            | Must        |
+| US-07 | E-01 | Menavigasi lima halaman                         | MVP            | Must        |
+| US-08 | E-09 | Verifikasi manual diagnosis dan scoring         | MVP            | Must        |
+| US-09 | E-04 | Membandingkan direct vs platform sales          | MVP bila waktu | Should      |
+| US-10 | E-09 | Bantuan istilah/bahasa sehari-hari              | MVP bila waktu | Should      |
+| US-11 | E-07 | Transisi Survey yang membantu orientasi         | MVP bila waktu | Could       |
+| US-12 | E-07 | Simulasi skenario harga/biaya                   | MVP bila waktu | Could       |
+| US-13 | E-07 | Ekspor/print hasil lokal setelah review privasi | MVP bila waktu | Could       |
+| US-14 | E-06 | Rekomendasi AI dari Survey/Roadmap              | Pasca-MVP      | Future      |
+| US-15 | E-06 | Chat topik Roadmap dengan konteks disetujui     | Pasca-MVP      | Future      |
+| US-16 | E-06 | Mindmap hubungan area usaha                     | Pasca-MVP      | Future      |
+| US-17 | E-08 | Akun, backend, recovery, dan sinkronisasi       | Di luar MVP    | Won't for MVP |
+| US-18 | E-08 | Pencatatan transaksi harian                     | Di luar MVP    | Won't for MVP |
+| US-19 | E-08 | Integrasi marketplace/pembayaran                | Di luar MVP    | Won't for MVP |
+| US-20 | E-08 | Dashboard pendamping dan komunitas              | Di luar MVP    | Won't for MVP |
 
-### Epic E-07 — Opsi MVP berprioritas Could
+### 8.5 Backlog terurut US-01–US-08 (MVP Must)
 
-#### US-12 — Menggunakan transisi Survey (MVP bila waktu · Could)
+#### US-01 — Memahami produk di Landing [E-01 · MVP · Must]
 
-Sebagai pengguna, saya ingin transisi antarpertanyaan yang tidak mengganggu agar orientasi Survey lebih mudah.
+Sebagai pemilik usaha, saya ingin memahami manfaat dan batasan UMIRO, agar dapat memutuskan apakah Survey relevan.
 
-- AC-MOTION-01: Transisi tidak mengubah jawaban, progres, validasi, atau urutan pertanyaan.
-- AC-MOTION-02: Pengguna dapat menyelesaikan Survey tanpa menunggu animasi.
-- AC-MOTION-03: Animasi dapat dihentikan atau dihormati saat reduced motion aktif.
+- [ ] **AC-01-01** Given pengguna membuka `/`, When membaca hero dan CTA, Then tujuan UMIRO dan lima halaman MVP terlihat serta CTA ke `/survey` tersedia.
+- [ ] **AC-01-02** Given pengguna membaca batasan, When memeriksa klaim hasil, Then Landing menyatakan diagnosis indikatif dan menyatakan bukan audit/konsultasi, keputusan kredit, klasifikasi hukum UMKM, penentu pajak, atau kepatuhan.
+- [ ] **AC-01-03** Given pengguna membaca risiko data, When memeriksa persistensi, Then Landing menjelaskan data lokal hilang jika data situs dihapus atau browser/perangkat diganti.
+- [ ] **AC-01-04** Given pengguna membaca Landing penuh, When mencari klaim personalisasi, Then tidak ada klaim Calculator/Roadmap dipersonalisasi pada MVP.
 
-#### US-13 — Membandingkan skenario harga/biaya (MVP bila waktu · Could)
+#### US-02 — Mengisi Survey [E-02 · MVP · Must]
 
-Sebagai pengguna Calculator, saya ingin membandingkan beberapa skenario harga/biaya agar dapat melihat perbedaan hasil tanpa kehilangan input utama.
+Sebagai pemilik usaha, saya ingin menjawab pertanyaan singkat dengan bahasa sehari-hari, agar dapat memberi konteks usaha.
 
-- AC-SCEN-01: Skenario hanya menggunakan input manual Calculator dan tidak membaca Diagnosis.
-- AC-SCEN-02: Setiap skenario menampilkan asumsi dan hasil dengan rumus yang sama seperti Calculator utama.
-- AC-SCEN-03: Skenario tidak mengubah hasil tersimpan utama tanpa tindakan eksplisit pengguna.
+- [ ] **AC-02-01** Given pengguna membuka `/survey`, When menjawab, Then satu pertanyaan per layar tampil beserta progres, tombol Kembali, dan pilihan jawaban.
+- [ ] **AC-02-02** Given katalog soal final, When diaudit, Then pertanyaan mencakup F/M/R/A/C diagnostik dan S/G konteks, dan jumlah soal lulus uji durasi maksimal tiga menit.
+- [ ] **AC-02-03** Given pengguna sudah menjawab lalu maju atau kembali, When navigasi antarpertanyaan, Then jawaban sebelumnya tetap tersimpan di layar.
+- [ ] **AC-02-04** Given pertanyaan yang relevan, When opsi tersedia, Then “Belum tahu/Belum pernah menghitung” dapat dipilih dan ditafsirkan sesuai aturan pertanyaan.
+- [ ] **AC-02-05** Given pengguna belum menjawab semua pertanyaan wajib, When menekan submit, Then submit ditolak hingga semua terjawab.
+- [ ] **AC-02-06** Given istilah HPP atau teknis muncul, When dibaca, Then penjelasan bahasa sehari-hari tersedia.
 
-#### US-14 — Mengekspor atau mencetak hasil lokal (MVP bila waktu · Could)
+#### US-03 — Menyimpan Survey dan menuju Diagnosis [E-02 · MVP · Must]
 
-Sebagai pengguna, saya ingin mencetak atau menyalin hasil lokal agar dapat membawanya ke diskusi offline.
+Sebagai pengguna, saya ingin jawaban tersimpan lalu melihat diagnosis langsung, agar tidak mengulang pengisian.
 
-- AC-EXPORT-01: Ekspor/print hanya menggunakan data yang tersedia lokal dan tidak mengirimnya ke server.
-- AC-EXPORT-02: Output menyertakan disclaimer bahwa diagnosis indikatif dan kalkulator bukan laporan keuangan.
-- AC-EXPORT-03: Fitur tidak aktif sebelum review privasi dan pengujian penghapusan data lokal.
+- [ ] **AC-03-01** Given jawaban valid, When submit sukses, Then jawaban dan versi katalog Survey tersimpan di `localStorage`.
+- [ ] **AC-03-02** Given penyimpanan gagal, When submit, Then pesan gagal tampil dan sistem tidak menyatakan sukses.
+- [ ] **AC-03-03** Given jawaban valid tersimpan, When hasil dihitung, Then hasil deterministik dihitung dan payload berversi disimpan.
+- [ ] **AC-03-04** Given penyimpanan sukses, When selesai, Then sistem mengarahkan pengguna ke `/diagnosis`.
+- [ ] **AC-03-05** Given submit MVP, When selesai, Then Calculator/Roadmap tidak terbuka dan jawaban tidak dikirim ke server/AI.
 
-### Epic E-08 — Batasan scope Won't for MVP
+#### US-04 — Membaca Diagnosis dan uncertainty [E-03 · MVP · Must]
 
-Stories di Epic ini wajib tercatat agar batas rilis transparan. Semua berstatus **Won't for MVP**; artinya tidak dibangun pada rilis ini, bukan larangan permanen. Jika Product Owner kelak mengaktifkan story, scope dan acceptance criteria implementasinya harus dirinci sebelum masuk ke rilis.
+Sebagai pemilik usaha, saya ingin memahami indikator dan area yang perlu diperiksa, agar bertindak tanpa klaim kepastian palsu.
 
-#### US-15 — Akun dan sinkronisasi lintas perangkat (Won't for MVP)
+- [ ] **AC-04-01** Given payload Survey valid di browser yang sama, When membuka `/diagnosis`, Then Diagnosis membaca payload tersebut.
+- [ ] **AC-04-02** Given Diagnosis tampil, When membaca indikator, Then indikator F/M/R/A/C tampil tanpa label lulus/gagal.
+- [ ] **AC-04-03** Given hasil tampil, When memeriksa alasan, Then setiap indikator pendorong dikaitkan dengan jawaban/sinyal sumber.
+- [ ] **AC-04-04** Given S/G tersedia, When tampil, Then keduanya hanya konteks dan tidak mengubah skor, Calculator, atau Roadmap.
+- [ ] **AC-04-05** Given syarat data dan selisih skor terpenuhi, When render, Then bottleneck tunggal tampil.
+- [ ] **AC-04-06** Given selisih dua skor teratas ≤10 atau data valid kategori bersaing kurang dari separuh indikator, When render, Then “belum cukup jelas” tampil beserta maksimal dua area pemeriksaan, tanpa bottleneck tunggal.
+- [ ] **AC-04-07** Given hasil tampil, When membaca saran, Then maksimal dua langkah awal tampil beserta alasan dan disclaimer bukan jaminan.
+- [ ] **AC-04-08** Given tanpa payload valid, When membuka `/diagnosis`, Then CTA kembali ke Survey tampil, bukan skor default.
+- [ ] **AC-04-09** Given tautan Calculator/Roadmap di Diagnosis, When diklik atau diperiksa, Then keduanya tautan biasa tanpa parameter atau personalisasi.
 
-Akun, backend persistence, kode pemulihan, dan sinkronisasi lintas perangkat tidak dibangun pada MVP.
+#### US-05 — Menghitung hasil dengan input manual [E-04 · MVP · Must]
 
-#### US-16 — Pencatatan transaksi harian (Won't for MVP)
+Sebagai pemilik usaha, saya ingin memasukkan angka sendiri, agar melihat margin, estimasi laba, titik impas, dan target.
 
-Pencatatan transaksi harian tidak dibangun pada MVP; produk tetap berupa diagnosis berkala dan kalkulator manual.
+- [ ] **AC-05-01** Given pengguna membuka `/kalkulator`, When mengisi, Then input harga/unit, biaya variabel/unit atau biaya batch dan unit batch, volume/hari, hari operasi/bulan, biaya tetap/bulan, dan target laba opsional tersedia.
+- [ ] **AC-05-02** Given nilai negatif, non-finite, format invalid, harga nol, hari operasi nol, atau unit batch nol, When divalidasi, Then input ditolak dengan pesan jelas.
+- [ ] **AC-05-03** Given input valid, When hasil dihitung, Then margin kontribusi/unit dan estimasi laba bersih bulanan tampil.
+- [ ] **AC-05-04** Given `M>0` dan `D>0`, When titik impas dihitung, Then hasil memakai `ceil(F/(M×D))`; Given `F=0`, When dihitung, Then hasil nol.
+- [ ] **AC-05-05** Given `T` ≤ laba bersih berjalan, When target dihitung, Then “target sudah tercapai” tampil dan tambahan unit nol, bukan negatif.
+- [ ] **AC-05-06** Given `M≤0`, When hasil dihitung, Then impas/target volume tidak ditampilkan sebagai hasil valid.
+- [ ] **AC-05-07** Given Kalkulator dipakai, When memeriksa sumber data, Then hanya input manual dipakai; Diagnosis tidak dibaca, ditulis, atau ditafsirkan.
+- [ ] **AC-05-08** Given input diubah, When nilai berubah, Then hasil diperbarui tanpa reload.
+- [ ] **AC-05-09** Given hasil tersimpan lokal, When payload rusak dibuka, Then payload rusak tidak ditampilkan sebagai hasil terkini.
+- [ ] **AC-05-10** Given pajak, penyusutan, atau tenaga kerja pemilik tidak diinput, When hasil dibaca, Then batas tersebut dinyatakan.
 
-#### US-17 — Integrasi marketplace dan pembayaran (Won't for MVP)
+#### US-06 — Membaca Roadmap umum [E-05 · MVP · Must]
 
-Integrasi marketplace atau layanan pembayaran tidak dibangun pada MVP.
+Sebagai pemilik usaha, saya ingin membaca Survival, Improvement, dan Growth, agar dapat memilih materi sendiri.
 
-#### US-18 — Dashboard pendamping dan komunitas (Won't for MVP)
+- [ ] **AC-06-01** Given pengguna membuka `/roadmap`, When dibaca, Then semua bagian dan empat growth levers tampil.
+- [ ] **AC-06-02** Given konten dibaca, When diperiksa, Then langkah biaya rendah, perbaikan operasi, dan pertumbuhan tercakup; bukan pemasaran digital saja.
+- [ ] **AC-06-03** Given Roadmap dipakai, When diperiksa, Then baca-saja; tanpa kelas pengguna, state, gate, tracking, atau penilaian otomatis.
+- [ ] **AC-06-04** Given tindakan dibaca, When ditafsirkan, Then tindakan adalah opsi kontekstual, bukan instruksi universal atau jaminan.
+- [ ] **AC-06-05** Given tanpa hasil Survey, When dibuka dari navigasi atau Diagnosis, Then Roadmap tetap terbuka penuh.
+- [ ] **AC-06-06** Given tautan dari Diagnosis, When diperiksa, Then tidak ada konteks personal yang dibawa; Roadmap tetap konten umum penuh.
 
-Dashboard multi-UMKM dan fitur komunitas tidak dibangun pada MVP.
+#### US-07 — Menavigasi halaman [E-01 · MVP · Must]
 
-### Epic E-09 — Quality and validation
+Sebagai pengguna, saya ingin mencapai tiap halaman, agar berpindah tanpa kebingungan.
 
-#### US-19 — Memahami istilah dan contoh pengisian (MVP bila waktu · Should)
+- [ ] **AC-07-01** Given navigasi global, When dibaca, Then Landing, Survey, Diagnosis, Financial Calculator, dan Roadmap tersedia.
+- [ ] **AC-07-02** Given navigasi tampil, When dibaca, Then halaman aktif dan label tautan dapat dikenali.
+- [ ] **AC-07-03** Given Survey valid tersimpan, When submit sukses, Then redirect otomatis hanya ke `/diagnosis`.
+- [ ] **AC-07-04** Given tautan Diagnosis ke Calculator/Roadmap, When diklik, Then keduanya tautan biasa; Given tanpa Survey, When dibuka langsung, Then keduanya tetap dapat dibuka.
+- [ ] **AC-07-05** Given mobile dan desktop, When navigasi dipakai, Then berfungsi pada keduanya.
 
-Sebagai pengguna dengan literasi bisnis terbatas, saya ingin mendapat bantuan istilah dan contoh agar dapat menjawab Survey serta membaca Calculator dengan benar.
+#### US-08 — Memverifikasi aturan diagnosis dan scoring [E-09 · MVP · Must]
 
-- AC-HELP-01: Istilah HPP, margin kontribusi, dan titik impas memiliki penjelasan singkat saat pertama digunakan.
-- AC-HELP-02: Contoh pengisian tidak dianggap sebagai jawaban pengguna dan dapat ditutup.
-- AC-HELP-03: Bantuan tidak mengubah scoring atau hasil kalkulator.
+Sebagai tim produk, saya ingin menguji aturan diagnosis pada kasus terkontrol, agar hasil deterministik dapat dijelaskan sebelum digunakan.
 
-#### US-20 — Memverifikasi aturan diagnosis dan scoring (MVP · Must)
+- [ ] **AC-08-01** Given kasus uji dijalankan, When dicakup, Then margin nol/negatif, retensi rendah, kapasitas terbatas, keuangan tidak jelas, seri skor dekat, dan data tidak cukup tercakup.
+- [ ] **AC-08-02** Given tiap kasus, When dicatat, Then input, hasil yang diharapkan, hasil aktual, dan alasan perbedaan tercatat.
+- [ ] **AC-08-03** Given bobot atau ambang berubah, When dievaluasi, Then kasus uji terkait diulang.
+- [ ] **AC-08-04** Given hasil uji dibaca, When dipresentasikan, Then tidak diklaim sebagai validasi statistik pengguna.
 
-Sebagai tim produk, saya ingin menguji aturan diagnosis pada kasus terkontrol agar hasil deterministik dapat dijelaskan sebelum digunakan.
+### 8.6 Backlog terurut US-09–US-13 (Should/Could bila waktu)
 
-- AC-VERIFY-01: Kasus uji mencakup margin nol/negatif, retensi rendah, kapasitas terbatas, keuangan tidak jelas, seri skor dekat, dan data tidak cukup.
-- AC-VERIFY-02: Setiap kasus mencatat input, hasil yang diharapkan, hasil aktual, dan alasan perbedaan.
-- AC-VERIFY-03: Perubahan bobot atau ambang memicu pengulangan kasus uji terkait.
-- AC-VERIFY-04: Hasil uji tidak dipresentasikan sebagai validasi statistik pengguna.
+#### US-09 — Membandingkan direct sales dan platform [E-04 · MVP bila waktu · Should]
 
-### Traceability
+Sebagai pemilik usaha yang memakai platform, saya ingin melihat dampak potongan pada margin, agar memutuskan kanal secara sadar biaya.
 
-#### US-01 — Memahami produk di Landing (MVP · Must)
+- [ ] **AC-09-01** Given pengguna memilih penjualan platform, When opsi tampil, Then input potongan opsional tersedia.
+- [ ] **AC-09-02** Given perbandingan direct vs platform, When dihitung, Then input identik selain potongan dipakai untuk kedua sisi.
+- [ ] **AC-09-03** Given margin platform nol atau negatif, When hasil dibaca, Then penjelasan tampil dan titik impas menyesatkan tidak ditampilkan sebagai hasil valid.
 
-Sebagai pemilik usaha, saya ingin memahami manfaat dan batasan UMIRO agar dapat memutuskan apakah Survey relevan.
+#### US-10 — Memahami istilah dan contoh pengisian [E-09 · MVP bila waktu · Should]
 
-- AC-LND-01: Landing menjelaskan tujuan UMIRO dan lima halaman MVP serta CTA ke `/survey`.
-- AC-LND-02: Landing menyatakan diagnosis indikatif, bukan audit/konsultasi, keputusan kredit, klasifikasi hukum UMKM, penentu pajak, atau kepatuhan.
-- AC-LND-03: Landing menjelaskan data lokal dapat hilang jika data situs dihapus atau browser/perangkat diganti.
-- AC-LND-04: Landing tidak mengklaim Calculator/Roadmap dipersonalisasi pada MVP.
+Sebagai pengguna dengan literasi bisnis terbatas, saya ingin mendapat bantuan istilah dan contoh, agar dapat menjawab Survey serta membaca Calculator dengan benar.
 
-#### US-06 — Menavigasi halaman (MVP · Must)
+- [ ] **AC-10-01** Given istilah HPP, margin kontribusi, atau titik impas pertama dipakai, When dibaca, Then penjelasan singkat tersedia.
+- [ ] **AC-10-02** Given contoh pengisian tampil, When diperiksa, Then contoh tidak dianggap jawaban pengguna dan dapat ditutup.
+- [ ] **AC-10-03** Given bantuan dipakai, When scoring atau kalkulator dihitung, Then hasil tidak berubah oleh bantuan.
 
-Sebagai pengguna, saya ingin mencapai tiap halaman tanpa kebingungan.
+#### US-11 — Menggunakan transisi Survey [E-07 · MVP bila waktu · Could]
 
-- AC-NAV-01: Navigasi menyediakan Landing, Survey, Diagnosis, Financial Calculator, Roadmap.
-- AC-NAV-02: Halaman aktif dan label tautan dapat dikenali.
-- AC-NAV-03: Survey valid tersimpan mengarahkan otomatis hanya ke `/diagnosis`.
-- AC-NAV-04: Diagnosis → Calculator dan Diagnosis → Roadmap hanya tautan biasa; kedua halaman juga dapat dibuka tanpa Survey.
-- AC-NAV-05: Navigasi berfungsi pada mobile dan desktop.
+Sebagai pengguna, saya ingin transisi antarpertanyaan yang tidak mengganggu, agar orientasi Survey lebih mudah.
 
-### Epic E-02 — Survey dan persistensi lokal
+- [ ] **AC-11-01** Given transisi berjalan, When jawaban, progres, validasi, atau urutan diperiksa, Then tidak ada yang berubah oleh transisi.
+- [ ] **AC-11-02** Given animasi berjalan, When pengguna menjawab, Then Survey dapat diselesaikan tanpa menunggu animasi.
+- [ ] **AC-11-03** Given reduced motion aktif, When transisi diminta, Then animasi dihentikan atau preferensi dihormati.
 
-#### US-02 — Mengisi Survey (MVP · Must)
+#### US-12 — Membandingkan skenario harga/biaya [E-07 · MVP bila waktu · Could]
 
-Sebagai pemilik usaha, saya ingin menjawab pertanyaan singkat dengan bahasa sehari-hari agar dapat memberi konteks usaha.
+Sebagai pengguna Calculator, saya ingin membandingkan beberapa skenario harga/biaya, agar melihat perbedaan hasil tanpa kehilangan input utama.
 
-- AC-SVY-01: Survey menampilkan satu pertanyaan per layar, progres, tombol Kembali, dan pilihan jawaban.
-- AC-SVY-02: Pertanyaan mencakup F/M/R/A/C sebagai kategori diagnostik dan S/G sebagai konteks; jumlah final diuji terhadap durasi maksimal tiga menit.
-- AC-SVY-03: Jawaban tidak hilang ketika pengguna maju atau kembali.
-- AC-SVY-04: “Belum tahu/Belum pernah menghitung” tersedia bila relevan dan ditafsirkan sesuai aturan pertanyaan.
-- AC-SVY-05: Semua pertanyaan wajib dijawab sebelum submit.
-- AC-SVY-06: HPP dan istilah teknis dijelaskan dengan bahasa sehari-hari.
+- [ ] **AC-12-01** Given skenario dibuat, When sumber data diperiksa, Then hanya input manual Calculator dipakai; Diagnosis tidak dibaca.
+- [ ] **AC-12-02** Given tiap skenario tampil, When dibaca, Then asumsi dan hasil dengan rumus yang sama seperti Calculator utama terlihat.
+- [ ] **AC-12-03** Given skenario diubah, When hasil utama diperiksa, Then hasil tersimpan utama tidak berubah tanpa tindakan eksplisit pengguna.
 
-#### US-07 — Menyimpan Survey dan menuju Diagnosis (MVP · Must)
+#### US-13 — Mengekspor atau mencetak hasil lokal [E-07 · MVP bila waktu · Could]
 
-Sebagai pengguna, saya ingin jawaban tersimpan lalu melihat diagnosis langsung.
+Sebagai pengguna, saya ingin mencetak atau menyalin hasil lokal, agar dapat membawanya ke diskusi offline.
 
-- AC-SAVE-01: Jawaban dan versi katalog Survey tersimpan di `localStorage`.
-- AC-SAVE-02: Kegagalan penyimpanan menampilkan pesan dan tidak menyatakan sukses.
-- AC-SAVE-03: Setelah jawaban valid, sistem menghitung hasil deterministik dan menyimpan payload berversi.
-- AC-SAVE-04: Setelah penyimpanan sukses, sistem mengarahkan pengguna ke `/diagnosis`.
-- AC-SAVE-05: Submit tidak membuka Calculator/Roadmap dan tidak mengirim jawaban ke server/AI pada MVP.
+- [ ] **AC-13-01** Given ekspor/print diminta, When sumber data diperiksa, Then hanya data lokal dipakai dan tidak dikirim ke server.
+- [ ] **AC-13-02** Given output dibaca, When diperiksa, Then disclaimer diagnosis indikatif dan kalkulator bukan laporan keuangan tercantum.
+- [ ] **AC-13-03** Given review privasi dan pengujian penghapusan data lokal belum lulus, When fitur diperiksa, Then fitur tidak aktif.
 
-### Epic E-03 — Diagnosis indikatif
-
-#### US-03 — Membaca Diagnosis dan uncertainty (MVP · Must)
-
-Sebagai pemilik usaha, saya ingin memahami indikator dan area yang perlu diperiksa tanpa klaim kepastian palsu.
-
-- AC-DIA-01: Diagnosis membaca payload Survey valid dari `localStorage` browser yang sama.
-- AC-DIA-02: Diagnosis menampilkan indikator F/M/R/A/C tanpa label lulus/gagal.
-- AC-DIA-03: Setiap indikator yang mendasari hasil dikaitkan dengan jawaban/sinyal sumber.
-- AC-DIA-04: S/G hanya konteks; pada MVP tidak mengubah skor, Calculator, atau Roadmap.
-- AC-DIA-05: Bottleneck tunggal tampil hanya jika syarat data dan selisih skor terpenuhi.
-- AC-DIA-06: Jika selisih dua skor teratas ≤10 atau data valid kategori bersaing kurang dari separuh indikator, tampil “belum cukup jelas” dan maksimal dua area pemeriksaan.
-- AC-DIA-07: Tampilkan maksimal dua langkah awal beserta alasan dan disclaimer bukan jaminan.
-- AC-DIA-08: Tanpa payload valid, tampil CTA Survey, bukan skor default.
-- AC-DIA-09: Tautan Calculator/Roadmap tidak membawa parameter atau personalisasi.
-
-### Epic E-04 — Financial Calculator mandiri
-
-#### US-04 — Menghitung hasil dengan input manual (MVP · Must)
-
-Sebagai pemilik usaha, saya ingin memasukkan angka sendiri untuk melihat margin, estimasi laba, titik impas, dan target.
-
-- AC-CAL-01: Input mencakup harga/unit, biaya variabel/unit atau biaya batch dan unit batch, volume/hari, hari operasi/bulan, biaya tetap/bulan, target laba opsional.
-- AC-CAL-02: Nilai negatif, non-finite, format invalid, harga nol, hari operasi nol, dan unit batch nol ditolak dengan pesan jelas.
-- AC-CAL-03: Hasil valid menampilkan margin kontribusi/unit dan estimasi laba bersih bulanan.
-- AC-CAL-04: Jika `M>0` dan `D>0`, titik impas memakai `ceil(F/(M×D))`; jika `F=0`, hasil nol.
-- AC-CAL-05: Jika target tercapai, tambahan unit nol, bukan negatif.
-- AC-CAL-06: Jika `M≤0`, impas/target volume tidak ditampilkan sebagai hasil valid.
-- AC-CAL-07: Kalkulator hanya memakai input manual; tidak membaca/menulis/menafsirkan Diagnosis.
-- AC-CAL-08: Perubahan input memperbarui hasil tanpa reload.
-- AC-CAL-09: Hasil disimpan lokal; payload rusak tidak ditampilkan sebagai hasil terkini.
-- AC-CAL-10: Batas pajak, penyusutan, dan tenaga kerja pemilik dinyatakan bila tidak diinput.
-
-#### US-08 — Membandingkan direct sales dan platform (MVP · Should)
-
-Sebagai pemilik usaha yang memakai platform, saya ingin melihat dampak potongan pada margin.
-
-- AC-PLAT-01: Potongan opsional muncul bila pengguna memilih penjualan platform.
-- AC-PLAT-02: Perbandingan memakai input identik selain potongan.
-- AC-PLAT-03: Margin platform nol/negatif menghasilkan penjelasan, bukan titik impas menyesatkan.
-
-### Epic E-05 — Roadmap statis
-
-#### US-05 — Membaca Roadmap umum (MVP · Must)
-
-Sebagai pemilik usaha, saya ingin membaca Survival, Improvement, dan Growth agar dapat memilih materi sendiri.
-
-- AC-RMP-01: `/roadmap` menampilkan semua bagian dan empat growth levers.
-- AC-RMP-02: Konten mencakup langkah biaya rendah, perbaikan operasi, pertumbuhan; bukan pemasaran digital saja.
-- AC-RMP-03: Baca-saja; tanpa kelas pengguna, state, gate, tracking, atau penilaian otomatis.
-- AC-RMP-04: Tindakan adalah opsi kontekstual, bukan instruksi universal/jaminan.
-- AC-RMP-05: Roadmap terbuka dari navigasi atau Diagnosis tanpa hasil Survey.
-- AC-RMP-06: Tautan Diagnosis tidak membawa konteks personal; Roadmap tetap konten umum penuh.
-
-### Epic E-06 — Eksplorasi pasca-MVP (Future · belum disetujui)
+### 8.7 Backlog terurut US-14–US-16 (Future, belum disetujui)
 
 Stories ini memerlukan consent eksplisit, minimisasi data, transparansi konteks, evaluasi, fallback non-AI, dan larangan mengganti diagnosis deterministik atau memberi keputusan finansial.
 
-#### US-09 — Mendapat rekomendasi AI (Future · Future)
+#### US-14 — Mendapat rekomendasi AI [E-06 · Pasca-MVP · Future]
 
-Sebagai pemilik usaha yang menyetujui AI, saya ingin rekomendasi menghubungkan Survey, indikator, dan topik Roadmap.
+Sebagai pemilik usaha yang menyetujui AI, saya ingin rekomendasi menghubungkan Survey, indikator, dan topik Roadmap, agar mendapat saran personal yang dapat ditelusuri.
 
-- AC-AI-REC-01: Persetujuan dan data yang dikirim dijelaskan sebelum proses.
-- AC-AI-REC-02: Rekomendasi merujuk sinyal Survey dan topik Roadmap; tidak mengubah diagnosis deterministik.
-- AC-AI-REC-03: Output menjelaskan batasan dan fallback saat layanan gagal.
+- [ ] **AC-14-01** Given proses AI dimulai, When persetujuan diminta, Then persetujuan dan data yang dikirim dijelaskan sebelum proses.
+- [ ] **AC-14-02** Given rekomendasi tampil, When ditelusuri, Then sinyal Survey dan topik Roadmap dirujuk dan diagnosis deterministik tidak diubah.
+- [ ] **AC-14-03** Given output dibaca, When diperiksa, Then batasan dan fallback saat layanan gagal dijelaskan.
 
-#### US-10 — Berdiskusi tentang Roadmap (Future · Future)
+#### US-15 — Berdiskusi tentang Roadmap [E-06 · Pasca-MVP · Future]
 
-Sebagai pengguna yang menyetujui AI, saya ingin berdiskusi tentang topik Roadmap dengan konteks yang saya setujui.
+Sebagai pengguna yang menyetujui AI, saya ingin berdiskusi tentang topik Roadmap dengan konteks yang saya setujui, agar memahami materi tanpa kehilangan kontrol data.
 
-- AC-CHAT-01: Pengguna memilih topik, meninjau konteks Survey, lalu menyetujui pemrosesan.
-- AC-CHAT-02: Chat memakai konteks disetujui saja dan tidak mengubah Survey/Diagnosis.
-- AC-CHAT-03: Tanpa konteks cukup, jawab umum dengan label atau minta data.
-- AC-CHAT-04: Gangguan AI tidak menghalangi Roadmap statis.
+- [ ] **AC-15-01** Given chat dimulai, When konteks dipilih, Then pengguna memilih topik, meninjau konteks Survey, lalu menyetujui pemrosesan sebelum lanjut.
+- [ ] **AC-15-02** Given chat berjalan, When data dipakai, Then hanya konteks disetujui dipakai dan Survey/Diagnosis tidak diubah.
+- [ ] **AC-15-03** Given konteks tidak cukup, When dijawab, Then jawaban umum berlabel atau permintaan data tampil.
+- [ ] **AC-15-04** Given gangguan AI terjadi, When Roadmap dibuka, Then Roadmap statis tetap dapat dibaca.
 
-#### US-11 — Melihat Mindmap UMKM (Future · Future)
+#### US-16 — Melihat Mindmap UMKM [E-06 · Pasca-MVP · Future]
 
-Sebagai pemilik usaha, saya ingin melihat hubungan area usaha secara visual.
+Sebagai pemilik usaha, saya ingin melihat hubungan area usaha secara visual, agar memahami keterkaitan lever dan tindakan.
 
-- AC-MAP-01: Mindmap adalah visualisasi konseptual, bukan skor tervalidasi atau diagnosis.
-- AC-MAP-02: Personalisasi memerlukan consent dan menunjukkan sumber konteks.
+- [ ] **AC-16-01** Given mindmap dibaca, When ditafsirkan, Then visualisasi adalah konseptual, bukan skor tervalidasi atau diagnosis.
+- [ ] **AC-16-02** Given personalisasi diminta, When diproses, Then consent diminta dan sumber konteks ditunjukkan.
 
-### Traceability
+### 8.8 Batasan scope US-17–US-20 (Won't for MVP)
 
-| Kebutuhan                      | Epic / US           | Halaman                       | AC                            |
-| ------------------------------ | ------------------- | ----------------------------- | ----------------------------- |
-| Orientasi/navigasi             | E-01 / US-01, US-06 | Landing, semua                | AC-LND, AC-NAV                |
-| Survey tersimpan → Diagnosis   | E-02 / US-02, US-07 | Survey → Diagnosis            | AC-SVY, AC-SAVE               |
-| Diagnosis dan uncertainty      | E-03 / US-03        | Diagnosis                     | AC-DIA                        |
-| Kalkulator mandiri/platform    | E-04 / US-04, US-08 | Calculator                    | AC-CAL, AC-PLAT               |
-| Roadmap statis                 | E-05 / US-05        | Roadmap                       | AC-RMP                        |
-| AI Recommendation/Chat/Mindmap | E-06 / US-09–11     | Pasca-MVP                     | AC-AI, AC-CHAT, AC-MAP        |
-| Opsi Could                     | E-07 / US-12–14     | Survey, Calculator            | AC-MOTION, AC-SCEN, AC-EXPORT |
-| Batas Won't for MVP            | E-08 / US-15–18     | Di luar MVP                   | Scope exclusions              |
-| Quality/validation             | E-09 / US-19–20     | Survey, Calculator, Diagnosis | AC-HELP, AC-VERIFY            |
+Stories di bagian ini wajib tercatat agar batas rilis transparan. Semua berstatus **Won't for MVP**; artinya tidak dibangun pada rilis ini, bukan larangan permanen. Jika Product Owner kelak mengaktifkan story, scope dan acceptance criteria implementasinya harus dirinci sebelum masuk ke rilis.
+
+#### US-17 — Akun dan sinkronisasi lintas perangkat [E-08 · Di luar MVP · Won't for MVP]
+
+Sebagai calon pengguna akun, saya ingin dicatat bahwa akun belum tersedia, agar ekspektasi rilis jelas.
+
+- [ ] **AC-17-01** Given MVP dirilis, When cakupan diperiksa, Then akun, backend persistence, kode pemulihan, dan sinkronisasi lintas perangkat tidak dibangun.
+
+#### US-18 — Pencatatan transaksi harian [E-08 · Di luar MVP · Won't for MVP]
+
+Sebagai pemilik usaha, saya ingin dicatat bahwa kas harian belum tersedia, agar memakai diagnosis berkala dan kalkulator manual.
+
+- [ ] **AC-18-01** Given MVP dirilis, When cakupan diperiksa, Then pencatatan transaksi harian tidak dibangun; produk tetap diagnosis berkala dan kalkulator manual.
+
+#### US-19 — Integrasi marketplace dan pembayaran [E-08 · Di luar MVP · Won't for MVP]
+
+Sebagai pemilik usaha platform, saya ingin dicatat bahwa integrasi belum tersedia, agar tidak menunggu fitur tersebut di MVP.
+
+- [ ] **AC-19-01** Given MVP dirilis, When cakupan diperiksa, Then integrasi marketplace atau layanan pembayaran tidak dibangun.
+
+#### US-20 — Dashboard pendamping dan komunitas [E-08 · Di luar MVP · Won't for MVP]
+
+Sebagai pendamping UMKM, saya ingin dicatat bahwa dashboard belum tersedia, agar memakai bahan percakapan manual.
+
+- [ ] **AC-20-01** Given MVP dirilis, When cakupan diperiksa, Then dashboard multi-UMKM dan fitur komunitas tidak dibangun.
+
+### 8.9 Traceability
+
+| Kebutuhan                      | Epic / US           | Halaman                       | AC                   |
+| ------------------------------ | ------------------- | ----------------------------- | -------------------- |
+| Orientasi/navigasi             | E-01 / US-01, US-07 | Landing, semua                | AC-01, AC-07         |
+| Survey tersimpan → Diagnosis   | E-02 / US-02, US-03 | Survey → Diagnosis            | AC-02, AC-03         |
+| Diagnosis dan uncertainty      | E-03 / US-04        | Diagnosis                     | AC-04                |
+| Verifikasi aturan              | E-09 / US-08        | Diagnosis, aturan             | AC-08                |
+| Kalkulator mandiri/platform    | E-04 / US-05, US-09 | Calculator                    | AC-05, AC-09         |
+| Roadmap statis                 | E-05 / US-06        | Roadmap                       | AC-06                |
+| Bantuan istilah                | E-09 / US-10        | Survey, Calculator            | AC-10                |
+| Opsi Could                     | E-07 / US-11–US-13  | Survey, Calculator            | AC-11, AC-12, AC-13  |
+| AI Recommendation/Chat/Mindmap | E-06 / US-14–US-16  | Pasca-MVP                     | AC-14, AC-15, AC-16  |
+| Batas Won't for MVP            | E-08 / US-17–US-20  | Di luar MVP                   | AC-17–AC-20          |
 
 ## 9. Ruang Lingkup
 

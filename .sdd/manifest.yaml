@@ -1,0 +1,15 @@
+# Machine-readable record of which governance conventions and scaffold
+# profile this repository was set up under. Lets both humans and AI agents
+# check "which rules does this repository follow?" without guessing.
+# Update governance_version manually when you deliberately adopt new
+# conventions from references/governance-mechanics.md and governance.md.
+
+governance_version: "1.0"
+profile: "standard"   # minimal | standard | full
+
+created:
+  date: "2026-10-04"
+
+features:
+  plan_required_above_complexity: true
+  verification_artifact: optional   # optional | required
