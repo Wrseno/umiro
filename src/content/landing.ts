@@ -1,11 +1,11 @@
 /**
- * Centralized text management — Landing + Survey screens.
+ * Kamus Landing `/` — satu-satunya sumber teks halaman utama.
  *
- * Scope: landing hero/sections, survey flow copy, shared nav labels.
- * Other flows keep their own copy modules.
+ * Aturan: file ini data murni — NOL impor. Ubah teks di sini,
+ * jangan di `src/app/page.tsx`.
  */
 
-export const LANDING_CONTENT = {
+export const LANDING = {
   eyebrow: "SIFest DIC 2026 · Digital Economy",
   title: "Baca kondisi usaha Anda, sebelum memilih langkah.",
   introLead:
@@ -82,31 +82,3 @@ export const LANDING_CONTENT = {
   ctaBody: "Hasilnya indikatif — bahan memutuskan area mana yang diperiksa lebih dahulu, bukan vonis atas usaha Anda.",
   ctaButton: "Mulai Survei",
 } as const;
-
-export const NAV_CONTENT = {
-  brand: "UMIRO",
-  brandSub: "Usaha Mikro dan Growth",
-  home: "Beranda",
-  survey: "Survei",
-  diagnosis: "Diagnosis",
-  calculator: "Kalkulator",
-  roadmap: "Roadmap",
-  startSurvey: "Mulai Survei",
-  menuOpen: "Buka menu",
-  menuClose: "Tutup menu",
-  menuNote: "Gratis · Tanpa daftar · Data tersimpan di browser ini saja",
-} as const;
-
-export interface NavLink {
-  href: string;
-  label: string;
-}
-
-/** Lima halaman MVP — PRD draf 5 Bagian 6. */
-export const NAV_LINKS: NavLink[] = [
-  { href: "/", label: NAV_CONTENT.home },
-  { href: "/survey", label: NAV_CONTENT.survey },
-  { href: "/diagnosis", label: NAV_CONTENT.diagnosis },
-  { href: "/kalkulator", label: NAV_CONTENT.calculator },
-  { href: "/roadmap", label: NAV_CONTENT.roadmap },
-];

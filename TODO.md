@@ -14,7 +14,7 @@ Current Task: —
 
 - [x] SDD fondasi dari PRD draf 5: docs/project/prd.md pointer, product/, .sdd/
 - [x] Spec baseline 6 unit rev 5: 001 orientasi/navigasi (E-01: US-01,07), 002 survey-lokal (E-02 + rujuk US-08,10,11), 003 diagnosis (E-03 + owner US-08), 004 calculator (E-04 + owner US-10, US-09,12,13), 005 roadmap (E-05: US-06), 006 pasca-MVP/batas (E-06+E-08: US-14–20, DRAFT BLOCKED)
-- [x] Landing `/` live: hero, sinyal, penyebab, arah, CTA + `src/lib/landingSurveyContent.ts`
+- [x] Landing `/` live: hero, sinyal, penyebab, arah, CTA + `src/content/landing.ts`
 - [x] AppShell live: nav 5 halaman MVP, status aktif, menu mobile, footer batasan
 - [x] `/privasi` + `/syarat` live (pendukung, luar lima MVP)
 - [x] Rute `/survey`, `/diagnosis`, `/kalkulator`, `/roadmap` terpasang sebagai `ComingSoon` (belum isi)
@@ -49,3 +49,5 @@ Epic→unit selesai; lanjut design satu unit tiap PO approve.
 - Turunan fresh: specs 001–006 rev 4, product/backlog.md, product/capability-map.md, .sdd/traceability/requirements.md. Lint + typecheck bersih.
 - Kesesuaian PRD↔spec terverifikasi programatis: 20 US, 22 blok, 77 AC cocok semua; AC-17-01–AC-20-01 ditambah ke 006; owner tunggal US-08→003, US-10→004; specs rev 5.
 - Unit-to-work dilengkapi: design.md 001–005 + tasks.md 001–005 selaras kode nyata (001 DESIGNED/IMPLEMENTED live; 002–005 DRAFT dengan gate katalog/ADR eksplisit). Semua US-01–13 MVP tercatat di unit-to-work. Lint + typecheck bersih.
+- Amandemen button-pojok dinamis + diagnosis-ulang + riwayat kalkulator (usulan, PRD belum tersentuh; storage tetap `localStorage`): spec 001 rev 6, 002/003/004 rev 6 (Health REVIEW_REQUIRED), design 001–004 + tasks 001–004 direvisi, AC baru marka *(usulan)*, draf di `decisions/amandemen-nav-resurvey-riwayat.md`.
+- Refactor dictionary-based (ADR-001) + layered-lite (ADR-002): `src/content/*.ts` 9 file data-murni, hapus `src/lib/landingSurveyContent.ts`; AppShell/halaman/metadata impor `@/content`; literal UI nol. AGENTS.md catat skill SDD + arsitektur + batas. Lint + typecheck + build hijau.

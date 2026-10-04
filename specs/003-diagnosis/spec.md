@@ -1,8 +1,8 @@
 # 003 Diagnosis Indikatif (E-03)
 
 **Lifecycle:** SPECIFIED
-**Health:** VALID
-**Revision:** 5
+**Health:** REVIEW_REQUIRED
+**Revision:** 6
 **Authority:** Turunan `design/PRD draf 5.md` v5.0 untuk unit ini. PRD §8 authoritative untuk ID/AC; bila konflik, PRD menang hingga spec direvisi.
 
 ## 1. Purpose
@@ -13,7 +13,7 @@ Membantu pengguna membaca kondisi usaha dalam bahasa sederhana, menunjukkan satu
 
 ### In Scope
 
-- Diagnosis di `/diagnosis`: Menampilkan ringkasan indikator, bottleneck indikatif, alasan, ketidakpastian bila ada, dan langkah awal. Memuat tautan ke roadmap dan kalkulator.
+- Diagnosis di `/diagnosis`: Menampilkan ringkasan indikator, bottleneck indikatif, alasan, ketidakpastian bila ada, dan langkah awal. Memuat tombol "Isi Survei Baru" ke `/survey`, plus tautan ke roadmap dan kalkulator.
 - Diagnosis menampilkan satu bottleneck indikatif: area dengan sinyal risiko paling kuat atau data paling tidak jelas menurut aturan scoring yang dapat ditinjau. Jika skor berdekatan atau data tidak cukup, UI harus menyatakan ketidakpastian dan menampilkan area yang perlu diperiksa, bukan mengklaim kepastian.
 - Output Diagnosis:
   1. Ringkasan indikator per kategori, tanpa label "lulus/gagal".
@@ -21,7 +21,7 @@ Membantu pengguna membaca kondisi usaha dalam bahasa sederhana, menunjukkan satu
   3. Alasan berbasis jawaban pengguna.
   4. Dua atau tiga langkah awal berbiaya rendah bila tersedia.
   5. Tautan ke kalkulator dan bagian roadmap yang relevan.
-- Aturan: Diagnosis membaca payload Survey valid dari `localStorage` browser yang sama; menampilkan indikator F/M/R/A/C tanpa label lulus/gagal; setiap indikator yang mendasari hasil dikaitkan dengan jawaban/sinyal sumber; S/G hanya konteks dan tidak mengubah skor, Calculator, atau Roadmap; bottleneck tunggal tampil hanya jika syarat data dan selisih skor terpenuhi; jika selisih dua skor teratas ≤10 atau data valid kategori bersaing kurang dari separuh indikator, tampil "belum cukup jelas" dan maksimal dua area pemeriksaan; tampilkan maksimal dua langkah awal beserta alasan dan disclaimer bukan jaminan; tanpa payload valid tampil CTA Survey bukan skor default; tautan Calculator/Roadmap tidak membawa parameter atau personalisasi.
+- Aturan: Diagnosis membaca payload Survey valid dari `localStorage` browser yang sama; menampilkan indikator F/M/R/A/C tanpa label lulus/gagal; setiap indikator yang mendasari hasil dikaitkan dengan jawaban/sinyal sumber; S/G hanya konteks dan tidak mengubah skor, Calculator, atau Roadmap; bottleneck tunggal tampil hanya jika syarat data dan selisih skor terpenuhi; jika selisih dua skor teratas ≤10 atau data valid kategori bersaing kurang dari separuh indikator, tampil "belum cukup jelas" dan maksimal dua area pemeriksaan; tampilkan maksimal dua langkah awal beserta alasan dan disclaimer bukan jaminan; tanpa hasil valid tampil tombol "Isi Survei Baru" ke `/survey` (pengganti CTA lama) bukan skor default; tautan Calculator/Roadmap tidak membawa parameter atau personalisasi.
 - Empat growth levers sebagai lensa penjelasan, bukan persamaan finansial presisi:
 
 | Lever                       | Pertanyaan diagnostik                                                           | Contoh intervensi                                   |
@@ -55,7 +55,8 @@ Membantu pengguna membaca kondisi usaha dalam bahasa sederhana, menunjukkan satu
 
 - Given payload Survey valid tersedia di browser yang sama, when pengguna buka `/diagnosis`, then ringkasan indikator F/M/R/A/C tampil tanpa lulus/gagal, bottleneck indikatif atau "belum cukup jelas" tampil beserta alasan dan maksimal dua langkah awal + disclaimer, tautan kalkulator/roadmap tampil tanpa parameter.
 - Given selisih dua skor teratas ≤10 atau data valid kategori bersaing kurang dari separuh indikator, when render, then tampil "belum cukup jelas" dan maksimal dua area pemeriksaan; jangan tetapkan bottleneck tunggal.
-- Given tanpa payload valid, when buka `/diagnosis`, then tampil CTA Survey, bukan skor default.
+- Given tanpa hasil valid, when buka `/diagnosis`, then tampil tombol "Isi Survei Baru" ke `/survey`, bukan skor default. *(usulan amandemen PRD)*
+- Given hasil valid tampil, when pengguna klik "Isi Survei Baru", then buka `/survey`; submit baru menimpa hasil lama. *(usulan amandemen PRD)*
 - Given S/G tersedia, when tampil, then hanya konteks tujuan/keterbatasan; tidak mengubah skor.
 
 ## 5. Functional Requirements
@@ -67,8 +68,9 @@ Membantu pengguna membaca kondisi usaha dalam bahasa sederhana, menunjukkan satu
 - FR-005: Tampilkan bottleneck tunggal hanya bila syarat data dan selisih skor terpenuhi (selisih >10 + data cukup).
 - FR-006: Bila tie/data kurang, tampil "belum cukup jelas" + maksimal dua area.
 - FR-007: Tampilkan maksimal dua langkah awal + alasan + disclaimer bukan jaminan.
-- FR-008: Tanpa payload valid tampil CTA Survey.
+- FR-008: Tanpa hasil valid tampil tombol "Isi Survei Baru" ke `/survey`. *(usulan amandemen PRD)*
 - FR-009: Tautan Calculator/Roadmap tanpa parameter/personalisasi.
+- FR-010: Tombol "Isi Survei Baru" selalu tampil di `/diagnosis` (dengan atau tanpa hasil); submit baru menimpa hasil lama. *(usulan amandemen PRD)*
 
 ## 6. Business Rules
 
@@ -107,7 +109,8 @@ Sebagai pemilik usaha, saya ingin memahami indikator dan area yang perlu diperik
 - AC-04-05: Bottleneck tunggal tampil hanya jika syarat data dan selisih skor terpenuhi.
 - AC-04-06: Jika selisih dua skor teratas ≤10 atau data valid kategori bersaing kurang dari separuh indikator, tampil "belum cukup jelas" dan maksimal dua area pemeriksaan.
 - AC-04-07: Tampilkan maksimal dua langkah awal beserta alasan dan disclaimer bukan jaminan.
-- AC-04-08: Tanpa payload valid, tampil CTA Survey, bukan skor default.
+- AC-04-08: Tanpa hasil valid, tampil tombol "Isi Survei Baru" ke `/survey`, bukan skor default. *(usulan amandemen PRD)*
+- AC-04-10: Tombol "Isi Survei Baru" membuka `/survey`; submit valid menimpa hasil sebelumnya. *(usulan amandemen PRD)*
 - AC-04-09: Tautan Calculator/Roadmap tidak membawa parameter atau personalisasi.
 
 #### US-08 — Memverifikasi aturan diagnosis dan scoring (MVP · Must)
@@ -139,6 +142,7 @@ Lampiran A1 — Kasus uji aturan diagnosis (salinan):
 
 ## 11. Open Questions
 
+- AMANDEMEN PRD DIPERLUKAN: tombol "Isi Survei Baru" AC-04-08/10 + FR-010 (pengganti CTA Survey); alur diagnosis-ulang PRD §6. Sampai PRD direvisi, AC baru bertanda *(usulan)* dan PRD tetap upstream.
 - Perlu divalidasi: apakah satu bottleneck indikatif membantu tanpa kepastian palsu; ambang dan aturan tie/uncertainty paling dapat dipertanggungjawabkan.
 - Risiko: Bottleneck tunggal terlalu menyederhanakan → saran salah prioritas; mitigasi: tampilkan alasan dan ketidakpastian; sediakan indikator lain.
 - Risiko: Kerangka dan bobot belum tervalidasi → diagnosis tidak relevan; mitigasi: labeli usulan, uji 5–10 pengguna, revisi setelah bukti.

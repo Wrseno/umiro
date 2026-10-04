@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { DiagnosisLink } from "@/components/DiagnosisCta";
 import { Reveal } from "@/components/Reveal";
-import { LANDING_CONTENT as T } from "@/lib/landingSurveyContent";
+import { LANDING as T } from "@/content";
 
 /**
  * Landing UMIRO — Landing + Survey scope only.
@@ -51,20 +51,19 @@ export default function Home() {
               </p>
 
               <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                <Link
-                  href={T.primaryHref}
+                <DiagnosisLink
                   className="group transition-fluid flex items-center justify-center gap-3 rounded-full bg-text-primary py-1.5 pr-1.5 pl-6 font-semibold tracking-[0.01em] text-white hover:shadow-[var(--shadow-ambient)] active:scale-[0.98]"
-                >
-                  {T.primaryCta}
-                  <span
-                    aria-hidden
-                    className="transition-fluid grid size-8 shrink-0 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-1 group-hover:-translate-y-px group-hover:scale-105"
-                  >
-                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.75} className="size-3.5">
-                      <path d="M3 13 13 3M5 3h8v8" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </span>
-                </Link>
+                  icon={
+                    <span
+                      aria-hidden
+                      className="transition-fluid grid size-8 shrink-0 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-1 group-hover:-translate-y-px group-hover:scale-105"
+                    >
+                      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.75} className="size-3.5">
+                        <path d="M3 13 13 3M5 3h8v8" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                  }
+                />
               </div>
               <p className="mt-4 max-w-[56ch] text-caption leading-[1.65] font-normal text-text-secondary">
                 {T.reassurance}
@@ -218,13 +217,12 @@ export default function Home() {
               <p className="mt-4 max-w-[52ch] text-base leading-[1.75] font-normal text-text-secondary">
                 {T.arahBody}
               </p>
-              <Link
-                href={T.primaryHref}
+              <DiagnosisLink
                 className="group transition-fluid mt-6 inline-flex items-center gap-3 rounded-full py-1.5 pr-1.5 pl-6 text-small font-semibold tracking-[0.01em] ring-1 ring-black/10 hover:bg-black/5 active:scale-[0.98]"
-              >
-                {T.primaryCta}
-                <IslandArrow />
-              </Link>
+                icon={
+                  <IslandArrow />
+                }
+              />
             </div>
           </Reveal>
 
@@ -276,20 +274,19 @@ export default function Home() {
                   {T.ctaBody}
                 </p>
               </div>
-              <Link
-                href={T.primaryHref}
+              <DiagnosisLink
                 className="group transition-fluid relative inline-flex w-full shrink-0 items-center justify-center gap-3 rounded-full bg-white py-1.5 pr-1.5 pl-6 font-semibold tracking-[0.01em] text-text-primary hover:shadow-[var(--shadow-ambient)] active:scale-[0.98] sm:w-auto"
-              >
-                {T.ctaButton}
-                <span
-                  aria-hidden
-                  className="transition-fluid grid size-8 shrink-0 place-items-center rounded-full bg-black/5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-px group-hover:scale-105"
-                >
-                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.75} className="size-3.5">
-                    <path d="M3 13 13 3M5 3h8v8" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </Link>
+                icon={
+                  <span
+                    aria-hidden
+                    className="transition-fluid grid size-8 shrink-0 place-items-center rounded-full bg-black/5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-px group-hover:scale-105"
+                  >
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth={1.75} className="size-3.5">
+                      <path d="M3 13 13 3M5 3h8v8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                }
+              />
             </div>
           </div>
         </Reveal>

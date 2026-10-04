@@ -8,12 +8,13 @@
 **Health:** VALID
 **Traces to:** `spec.md` (unit ini) · PRD §8.5 (US-05, US-09–US-13),
   Lampiran B
-**Reviewed against:** spec revision 5
+**Reviewed against:** spec revision 6
 
 ## Architecture
 
 Rute `/kalkulator`: form input terkontrol (client) + hasil live tanpa
-reload + simpan lokal. Fungsi hitung murni `calc(H,V,Q,D,F,T)` (calon
+reload + riwayat `localStorage` yang boleh ditumpuk dan dihapus langsung
+di halaman. Fungsi hitung murni `calc(H,V,Q,D,F,T)` (calon
 `src/lib/calculator.ts`) dipakai UI utama, banding platform, dan
 skenario — satu sumber rumus. Isolasi penuh: tidak impor modul
 survey/diagnosis.
@@ -44,7 +45,10 @@ survey/diagnosis.
 
 ## Data Model
 
-Key `umiro.calc.v1`: `{ input, result, savedAt }`. Payload rusak → jangan
+Key `umiro.calc.v1`: ARRAY `CalcEntry[]` = `[{ id, input, result, savedAt }]`.
+Tiap hitungan valid APPEND entri baru (jangan timpa). Daftar riwayat tampil
+di `/kalkulator` (terbaru dulu) + tombol hapus per entri (langsung, tanpa
+konfirmasi ganda) + tombol "hapus semua" opsional. Payload rusak → jangan
 tampilkan sebagai terkini (pakai default kosong + pesan). Skenario (bila
 dibangun): `umiro.calc.scenarios.v1`.
 
@@ -56,8 +60,9 @@ dibangun): `umiro.calc.scenarios.v1`.
 
 ## State Transitions
 
-`kosong → terisi-valid → hasil-live` | `invalid → pesan-inline, hasil
-lama dipertahankan` | `tersimpan → pulihkan-saat-buka`.
+`kosong → terisi-valid → hasil-live + append-riwayat` | `invalid → pesan-inline, hasil
+lama dipertahankan` | `tersimpan → pulihkan-saat-buka (daftar penuh)` |
+`hapus-entri → hilang langsung, entri lain utuh`.
 
 ## Error Handling
 

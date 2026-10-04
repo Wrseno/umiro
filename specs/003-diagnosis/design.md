@@ -5,10 +5,10 @@
 > `spec.md` US-04, owner US-08.
 
 **Lifecycle:** DRAFT
-**Health:** VALID
+**Health:** REVIEW_REQUIRED
 **Traces to:** `spec.md` (unit ini) · PRD §8.5 (US-04), Lampiran A/A1 ·
   ADR scoring (wajib sebelum implementasi, belum ada)
-**Reviewed against:** spec revision 5
+**Reviewed against:** spec revision 6
 
 ## Architecture
 
@@ -16,8 +16,8 @@ Rute `/diagnosis` membaca `SurveyPayload` dari `localStorage` (kontrak
 unit 002), menjalankan fungsi scoring MURNI (tanpa I/O, tanpa tanggal,
 tanpa random) → `DiagnosisResult`, lalu render: ringkasan F/M/R/A/C,
 bottleneck atau "belum cukup jelas", alasan per indikator, ≤2 langkah
-awal + disclaimer, tautan biasa ke `/kalkulator` dan `/roadmap`
-(anchor bagian, tanpa query). Tanpa payload valid → CTA Survey.
+awal + disclaimer, tombol "Isi Survei Baru" ke `/survey`, plus tautan biasa ke `/kalkulator` dan `/roadmap`
+(anchor bagian, tanpa query). Tanpa hasil valid → tombol "Isi Survei Baru" (bukan skor default).
 
 ## Components
 
@@ -26,8 +26,10 @@ awal + disclaimer, tautan biasa ke `/kalkulator` dan `/roadmap`
   hitung selisih dua terendah, terapkan aturan tie/data (AC-04-05/06).
   Wajib unit-test dengan kasus Lampiran A1.
 - `DiagnosisPage` (belum dibangun): server render kerangka + client leaf
-  untuk baca `localStorage` (hindari hydration mismatch: render CTA dulu,
+  untuk baca `localStorage` (hindari hydration mismatch: render fallback dulu,
   ganti setelah baca).
+- `ResurveyButton` (bagian DiagnosisPage): `<Link href="/survey">Isi Survei Baru</Link>` —
+  SELALU tampil (ada/tanpa hasil); submit baru menimpa hasil lama (aturan unit 002).
 - `ComingSoon`: placeholder aktif saat ini.
 
 ## Domain Model
@@ -55,13 +57,13 @@ saja — tidak masuk fungsi skor.
 
 ## State Transitions
 
-`no-payload → CTA` | `payload-valid → scored → rendered` |
+`tanpa-hasil → tombol Isi Survei Baru` | `payload-valid → scored → rendered` |
 `tie/data-kurang → uncertain-rendered`. Tidak ada state tersimpan selain
 cache hasil.
 
 ## Error Handling
 
-- Payload hilang/rusak/versi asing → CTA Survey, bukan skor default.
+- Payload hilang/rusak/versi asing → tombol "Isi Survei Baru", bukan skor default.
 - Skor `NaN`/di luar 0–100 → perlakukan sebagai data tak-valid untuk
   kategori itu (jangan render angka).
 - Kasus A1 yang gagal → revisi aturan + catat alasan (AC-08-02), bukan

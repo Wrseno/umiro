@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { NAV_CONTENT, NAV_LINKS } from "@/lib/landingSurveyContent";
+import { NAV, SHARED } from "@/content";
+import { DiagnosisCta } from "@/components/DiagnosisCta";
 
 /**
  * Kerangka aplikasi UMIRO.
  *
- * Navigasi utama memuat lima halaman MVP pada PRD draf 5 Bagian 6.
+ * Menu bar: 3 item statis (Beranda, Kalkulator, Roadmap).
+ * Survei/Diagnosis via button pojok dinamis `DiagnosisCta`.
  */
 
 export interface AppShellProps {
@@ -24,7 +26,7 @@ export function AppShell({ children }: AppShellProps) {
         href="#konten"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-30 focus:rounded-full focus:bg-surface focus:px-4 focus:py-2 focus:text-small focus:font-medium"
       >
-        Lewati ke konten
+          {SHARED.skipToContent}
       </a>
       <IslandNav pathname={pathname} />
       <main
@@ -71,7 +73,7 @@ function IslandNav({ pathname }: { pathname: string }) {
             aria-label="Navigasi utama"
             className="ml-4 hidden items-center gap-1 md:flex"
           >
-            {NAV_LINKS.map(({ href, label }) => {
+            {NAV.links.map(({ href, label }) => {
               const active = pathname === href;
               return (
                 <Link
@@ -89,13 +91,13 @@ function IslandNav({ pathname }: { pathname: string }) {
               );
             })}
           </nav>
-          <IslandCta />
+          <DiagnosisCta pathname={pathname} />
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="menu-mobile"
-            aria-label={open ? NAV_CONTENT.menuClose : NAV_CONTENT.menuOpen}
+            aria-label={open ? NAV.menuClose : NAV.menuOpen}
             className="transition-fluid grid size-11 shrink-0 place-items-center rounded-full text-text-primary hover:bg-black/5 active:scale-[0.98] md:hidden"
           >
             <span aria-hidden className="relative block size-4">
@@ -123,7 +125,7 @@ function IslandNav({ pathname }: { pathname: string }) {
             aria-label="Menu"
             className="mx-auto flex h-full min-h-[100dvh] w-full max-w-[1240px] flex-col gap-1 overflow-y-auto px-8 pt-24 pb-10"
           >
-            {NAV_LINKS.map(({ href, label }, i) => (
+            {NAV.links.map(({ href, label }, i) => (
               <Link
                 key={href}
                 href={href}
@@ -140,7 +142,7 @@ function IslandNav({ pathname }: { pathname: string }) {
               </Link>
             ))}
             <p className="mt-6 max-w-[40ch] text-small leading-[1.7] text-text-secondary">
-              {NAV_CONTENT.menuNote}
+              {NAV.menuNote}
             </p>
           </nav>
         </div>
@@ -154,7 +156,7 @@ function SiteBrand() {
     <Link
       href="/"
       className="flex shrink-0 items-center gap-2.5"
-      aria-label={NAV_CONTENT.brand}
+      aria-label={NAV.brand}
     >
       <span
         aria-hidden
@@ -166,42 +168,12 @@ function SiteBrand() {
       </span>
       {/* <span className="leading-[1.3]"> */}
       <span className="block font-display text-[1.0625rem] font-bold tracking-[-0.01em]">
-        {NAV_CONTENT.brand}
+        {NAV.brand}
       </span>
       {/* <span className="mt-0.5 hidden text-caption leading-[1.6] text-text-secondary sm:block">
-          {NAV_CONTENT.brandSub}
+          {NAV.brandSub}
         </span> */}
       {/* </span> */}
-    </Link>
-  );
-}
-
-function IslandCta() {
-  return (
-    <Link
-      href="/survey"
-      className="group transition-fluid flex h-11 shrink-0 items-center gap-2 rounded-full bg-text-primary py-1 pr-1 pl-4 text-small font-semibold tracking-[0.01em] whitespace-nowrap text-white hover:shadow-[var(--shadow-ambient)] active:scale-[0.98] sm:pl-5"
-    >
-      <span className="sm:hidden">{NAV_CONTENT.survey}</span>
-      <span className="hidden sm:inline">{NAV_CONTENT.startSurvey}</span>
-      <span
-        aria-hidden
-        className="transition-fluid grid size-8 shrink-0 place-items-center rounded-full bg-white/15 transition-transform group-hover:translate-x-1 group-hover:-translate-y-px group-hover:scale-105"
-      >
-        <svg
-          viewBox="0 0 16 16"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth={1.75}
-          className="size-3.5"
-        >
-          <path
-            d="M3 13 13 3M5 3h8v8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </span>
     </Link>
   );
 }
@@ -212,18 +184,16 @@ function SiteFooter({ pathname }: { pathname: string }) {
       <div className="mx-auto grid w-full max-w-[1240px] grid-cols-1 gap-10 px-4 py-12 sm:px-5 md:grid-cols-[1.4fr_1fr_1.2fr] md:px-8">
         <div>
           <p className="font-display text-[1.0625rem] font-bold tracking-[-0.01em]">
-            {NAV_CONTENT.brand}
+            {NAV.brand}
           </p>
           <p className="mt-3 max-w-[46ch] text-small leading-[1.7] text-text-secondary">
-            UMIRO — membantu pemilik usaha mikro membaca kondisi usaha dan
-            memilih satu area pemeriksaan awal. Hasil bersifat indikatif, bukan
-            kepastian.
+            {NAV.footerDescription}
           </p>
         </div>
         <nav aria-label="Navigasi bawah">
           <p className="overline">Halaman</p>
           <ul className="mt-3 flex flex-col gap-2 text-small">
-            {NAV_LINKS.map(({ href, label }) => (
+            {NAV.links.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
@@ -239,35 +209,30 @@ function SiteFooter({ pathname }: { pathname: string }) {
         <div>
           <p className="overline">Batasan</p>
           <ul className="mt-3 flex flex-col gap-2 text-small leading-[1.7] text-text-secondary">
-            <li>Hasil bersifat indikatif — bahan memutuskan, bukan vonis.</li>
-            <li>
-              Data tersimpan di browser ini saja; hilang bila data situs
-              dihapus.
-            </li>
+            {NAV.footerLimitations.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
           <p className="mt-4 text-caption leading-[1.6] text-text-secondary">
-            Gratis · tanpa daftar
+            {NAV.footerGratis}
           </p>
         </div>
       </div>
       <div className="border-t border-black/5">
         <div className="mx-auto flex w-full max-w-[1240px] flex-col gap-1 px-4 py-4 text-caption leading-[1.6] text-text-secondary sm:flex-row sm:items-center sm:justify-between sm:px-5 md:px-8">
           <p>
-            {NAV_CONTENT.brand} · {NAV_CONTENT.brandSub}
+            {NAV.brand} · {NAV.brandSub}
           </p>
           <p className="flex gap-4">
-            <Link
-              href="/privasi"
-              className="transition-fluid hover:text-text-primary"
-            >
-              Privasi
-            </Link>
-            <Link
-              href="/syarat"
-              className="transition-fluid hover:text-text-primary"
-            >
-              Syarat
-            </Link>
+            {NAV.legal.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                className="transition-fluid hover:text-text-primary"
+              >
+                {label}
+              </Link>
+            ))}
           </p>
         </div>
       </div>

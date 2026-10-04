@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AppShell } from "@/components/AppShell";
+import { SHARED } from "@/content";
 
 interface ComingSoonProps {
   eyebrow: string;
@@ -21,15 +22,14 @@ export function ComingSoon({ eyebrow, title }: ComingSoonProps) {
           {title}
         </h1>
         <p className="mt-4 max-w-[60ch] text-text-secondary">
-          Halaman ini segera hadir. Mulai dari beranda untuk membaca cara kerja
-          UMIRO.
+          {SHARED.comingSoonBody}
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href="/"
             className="inline-flex h-12 items-center rounded-[var(--radius-control)] bg-text-primary px-7 font-medium text-white transition-fluid hover:-translate-y-px active:translate-y-0 active:scale-[0.98]"
           >
-            Kembali ke Beranda
+            {SHARED.backToHome}
           </Link>
         </div>
       </div>

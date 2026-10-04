@@ -7,18 +7,17 @@
 > (permukaan Survey US-10, input US-08 dirujuk).
 
 **Lifecycle:** DRAFT
-**Health:** VALID
+**Health:** REVIEW_REQUIRED
 **Traces to:** `spec.md` (unit ini) · PRD §8.5 (US-02, US-03, US-11) ·
   owner US-08 → unit 003, owner US-10 → unit 004
-**Reviewed against:** spec revision 5
+**Reviewed against:** spec revision 6
 
 ## Architecture
 
 Rute `/survey`: satu pertanyaan per layar (client component), state
-jawaban di memori + tulis `localStorage` tiap navigasi (debounce ringan
-atau tulis langsung — payload kecil). Submit valid → hitung deterministik
-→ simpan payload berversi → `router.replace("/diagnosis")`. Copy soal +
-opsi terpusat di modul konten seperti pola `landingSurveyContent.ts`
+jawaban di memori + tulis `localStorage` tiap navigasi (payload kecil). Submit valid → hitung deterministik
+→ simpan payload berversi (timpa hasil lama bila ada) → `router.replace("/diagnosis")`. Copy soal +
+opsi terpusat di modul konten `src/content/` seperti pola kamus
 unit 001 (bukan string literal di halaman). Transisi US-11 murni CSS
 (`transition-fluid` / `.reveal`), tidak menyentuh state.
 

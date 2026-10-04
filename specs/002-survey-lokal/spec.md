@@ -1,8 +1,8 @@
 # 002 Survey & Persistensi Lokal (E-02)
 
 **Lifecycle:** SPECIFIED
-**Health:** VALID
-**Revision:** 5
+**Health:** REVIEW_REQUIRED
+**Revision:** 6
 **Authority:** Turunan `design/PRD draf 5.md` v5.0 untuk unit ini. PRD §8 authoritative untuk ID/AC; bila konflik, PRD menang hingga spec direvisi.
 
 ## 1. Purpose
@@ -32,9 +32,10 @@ Membantu pengguna memberi konteks usaha melalui pertanyaan singkat dengan bahasa
 - "Belum tahu/Belum pernah menghitung" tersedia bila relevan dan ditafsirkan sesuai aturan pertanyaan.
 - Semua pertanyaan wajib dijawab sebelum submit.
 - HPP dan istilah teknis dijelaskan dengan bahasa sehari-hari.
-- Jawaban dan versi katalog Survey tersimpan di `localStorage`.
+- Jawaban dan versi katalog Survey tersimpan di `localStorage` (payload berversi).
 - Setelah jawaban valid, sistem menghitung hasil deterministik dan menyimpan payload berversi.
 - Setelah penyimpanan sukses, sistem mengarahkan pengguna ke `/diagnosis`.
+- Submit survei baru (via tombol "Isi Survei Baru" di `/diagnosis`) MENIMPA hasil sebelumnya di `localStorage`; hasil lama hilang tanpa riwayat. *(usulan amandemen PRD)*
 - Submit tidak membuka Calculator/Roadmap dan tidak mengirim jawaban ke server/AI pada MVP.
 - Kegagalan penyimpanan menampilkan pesan dan tidak menyatakan sukses.
 - Opsi Could bila waktu: US-11 transisi Survey (lihat §9).
@@ -57,6 +58,7 @@ Membantu pengguna memberi konteks usaha melalui pertanyaan singkat dengan bahasa
 - Given pengguna membuka `/survey`, when menjawab satu pertanyaan per layar, then progres terlihat, tombol Kembali tersedia, jawaban bertahan saat maju/mundur.
 - Given pengguna tidak tahu biaya, when memilih "Belum tahu/Belum pernah menghitung", then jawaban ditafsirkan sesuai aturan pertanyaan, bukan dipaksa skor palsu.
 - Given semua pertanyaan wajib terjawab valid, when submit, then jawaban + versi katalog tersimpan di `localStorage`, hasil deterministik dihitung, payload berversi disimpan, pengguna diarahkan ke `/diagnosis`.
+- Given hasil sebelumnya ada dan pengguna submit survei baru via "Isi Survei Baru", when submit valid, then hasil lama ditimpa; hasil lama hilang. *(usulan amandemen PRD)*
 - Given penyimpanan gagal, when submit, then pesan tampil dan sistem tidak menyatakan sukses.
 - Given pengguna membuka Calculator/Roadmap langsung, when tanpa Survey, then kedua halaman tetap dapat dibuka (tanpa hasil Survey).
 
@@ -70,13 +72,14 @@ Membantu pengguna memberi konteks usaha melalui pertanyaan singkat dengan bahasa
 - FR-006: HPP/istilah teknis berbahasa sehari-hari.
 - FR-007: Jawaban + versi katalog tersimpan di `localStorage`; gagal simpan tampil pesan tanpa klaim sukses.
 - FR-008: Hasil deterministik dihitung + payload berversi disimpan + redirect `/diagnosis`; tidak buka Calculator/Roadmap; tidak kirim ke server/AI.
+- FR-009: Submit survei baru menimpa hasil sebelumnya (tanpa riwayat). *(usulan amandemen PRD)*
 
 ## 6. Business Rules
 
 - S/G hanya konteks; pada MVP tidak mengubah skor, Calculator, atau Roadmap.
 - Skor indikator diagnostik F/M/R/A/C rentang internal 0–100; arah skor dan bobot tiap jawaban ditetapkan dalam katalog soal yang terversi. Nilai numerik, bobot, dan ambang hipotesis yang perlu diuji, bukan validasi statistik.
 - Payload rusak/tidak dikenal: sistem mengabaikannya dengan aman, menghapus payload rusak, dan meminta pengguna mengulang survey bila perlu.
-- Hasil disimpan pada `localStorage` atau browser storage lokal, bukan cookie, dan tidak menyediakan sinkronisasi lintas browser/perangkat atau pemulihan setelah data lokal dihapus.
+- Hasil disimpan pada `localStorage` browser-lokal, tanpa sinkronisasi lintas browser/perangkat atau pemulihan setelah data lokal dihapus.
 - Jobs relevan:Mengetahui apakah penjualan yang ramai menghasilkan margin yang cukup; Menemukan area usaha yang perlu diperiksa lebih dulu.
 - Hipotesis awal yang melatari pertanyaan (bukan fakta terbukti): uang usaha/rumah tangga tercampur; harga tanpa pahami biaya/margin; kapasitas bergantung waktu pemilik; pembeli berulang belum dikelola; jangkauan bertambah sebelum fondasi siap; tidak ada pencatatan sederhana.
 
@@ -155,6 +158,7 @@ Sebagai tim produk, saya ingin menguji aturan diagnosis pada kasus terkontrol ag
 
 ## 11. Open Questions
 
+- AMANDEMEN PRD DIPERLUKAN: FR-009 timpa-hasil survei baru (baru, PRD §8 US-03). Persistensi tetap `localStorage` sesuai PRD. Sampai PRD direvisi, FR-009 bertanda *(usulan)* dan PRD tetap upstream.
 - Jumlah pertanyaan dan bobot yang menghasilkan sinyal berguna dalam tiga menit (PRD §12 perlu divalidasi #2).
 - Apakah tujuh kategori F/M/R/A/C/S/G dipahami pengguna (PRD §12 #1).
 - Risiko: Survey terlalu panjang → penyelesaian turun; mitigasi: uji waktu, kurangi pertanyaan, pertahankan coverage kategori.

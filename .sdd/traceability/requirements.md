@@ -1,6 +1,7 @@
 # Requirements Traceability
 
 > PRD → spec/design/validasi. Spec baseline SPECIFIED (001–005, rev 5); 006 DRAFT BLOCKED (rev 5). ID US/AC = urutan backlog. Owner tunggal: US-08 → unit 003 (unit 002 merujuk input Survey); US-10 → unit 004 (unit 002 merujuk permukaan Survey).
+> AMANDEMEN AKTIF (usulan, PRD belum direvisi): button pojok dinamis + diagnosis-ulang + riwayat kalkulator — spec 001 rev 6, 002/003/004 rev 6, design 001–004 DRAFT direvisi, tasks 001–004 direvisi; storage tetap `localStorage`; AC baru marka *(usulan amandemen PRD)*; draf di `decisions/amandemen-nav-resurvey-riwayat.md`.
 
 | Source | Requirement | Spec | Design | ADR | Validation |
 |---|---|---|---|---|---|

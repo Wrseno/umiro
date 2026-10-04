@@ -1,8 +1,8 @@
 # 004 Financial Calculator (E-04 + Could/Should terkait)
 
 **Lifecycle:** SPECIFIED
-**Health:** VALID
-**Revision:** 5
+**Health:** REVIEW_REQUIRED
+**Revision:** 6
 **Authority:** Turunan `design/PRD draf 5.md` v5.0 untuk unit ini. PRD §8 authoritative untuk ID/AC; bila konflik, PRD menang hingga spec direvisi.
 
 ## 1. Purpose
@@ -22,7 +22,7 @@ Membantu pengguna menghitung margin, titik impas, dan kebutuhan penjualan berdas
 - Jika `M≤0`, impas/target volume tidak ditampilkan sebagai hasil valid (AC-05-06).
 - Kalkulator hanya memakai input manual; tidak membaca/menulis/menafsirkan Diagnosis (AC-05-07).
 - Perubahan input memperbarui hasil tanpa reload (AC-05-08).
-- Hasil disimpan lokal; payload rusak tidak ditampilkan sebagai hasil terkini (AC-05-09).
+- Hasil disimpan di `localStorage` dan boleh DITUMPUK: tiap hitungan valid tersimpan sebagai entri riwayat `{ id, input, result, savedAt }` di bawah kunci `umiro.calc.v1`; pengguna boleh menambah banyak entri dan MENGHAPUS per entri langsung di halaman `/kalkulator` (AC-05-09).
 - Batas pajak, penyusutan, dan tenaga kerja pemilik dinyatakan bila tidak diinput (AC-05-10).
 - US-09 direct vs platform (MVP bila waktu · Should): potongan opsional muncul bila pengguna memilih penjualan platform (AC-09-01); perbandingan memakai input identik selain potongan (AC-09-02); margin platform nol/negatif menghasilkan penjelasan, bukan titik impas menyesatkan (AC-09-03).
 - Rumus Financial Calculator (Lampiran B salinan): Dengan `H` harga jual/unit, `V` biaya variabel/unit, `Q` unit terjual/hari, `D` hari operasi/bulan, `F` biaya tetap/bulan, dan `T` target laba bersih/bulan:
@@ -62,7 +62,8 @@ Membantu pengguna menghitung margin, titik impas, dan kebutuhan penjualan berdas
 
 ## 5. Functional Requirements
 
-- FR-001–FR-009 persis mengikuti AC-05-01 s/d 09 + AC-05-10, AC-09-01 s/d 03, AC-10-01 s/d 03, AC-12-01 s/d 03, AC-13-01 s/d 03 seperti di §9.
+- FR-001–FR-010 mengikuti AC-05-01 s/d 11 (FR-010 = riwayat tumpuk-hapus, AC-05-09; payload rusak AC-05-11 ikut FR-009), AC-09-01 s/d 03, AC-10-01 s/d 03, AC-12-01 s/d 03, AC-13-01 s/d 03 seperti di §9.
+- FR-010: Riwayat kalkulator di `localStorage` boleh ditumpuk (banyak entri) dan dihapus per entri langsung di `/kalkulator` tanpa konfirmasi ganda. *(usulan amandemen PRD)*
 
 ## 6. Business Rules
 
@@ -100,7 +101,8 @@ Sebagai pemilik usaha, saya ingin memasukkan angka sendiri untuk melihat margin,
 - AC-05-06: Jika `M≤0`, impas/target volume tidak ditampilkan sebagai hasil valid.
 - AC-05-07: Kalkulator hanya memakai input manual; tidak membaca/menulis/menafsirkan Diagnosis.
 - AC-05-08: Perubahan input memperbarui hasil tanpa reload.
-- AC-05-09: Hasil disimpan lokal; payload rusak tidak ditampilkan sebagai hasil terkini.
+- AC-05-09: Tiap hitungan valid tersimpan sebagai entri riwayat di `localStorage`; daftar riwayat tampil di `/kalkulator` dan tiap entri dapat dihapus langsung di halaman. *(usulan amandemen PRD)*
+- AC-05-11: Payload rusak tidak ditampilkan sebagai hasil terkini.
 - AC-05-10: Batas pajak, penyusutan, dan tenaga kerja pemilik dinyatakan bila tidak diinput.
 
 #### US-09 — Membandingkan direct sales dan platform (MVP bila waktu · Should)
