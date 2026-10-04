@@ -25,9 +25,32 @@ const generalSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Naik Kelas — Diagnosis Titik Mentok Usaha",
+  title: "UMIRO — Diagnosis Indikatif Usaha Mikro",
   description:
-    "Jawab beberapa pertanyaan singkat, lalu ketahui satu hal yang paling menahan pertumbuhan usaha Anda.",
+    "Jawab beberapa pertanyaan singkat, lalu ketahui satu area pemeriksaan yang paling menahan pertumbuhan usaha Anda.",
+  icons: { icon: "/favicon.svg" },
+  openGraph: {
+    title: "UMIRO — Diagnosis Indikatif Usaha Mikro",
+    description:
+      "Jawab beberapa pertanyaan singkat, lalu ketahui satu area pemeriksaan yang paling menahan pertumbuhan usaha Anda.",
+    type: "website",
+    locale: "id_ID",
+    images: [
+      {
+        url: "https://picsum.photos/seed/umiro-warung/1200/630",
+        width: 1200,
+        height: 630,
+        alt: "Pemilik usaha mikro memeriksa catatan keuangan di warung",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "UMIRO — Diagnosis Indikatif Usaha Mikro",
+    description:
+      "Jawab beberapa pertanyaan singkat, lalu ketahui satu area pemeriksaan yang paling menahan pertumbuhan usaha Anda.",
+    images: ["https://picsum.photos/seed/umiro-warung/1200/630"],
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

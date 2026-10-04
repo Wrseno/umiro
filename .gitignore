@@ -39,7 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# berkas acuan variabel lingkungan, aman dibagikan
-!.env.example
 work-docs
+
+.agents/
+.qodo/
+.marscode/
+.kilo/
