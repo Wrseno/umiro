@@ -2,7 +2,7 @@
 
 **Lifecycle:** SPECIFIED
 **Health:** VALID
-**Revision:** 4
+**Revision:** 5
 **Authority:** Turunan `design/PRD draf 5.md` v5.0 untuk unit ini. PRD §8 authoritative untuk ID/AC; bila konflik, PRD menang hingga spec direvisi.
 
 ## 1. Purpose

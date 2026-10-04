@@ -13,7 +13,7 @@ Current Task: —
 ## Completed
 
 - [x] SDD fondasi dari PRD draf 5: docs/project/prd.md pointer, product/, .sdd/
-- [x] Spec baseline 6 unit: 001 orientasi/navigasi (E-01), 002 survey-lokal (E-02), 003 diagnosis (E-03), 004 calculator (E-04 + US-08/19/13/14), 005 roadmap (E-05), 006 pasca-MVP/batas (E-06+E-08, DRAFT BLOCKED)
+- [x] Spec baseline 6 unit rev 5: 001 orientasi/navigasi (E-01: US-01,07), 002 survey-lokal (E-02 + rujuk US-08,10,11), 003 diagnosis (E-03 + owner US-08), 004 calculator (E-04 + owner US-10, US-09,12,13), 005 roadmap (E-05: US-06), 006 pasca-MVP/batas (E-06+E-08: US-14–20, DRAFT BLOCKED)
 - [x] Landing `/` live: hero, sinyal, penyebab, arah, CTA + `src/lib/landingSurveyContent.ts`
 - [x] AppShell live: nav 5 halaman MVP, status aktif, menu mobile, footer batasan
 - [x] `/privasi` + `/syarat` live (pendukung, luar lima MVP)
@@ -47,3 +47,4 @@ Epic→unit selesai; lanjut design satu unit tiap PO approve.
 - Snapshot implementasi: Landing `/` + AppShell + `/privasi` + `/syarat` live; `/survey`, `/diagnosis`, `/kalkulator`, `/roadmap` placeholder `ComingSoon`. Tahap benar: shell/Landing dulu sebelum isi 002–005; gate katalog/bobot/ambang tetap blokir design formal.
 - PRD §8 final fresh: hierarki Scrum Guide, US-01–US-20 ID = urutan, AC Given-When-Then biner, traceability §8.9. Tanpa jejak ID/kode lama.
 - Turunan fresh: specs 001–006 rev 4, product/backlog.md, product/capability-map.md, .sdd/traceability/requirements.md. Lint + typecheck bersih.
+- Kesesuaian PRD↔spec terverifikasi programatis: 20 US, 22 blok, 77 AC cocok semua; AC-17-01–AC-20-01 ditambah ke 006; owner tunggal US-08→003, US-10→004; specs rev 5.

@@ -2,7 +2,7 @@
 
 **Lifecycle:** SPECIFIED
 **Health:** VALID
-**Revision:** 4
+**Revision:** 5
 **Authority:** Turunan `design/PRD draf 5.md` v5.0 untuk unit ini. PRD §8 authoritative untuk ID/AC; bila konflik, PRD menang hingga spec direvisi.
 
 ## 1. Purpose
@@ -130,7 +130,7 @@ Sebagai pengguna, saya ingin transisi antarpertanyaan yang tidak mengganggu agar
 - AC-11-02: Pengguna dapat menyelesaikan Survey tanpa menunggu animasi.
 - AC-11-03: Animasi dapat dihentikan atau dihormati saat reduced motion aktif.
 
-#### US-10 — Memahami istilah dan contoh pengisian (MVP bila waktu · Should, bagian Survey)
+#### US-10 — Memahami istilah dan contoh pengisian (MVP bila waktu · Should, permukaan Survey; AC berbagi dengan unit 004)
 
 Sebagai pengguna dengan literasi bisnis terbatas, saya ingin mendapat bantuan istilah dan contoh agar dapat menjawab Survey serta membaca Calculator dengan benar.
 
@@ -138,7 +138,7 @@ Sebagai pengguna dengan literasi bisnis terbatas, saya ingin mendapat bantuan is
 - AC-10-02: Contoh pengisian tidak dianggap sebagai jawaban pengguna dan dapat ditutup.
 - AC-10-03: Bantuan tidak mengubah scoring atau hasil kalkulator.
 
-#### US-08 — Memverifikasi aturan diagnosis dan scoring (MVP · Must, berlaku untuk Survey sebagai sumber input)
+#### US-08 — Memverifikasi aturan diagnosis dan scoring (MVP · Must, input Survey; AC owner unit 003, dirujuk di sini)
 
 Sebagai tim produk, saya ingin menguji aturan diagnosis pada kasus terkontrol agar hasil deterministik dapat dijelaskan sebelum digunakan.
 

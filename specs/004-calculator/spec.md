@@ -2,7 +2,7 @@
 
 **Lifecycle:** SPECIFIED
 **Health:** VALID
-**Revision:** 4
+**Revision:** 5
 **Authority:** Turunan `design/PRD draf 5.md` v5.0 untuk unit ini. PRD §8 authoritative untuk ID/AC; bila konflik, PRD menang hingga spec direvisi.
 
 ## 1. Purpose
@@ -127,7 +127,7 @@ Sebagai pengguna, saya ingin mencetak atau menyalin hasil lokal agar dapat memba
 - AC-13-02: Output menyertakan disclaimer bahwa diagnosis indikatif dan kalkulator bukan laporan keuangan.
 - AC-13-03: Fitur tidak aktif sebelum review privasi dan pengujian penghapusan data lokal.
 
-#### US-10 — Memahami istilah dan contoh pengisian (MVP bila waktu · Should, bagian Calculator)
+#### US-10 — Memahami istilah dan contoh pengisian (MVP bila waktu · Should, owner unit ini; permukaan Survey dirujuk unit 002)
 
 Sebagai pengguna dengan literasi bisnis terbatas, saya ingin mendapat bantuan istilah dan contoh agar dapat menjawab Survey serta membaca Calculator dengan benar.
 

@@ -2,7 +2,7 @@
 
 **Lifecycle:** DRAFT
 **Health:** BLOCKED
-**Revision:** 4
+**Revision:** 5
 **Authority:** Turunan `design/PRD draf 5.md` v5.0 untuk unit ini. Bukan otorisasi bangun. PRD §8 authoritative untuk ID/AC; aktivasi butuh spec terpisah + persetujuan.
 
 ## 1. Purpose
@@ -96,19 +96,19 @@ Sebagai pemilik usaha, saya ingin melihat hubungan area usaha secara visual.
 
 #### US-17 — Akun dan sinkronisasi lintas perangkat (Won't for MVP)
 
-Akun, backend persistence, kode pemulihan, dan sinkronisasi lintas perangkat tidak dibangun pada MVP.
+- AC-17-01: Akun, backend persistence, kode pemulihan, dan sinkronisasi lintas perangkat tidak dibangun pada MVP.
 
 #### US-18 — Pencatatan transaksi harian (Won't for MVP)
 
-Pencatatan transaksi harian tidak dibangun pada MVP; produk tetap berupa diagnosis berkala dan kalkulator manual.
+- AC-18-01: Pencatatan transaksi harian tidak dibangun pada MVP; produk tetap berupa diagnosis berkala dan kalkulator manual.
 
 #### US-19 — Integrasi marketplace dan pembayaran (Won't for MVP)
 
-Integrasi marketplace atau layanan pembayaran tidak dibangun pada MVP.
+- AC-19-01: Integrasi marketplace atau layanan pembayaran tidak dibangun pada MVP.
 
 #### US-20 — Dashboard pendamping dan komunitas (Won't for MVP)
 
-Dashboard multi-UMKM dan fitur komunitas tidak dibangun pada MVP.
+- AC-20-01: Dashboard multi-UMKM dan fitur komunitas tidak dibangun pada MVP.
 
 ## 10. Dependencies
 
