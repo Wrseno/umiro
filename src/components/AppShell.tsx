@@ -180,25 +180,25 @@ function SiteBrand() {
 
 function SiteFooter({ pathname }: { pathname: string }) {
   return (
-    <footer className="border-t border-black/5 bg-surface">
+    <footer className="bg-navy-deep text-[#c6d9e8]">
       <div className="mx-auto grid w-full max-w-[1240px] grid-cols-1 gap-10 px-4 py-12 sm:px-5 md:grid-cols-[1.4fr_1fr_1.2fr] md:px-8">
         <div>
-          <p className="font-display text-[1.0625rem] font-bold tracking-[-0.01em]">
+          <p className="font-display text-[1.0625rem] font-bold tracking-[-0.01em] text-white">
             {NAV.brand}
           </p>
-          <p className="mt-3 max-w-[46ch] text-small leading-[1.7] text-text-secondary">
+          <p className="mt-3 max-w-[46ch] text-small leading-[1.7] text-[#a9c0d2]">
             {NAV.footerDescription}
           </p>
         </div>
         <nav aria-label="Navigasi bawah">
-          <p className="overline">Halaman</p>
+          <p className="text-[0.875rem] font-bold text-white">Halaman</p>
           <ul className="mt-3 flex flex-col gap-2 text-small">
             {NAV.links.map(({ href, label }) => (
               <li key={href}>
                 <Link
                   href={href}
                   aria-current={pathname === href ? "page" : undefined}
-                  className="font-medium tracking-[0.01em] text-text-secondary transition-fluid hover:text-text-primary"
+                  className="font-medium tracking-[0.01em] text-[#a9c0d2] transition-fluid hover:text-gold-soft"
                 >
                   {label}
                 </Link>
@@ -207,19 +207,19 @@ function SiteFooter({ pathname }: { pathname: string }) {
           </ul>
         </nav>
         <div>
-          <p className="overline">Batasan</p>
-          <ul className="mt-3 flex flex-col gap-2 text-small leading-[1.7] text-text-secondary">
+          <p className="text-[0.875rem] font-bold text-white">Batasan</p>
+          <ul className="mt-3 flex flex-col gap-2 text-small leading-[1.7] text-[#a9c0d2]">
             {NAV.footerLimitations.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
-          <p className="mt-4 text-caption leading-[1.6] text-text-secondary">
+          <p className="mt-4 text-caption leading-[1.6] text-[#7f9aad]">
             {NAV.footerGratis}
           </p>
         </div>
       </div>
-      <div className="border-t border-black/5">
-        <div className="mx-auto flex w-full max-w-[1240px] flex-col gap-1 px-4 py-4 text-caption leading-[1.6] text-text-secondary sm:flex-row sm:items-center sm:justify-between sm:px-5 md:px-8">
+      <div className="border-t border-white/10">
+        <div className="mx-auto flex w-full max-w-[1240px] flex-col gap-1 px-4 py-4 text-caption leading-[1.6] text-[#7f9aad] sm:flex-row sm:items-center sm:justify-between sm:px-5 md:px-8">
           <p>
             {NAV.brand} · {NAV.brandSub}
           </p>
@@ -228,7 +228,7 @@ function SiteFooter({ pathname }: { pathname: string }) {
               <Link
                 key={href}
                 href={href}
-                className="transition-fluid hover:text-text-primary"
+                className="transition-fluid hover:text-gold-soft"
               >
                 {label}
               </Link>

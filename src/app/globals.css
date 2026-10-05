@@ -23,6 +23,22 @@
   --color-success: #047857;
   --color-error: #b91c1c;
 
+  /* [UMKM-REF] um-km.org — navy institutional + gold konversi.
+     Emerald tetap untuk aksi produk; navy untuk hero/callout/footer. */
+  --color-navy: #0b2745;
+  --color-navy-deep: #071a2e;
+  --color-navy-2: #123d66;
+  --color-ocean: #2d73a8;
+  --color-sky: #69a9cc;
+  --color-gold: #e2b44b;
+  --color-gold-soft: #f4d47f;
+  --color-gold-ink: #142a3d;
+  --color-ink: #17324d;
+  --color-slate: #64758a;
+  --color-paper: #f5f8fb;
+  --color-alt: #eaf2f7;
+  --color-line: #dbe5ee;
+
   /* [NK] Satu-satunya aksen: emerald untuk elemen interaktif. Sorotan
      non-interaktif memakai status amber di bawah, bukan aksen kedua. */
   --color-bottleneck: #b45309; /* 4.68:1 di atas background — lolos AA */
@@ -54,7 +70,9 @@
   --radius-chip: 4px;
   --radius-control: 6px; /* tombol, input, select */
   --radius-panel: 8px; /* kartu metadata, dropdown */
-  --radius-card: 12px; /* kartu utama, bilah pencarian */
+  /* [UMKM-REF] um-km.org kartu 18px, hero-media 24px. */
+  --radius-card: 18px; /* kartu utama, bilah pencarian */
+  --shadow-institutional: 0 18px 55px rgb(11 39 69 / 0.12);
 
   /* ── Bayangan ────────────────────────────────────────────── */
   /* Hanya untuk keadaan hover dan fokus — tidak untuk elemen diam.
@@ -133,10 +151,11 @@
 }
 
 /* Genesis: kartu rata dengan garis 1px, terangkat 2px beserta bayangan
-   saat disentuh; transisi 200ms. */
+   saat disentuh; transisi 200ms.
+   [UMKM-REF] garis #dbe5ee, bayangan institutional navy. */
 @utility card {
   background: var(--color-surface);
-  border: 1px solid rgb(16 44 34 / 0.08);
+  border: 1px solid var(--color-line);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   transition:
@@ -241,16 +260,32 @@
   filter: blur(0);
 }
 
-/* Panel gelap solid — karakter emerald. Basis hijau-hitam dengan sorotan
-   radial halus dan grain agar tidak rata steril. */
+/* Panel gelap — [UMKM-REF] gradien navy um-km.org + sorotan gold.
+   Emerald dipertahankan untuk ikon/checks, bukan basis panel. */
 .panel-dark {
-  background-color: #0f1b16;
-  background-image: radial-gradient(
-    120% 90% at 20% 0%,
-    rgb(5 150 105 / 0.26),
-    transparent 55%
-  );
+  background-color: #0b2745;
+  background-image:
+    radial-gradient(circle, rgb(226 180 75 / 0.24), transparent 62%),
+    linear-gradient(125deg, #082544, #154b75 55%, #397ba5);
   position: relative;
+}
+
+@utility kicker {
+  color: var(--color-ocean);
+  font-size: var(--text-overline);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@utility badge-inst {
+  display: inline-flex;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #e7f1f8;
+  color: var(--color-ocean);
+  font-size: 11px;
+  font-weight: 800;
 }
 
 /* Grain tetap di seluruh halaman — memecah flat digital. */

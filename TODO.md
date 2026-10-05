@@ -40,6 +40,11 @@ Epic→unit selesai; lanjut design satu unit tiap PO approve.
 
 ## Progress History
 
+### 2026-10-05
+
+- Restyle Landing ala um-km.org: token navy/gold di `globals.css`, hero navy + CTA gold, stats overlap, kartu 18px + badge, CTA callout navy, footer navy-deep. Copy tetap di `src/content/`. Lint + typecheck + build hijau.
+- Rombak bebas iterasi 2: copy `landing.ts` variasi baru; layout `page.tsx` hero centered + proof strip, stats gold-rule, steps timeline vertikal, sinyal ghost-number, penyebab dark glass, arah bento, tools accent-bar, batas inline, CTA narrow centered. Lint + typecheck + build hijau.
+
 ### 2026-10-04
 
 - Inisialisasi SDD fondasi dari PRD draf 5.
