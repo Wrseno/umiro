@@ -2,34 +2,31 @@
 
 /* ──────────────────────────────────────────────────────────────
    Token Genesis — lihat genesis-DESIGN.md
-   Penyesuaian untuk Naik Kelas dicatat pada komentar bertanda [NK].
+   Penyesuaian untuk UMIRO dicatat pada komentar bertanda [NK].
    ────────────────────────────────────────────────────────────── */
 
 @theme {
   /* ── Warna ───────────────────────────────────────────────── */
-  --color-primary: #6366f1;
-  --color-primary-hover: #4f46e5;
-  --color-neutral: #9c9c9c;
-  /* [NK] Latar isi digeser sedikit hangat dan sidebar sedikit dingin,
-     supaya kartu putih benar-benar terangkat dari keduanya. Pada nilai
-     Genesis asli (#FAFAFA vs #FFFFFF) selisihnya tidak terlihat. */
-  --color-background: #faf9f7;
-  --color-sidebar: #f5f5f9;
+  /* [A11Y] Nilai di bawah lolos WCAG AA (≥4.5:1 untuk teks normal):
+     primary #047857/putih = 5.48, hover #065F46/putih = 7.4,
+     neutral #5F6F66/bg = 4.96, bottleneck #B45309/bg = 4.68. */
+  --color-primary: #047857;
+  --color-primary-hover: #065f46;
+  --color-neutral: #5f6f66;
+  /* [NK] Latar sejuk kehijauan — kartu putih terangkat jelas, dan seluruh
+     abu diselaraskan ke rona hijau yang sama agar tidak campur hangat. */
+  --color-background: #f4f7f5;
   --color-surface: #ffffff;
-  --color-text-primary: #0a0a0a;
-  --color-text-secondary: #6b6b6b;
-  --color-border: #e8e8ec;
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  --color-text-primary: #101915;
+  --color-text-secondary: #4a5950;
+  --color-border: #dce5df;
+  --color-success: #047857;
+  --color-error: #b91c1c;
 
-  /* [NK] Warna semantik khas produk. Indigo tetap khusus elemen
-     interaktif, jadi sorotan non-interaktif memakai nilai di bawah. */
-  --color-bottleneck: #f59e0b; /* kotak titik mentok, bar di bawah ambang */
-  --color-bottleneck-tint: #fef6e7;
-  --color-bottleneck-border: #f5d9a0;
-  --color-loss-tint: #fdecec; /* untung bersih negatif */
-  --color-success-tint: #e7f7f1; /* kelas selesai */
+  /* [NK] Satu-satunya aksen: emerald untuk elemen interaktif. Sorotan
+     non-interaktif memakai status amber di bawah, bukan aksen kedua. */
+  --color-bottleneck: #b45309; /* 4.68:1 di atas background — lolos AA */
+  --color-bottleneck-border: #e5c07b;
 
   /* ── Huruf ───────────────────────────────────────────────── */
   --font-display: var(--font-general-sans), ui-sans-serif, system-ui, sans-serif;
@@ -60,21 +57,23 @@
   --radius-card: 12px; /* kartu utama, bilah pencarian */
 
   /* ── Bayangan ────────────────────────────────────────────── */
-  /* Hanya untuk keadaan hover dan fokus — tidak untuk elemen diam. */
-  --shadow-card: 0 1px 2px rgb(16 16 24 / 0.04), 0 1px 3px rgb(16 16 24 / 0.03);
-  --shadow-lift: 0 8px 30px rgb(0 0 0 / 0.08);
-  --shadow-pill: 0 1px 2px rgb(16 16 24 / 0.06), 0 2px 8px rgb(16 16 24 / 0.05);
-  --shadow-primary-glow: 0 4px 12px rgb(99 102 241 / 0.35);
-  --shadow-focus-ring: 0 0 0 3px rgb(99 102 241 / 0.12);
+  /* Hanya untuk keadaan hover dan fokus — tidak untuk elemen diam.
+     [NK] Tint sejuk mengikuti background #f4f7f5, bukan hitam generik. */
+  --shadow-card: 0 1px 2px rgb(16 44 34 / 0.05), 0 1px 3px rgb(16 44 34 / 0.04);
+  --shadow-lift: 0 8px 30px rgb(16 44 34 / 0.1);
+  --shadow-focus-ring: 0 0 0 3px rgb(4 120 87 / 0.14);
 
-  /* ── Tata letak ──────────────────────────────────────────── */
-  --container-page: 1280px;
-  --spacing-sidebar: 232px;
+  /* ── Gerak ─────────────────────────────────────────────────── */
+  --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
+  --shadow-ambient:
+    0 24px 80px -24px rgb(16 44 34 / 0.18),
+    0 2px 8px rgb(16 44 34 / 0.06);
 }
 
 @layer base {
   html {
     -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -82,21 +81,34 @@
     color: var(--color-text-primary);
     font-family: var(--font-sans);
     font-size: var(--text-body);
-    line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    line-height: 1.7;
   }
 
   h1,
-  h2,
-  h3,
-  h4 {
+  h2 {
     font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
+    letter-spacing: -0.02em;
+    line-height: 1.12;
     text-wrap: balance;
   }
 
-  /* Cincin fokus indigo 3px, bukan bayangan. */
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+
+  /* Cincin fokus emerald 3px, bukan bayangan. */
   :focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
@@ -124,18 +136,18 @@
    saat disentuh; transisi 200ms. */
 @utility card {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgb(16 44 34 / 0.08);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
   transition:
-    transform 200ms,
-    box-shadow 200ms;
+    transform 700ms var(--ease-fluid),
+    box-shadow 700ms var(--ease-fluid);
 }
 
 @utility card-interactive {
   &:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lift);
+    box-shadow: var(--shadow-ambient);
   }
 }
 
@@ -146,4 +158,108 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-secondary);
+}
+
+/* Eyebrow pil mikroskopis — mendahului H1/H2 besar. */
+/* [A11Y] 12px/600/0.12em: terbaca di 360px, kontras #4A5950 lolos AA. */
+@utility eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* Double-Bezel: cangkang luar peranti + inti dalam. */
+@utility bezel {
+  background: rgb(16 44 34 / 0.05);
+  border: 1px solid rgb(16 44 34 / 0.08);
+  border-radius: 2rem;
+  padding: 0.375rem;
+}
+
+@utility bezel-core {
+  background: var(--color-surface);
+  border-radius: calc(2rem - 0.375rem);
+  box-shadow:
+    inset 0 1px 1px rgb(255 255 255 / 0.9),
+    var(--shadow-ambient);
+  overflow: hidden;
+}
+
+/* Transisi fluida — satu kurva untuk seluruh produk. */
+@utility transition-fluid {
+  transition:
+    transform 700ms var(--ease-fluid),
+    opacity 700ms var(--ease-fluid),
+    background-color 700ms var(--ease-fluid),
+    box-shadow 700ms var(--ease-fluid),
+    border-color 700ms var(--ease-fluid),
+    color 700ms var(--ease-fluid);
+}
+
+/* Fluid load-in: stagger via --index, transform + opacity only. */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: reveal-in 0.6s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation-delay: calc(var(--index, 0) * 100ms);
+}
+
+@keyframes reveal-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll interpolation via IntersectionObserver — heavy fade-up. */
+.io-reveal {
+  opacity: 0;
+  transform: translateY(4rem);
+  filter: blur(12px);
+  transition:
+    transform 800ms var(--ease-fluid),
+    opacity 800ms var(--ease-fluid),
+    filter 800ms var(--ease-fluid);
+  transition-delay: calc(var(--index, 0) * 100ms);
+  will-change: transform;
+}
+
+.io-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+/* Panel gelap solid — karakter emerald. Basis hijau-hitam dengan sorotan
+   radial halus dan grain agar tidak rata steril. */
+.panel-dark {
+  background-color: #0f1b16;
+  background-image: radial-gradient(
+    120% 90% at 20% 0%,
+    rgb(5 150 105 / 0.26),
+    transparent 55%
+  );
+  position: relative;
+}
+
+/* Grain tetap di seluruh halaman — memecah flat digital. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }

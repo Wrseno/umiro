@@ -1,0 +1,26 @@
+# Optional. Copy to .github/workflows/sdd-governance.yml if the project
+# wants SDD structure/traceability checked automatically on every PR.
+# This is opt-in — most projects should start with manual/semi-automated
+# checks (just running scripts/sdd-check.sh locally) before wiring it into CI.
+
+name: SDD Governance Check
+
+on:
+  pull_request:
+    paths:
+      - "specs/**"
+      - "decisions/**"
+      - ".sdd/**"
+      - "TODO.md"
+      - "AGENTS.md"
+
+jobs:
+  sdd-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run SDD governance check
+        run: bash scripts/sdd-check.sh .
+      # By default this job only reports (see sdd-check.sh exit codes).
+      # To make it a hard merge gate, uncomment:
+      # continue-on-error: false
