@@ -94,7 +94,7 @@ Membantu pengguna memberi konteks usaha melalui pertanyaan singkat dengan bahasa
 ## 8. Constraints
 
 - Next.js App Router dan TypeScript. Tailwind CSS dan shadcn/ui bila sudah tersedia; tidak menambah dependency tanpa kebutuhan.
-- Scoring berjalan lokal/deterministik. Tidak ada Neon/Postgres, Route Handler, identitas anonim, API key, atau layanan AI untuk MVP.
+- Scoring berjalan lokal/deterministik. Tidak ada basis data server, layanan server, identitas anonim, API key, atau layanan AI untuk MVP.
 - `localStorage` menyimpan jawaban survey, ringkasan diagnosis, dan hasil kalkulator dalam payload berversi dan berukuran terbatas.
 - Pengguna diberi tahu data hanya tersedia pada browser yang sama dan dapat hilang saat data situs dibersihkan atau mode privat ditutup. Tidak ada data sensitif yang dikirim ke server pada MVP.
 - Build quality gate: lint, typecheck, unit test rumus kalkulator, dan production build.
@@ -133,22 +133,13 @@ Sebagai pengguna, saya ingin transisi antarpertanyaan yang tidak mengganggu agar
 - AC-11-02: Pengguna dapat menyelesaikan Survey tanpa menunggu animasi.
 - AC-11-03: Animasi dapat dihentikan atau dihormati saat reduced motion aktif.
 
-#### US-10 — Memahami istilah dan contoh pengisian (MVP bila waktu · Should, permukaan Survey; AC berbagi dengan unit 004)
+#### US-10 — Memahami istilah dan contoh pengisian (MVP bila waktu · Should, permukaan Survey)
 
-Sebagai pengguna dengan literasi bisnis terbatas, saya ingin mendapat bantuan istilah dan contoh agar dapat menjawab Survey serta membaca Calculator dengan benar.
+AC-10-01 s/d AC-10-03 dimiliki unit 004 — lihat `specs/004-calculator/spec.md`. Unit ini hanya menyediakan permukaan bantuan di Survey; tidak menyalin AC.
 
-- AC-10-01: Istilah HPP, margin kontribusi, dan titik impas memiliki penjelasan singkat saat pertama digunakan.
-- AC-10-02: Contoh pengisian tidak dianggap sebagai jawaban pengguna dan dapat ditutup.
-- AC-10-03: Bantuan tidak mengubah scoring atau hasil kalkulator.
+#### US-08 — Memverifikasi aturan diagnosis dan scoring (MVP · Must, input Survey)
 
-#### US-08 — Memverifikasi aturan diagnosis dan scoring (MVP · Must, input Survey; AC owner unit 003, dirujuk di sini)
-
-Sebagai tim produk, saya ingin menguji aturan diagnosis pada kasus terkontrol agar hasil deterministik dapat dijelaskan sebelum digunakan.
-
-- AC-08-01: Kasus uji mencakup margin nol/negatif, retensi rendah, kapasitas terbatas, keuangan tidak jelas, seri skor dekat, dan data tidak cukup.
-- AC-08-02: Setiap kasus mencatat input, hasil yang diharapkan, hasil aktual, dan alasan perbedaan.
-- AC-08-03: Perubahan bobot atau ambang memicu pengulangan kasus uji terkait.
-- AC-08-04: Hasil uji tidak dipresentasikan sebagai validasi statistik pengguna.
+AC-08-01 s/d AC-08-04 dimiliki unit 003 — lihat `specs/003-diagnosis/spec.md`. Unit ini menyediakan input Survey berversi untuk kasus uji; tidak menyalin AC.
 
 ## 10. Dependencies
 

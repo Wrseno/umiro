@@ -5,7 +5,7 @@
 > US-09, US-12, US-13, owner US-10.
 
 **Lifecycle:** DRAFT
-**Health:** VALID
+**Health:** REVIEW_REQUIRED
 **Traces to:** `spec.md` (unit ini) · PRD §8.5 (US-05, US-09–US-13),
   Lampiran B
 **Reviewed against:** spec revision 6
@@ -26,7 +26,7 @@ survey/diagnosis.
   `ceil((T+F)/(M·D))` bila `M>0, D>0, T+F>0`; `T` ≤ laba → tercapai,
   tambahan 0. `M≤0`/`H≤0`/`D=0`/penyebut tak-positif → tanpa angka
   impas/target + pesan kondisi. Rupiah `Math.round`; unit `Math.ceil`.
-- `CalculatorForm` (belum dibangun): input H, V-atau-batch (`V =
+- `Calculator` (`src/app/kalkulator/Calculator.tsx`): input H, V-atau-batch (`V =
   biayaBatch/unitBatch`), Q, D, F, T opsional + toggle direct/platform
   (US-09: potongan % vs nominal — putuskan satu, default %) + glosarium
   HPP/margin/impas (US-10: tooltip sekali tampil, dapat ditutup).
@@ -34,7 +34,6 @@ survey/diagnosis.
   simpan asumsi + hasil; tombol "jadikan utama" eksplisit.
 - Ekspor US-13 (Could, gate review privasi): print CSS / salin teks +
   disclaimer; tanpa kirim server.
-- `ComingSoon`: placeholder aktif saat ini.
 
 ## Domain Model
 
@@ -45,7 +44,12 @@ survey/diagnosis.
 
 ## Data Model
 
-Key `umiro.calc.v1`: ARRAY `CalcEntry[]` = `[{ id, input, result, savedAt }]`.
+Terbangun (versi PRD): `umiro.calc.v1` = `{ form: CalcForm, savedAt }` —
+isian mentah valid terakhir, ditulis tiap isian valid, dipulihkan saat buka
+(`src/lib/calc-storage.ts`).
+
+Usulan amandemen (belum dibangun): `umiro.calc.v2` = ARRAY `CalcEntry[]` =
+`[{ id, input, result, savedAt }]`.
 Tiap hitungan valid APPEND entri baru (jangan timpa). Daftar riwayat tampil
 di `/kalkulator` (terbaru dulu) + tombol hapus per entri (langsung, tanpa
 konfirmasi ganda) + tombol "hapus semua" opsional. Payload rusak → jangan

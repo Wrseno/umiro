@@ -24,10 +24,5 @@ recommended, or a gate's requirements change):
 
 ## Migration log
 
-### [Version] — [Date]
-
-**Required:**
-- [...]
-
-**Not required (no retroactive rewrite needed):**
-- [...]
+_Belum ada migrasi aturan governance. Entri pertama ditambah saat aturan
+berubah, format: `### <versi> — <YYYY-MM-DD>` + Required / Not required._

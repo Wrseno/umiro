@@ -1,10 +1,11 @@
 # Design — 003 Diagnosis Indikatif
 
-> Kontrak solusi Diagnosis + aturan bottleneck. Status: rute placeholder;
-> fungsi scoring menunggu katalog/bobot/ambang final + ADR. Traces ke
+> Kontrak solusi Diagnosis + aturan bottleneck. Status: `/diagnosis` live (ADR-004);
+> katalog v1 + bobot menunggu review pakar dan uji pengguna. Traces ke
 > `spec.md` US-04, owner US-08.
 
 **Lifecycle:** DRAFT
+**Implementation:** live — katalog/scoring per ADR-004 (Proposed)
 **Health:** REVIEW_REQUIRED
 **Traces to:** `spec.md` (unit ini) · PRD §8.5 (US-04), Lampiran A/A1 ·
   ADR scoring (wajib sebelum implementasi, belum ada)
@@ -21,16 +22,15 @@ awal + disclaimer, tombol "Isi Survei Baru" ke `/survey`, plus tautan biasa ke `
 
 ## Components
 
-- `scoreDiagnosis(payload, catalog)` (belum dibangun, calon
+- `scoreDiagnosis(answers, catalog)` (`src/lib/diagnosis.ts`, ADR-004; semula calon
   `src/lib/diagnosis.ts`): agregasi per kategori F/M/R/A/C skala 0–100,
   hitung selisih dua terendah, terapkan aturan tie/data (AC-04-05/06).
   Wajib unit-test dengan kasus Lampiran A1.
-- `DiagnosisPage` (belum dibangun): server render kerangka + client leaf
+- `Diagnosis` (`src/app/diagnosis/Diagnosis.tsx`): server render kerangka + client leaf
   untuk baca `localStorage` (hindari hydration mismatch: render fallback dulu,
   ganti setelah baca).
-- `ResurveyButton` (bagian DiagnosisPage): `<Link href="/survey">Isi Survei Baru</Link>` —
+- Tautan "Isi survei lagi" (bagian `Diagnosis`): `<Link href="/survey">Isi Survei Baru</Link>` —
   SELALU tampil (ada/tanpa hasil); submit baru menimpa hasil lama (aturan unit 002).
-- `ComingSoon`: placeholder aktif saat ini.
 
 ## Domain Model
 

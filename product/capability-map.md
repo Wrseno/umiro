@@ -35,8 +35,11 @@
 
 - Survival/Improvement/Growth × 4 levers, baca-saja (US-06 Must)
 
+### MVP bila waktu
+
+- Should: bantuan istilah (US-10); Could: transisi survey (US-11), skenario harga (US-12), ekspor/print lokal (US-13)
+
 ### Eksplorasi pasca-MVP
 
 - Rekomendasi AI (US-14 Future), chat roadmap (US-15 Future), mindmap (US-16 Future)
-- Should: bantuan istilah (US-10); Could: transisi survey (US-11), skenario harga (US-12), ekspor/print lokal (US-13)
 - Won't for MVP: akun/sinkron (US-17), kas harian (US-18), marketplace/payment (US-19), dashboard pendamping (US-20)
