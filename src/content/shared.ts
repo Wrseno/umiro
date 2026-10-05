@@ -9,6 +9,4 @@ export const SHARED = {
   skipToContent: "Lewati ke konten",
   backToHome: "Kembali ke Beranda",
   backToHomeArrow: "← Kembali ke Beranda",
-  comingSoonBody:
-    "Halaman ini segera hadir. Mulai dari beranda untuk membaca cara kerja UMIRO.",
 } as const;

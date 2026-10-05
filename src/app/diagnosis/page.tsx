@@ -1,12 +1,20 @@
-import { ComingSoon } from "@/components/ComingSoon";
-import { PLACEHOLDERS } from "@/content";
+import type { Metadata } from "next";
+import { AppShell } from "@/components/AppShell";
+import { DIAGNOSIS as T } from "@/content";
+import { Diagnosis } from "./Diagnosis";
 
-/** Halaman Diagnosis — isi menyusul. */
+export const metadata: Metadata = {
+  title: T.meta.title,
+  description: T.meta.description,
+};
+
+/** Diagnosis — unit 003 (US-04, US-08). */
 export default function DiagnosisPage() {
   return (
-    <ComingSoon
-      eyebrow={PLACEHOLDERS.diagnosis.eyebrow}
-      title={PLACEHOLDERS.diagnosis.title}
-    />
+    <AppShell>
+      <div className="pt-6">
+        <Diagnosis />
+      </div>
+    </AppShell>
   );
 }

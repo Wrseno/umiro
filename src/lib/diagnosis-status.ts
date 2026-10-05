@@ -9,6 +9,9 @@
 
 const PREFIXES = ["umiro.survey.v", "umiro.diagnosis.v"];
 
+/** Event tab-sama; event `storage` bawaan hanya terpicu dari tab lain. */
+export const DIAGNOSIS_STATUS_EVENT = "umiro:diagnosis-status";
+
 function hasPayload(prefix: string): boolean {
   try {
     for (let i = 0; i < localStorage.length; i++) {
@@ -31,4 +34,19 @@ function hasPayload(prefix: string): boolean {
 export function hasValidResult(): boolean {
   if (typeof window === "undefined") return false;
   return PREFIXES.some(hasPayload);
+}
+
+/** Langganan perubahan status (tab lain + tab sama) untuk `useSyncExternalStore`. */
+export function subscribeDiagnosisStatus(onChange: () => void): () => void {
+  window.addEventListener("storage", onChange);
+  window.addEventListener(DIAGNOSIS_STATUS_EVENT, onChange);
+  return () => {
+    window.removeEventListener("storage", onChange);
+    window.removeEventListener(DIAGNOSIS_STATUS_EVENT, onChange);
+  };
+}
+
+/** Dipanggil penulis (unit 002/003) setelah menulis/menghapus hasil di tab ini. */
+export function notifyDiagnosisStatusChange(): void {
+  window.dispatchEvent(new Event(DIAGNOSIS_STATUS_EVENT));
 }

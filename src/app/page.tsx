@@ -1,7 +1,8 @@
 import { AppShell } from "@/components/AppShell";
 import { DiagnosisLink } from "@/components/DiagnosisCta";
 import { Reveal } from "@/components/Reveal";
-import { LANDING as T } from "@/content";
+import Link from "next/link";
+import { LANDING as T, ROADMAP } from "@/content";
 
 /**
  * Landing UMIRO — Landing + Survey scope only.
@@ -33,12 +34,7 @@ export default function Home() {
         <div className="relative mx-auto w-full max-w-[1240px] px-4 py-16 sm:px-5 sm:py-24 md:px-8 md:py-32">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="w-full min-w-0">
-              <span className="eyebrow">
-                <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-bottleneck" />
-                {T.eyebrow}
-              </span>
-
-              <h1 className="mt-6 max-w-[20ch] text-[length:var(--text-display)] leading-[1.08] font-bold tracking-[-0.015em]">
+              <h1 className="max-w-[20ch] text-[length:var(--text-display)] leading-[1.08] font-bold tracking-[-0.015em]">
                 {T.title}
               </h1>
 
@@ -202,7 +198,55 @@ export default function Home() {
               ),
             )}
           </div>
+
+          <Reveal>
+            <div className="mt-10 flex flex-col gap-4 rounded-[var(--radius-card)] border border-bottleneck-border bg-background p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+              <div className="flex gap-3">
+                <span aria-hidden className="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-bottleneck/10 font-bold text-bottleneck">
+                  !
+                </span>
+                <p className="max-w-[70ch] text-small leading-[1.7] text-text-secondary">
+                  <strong className="font-semibold text-text-primary">{T.peringatan.title}</strong>{" "}
+                  {T.peringatan.body}
+                </p>
+              </div>
+              <Link
+                href={T.peringatan.href}
+                className="transition-fluid inline-flex h-11 shrink-0 items-center self-start rounded-full px-5 text-small font-semibold ring-1 ring-bottleneck-border hover:bg-surface sm:self-auto"
+              >
+                {T.peringatan.cta}
+              </Link>
+            </div>
+          </Reveal>
         </div>
+      </section>
+
+      {/* Four levers */}
+      <section className="mx-auto w-full max-w-[1240px] px-4 pt-16 sm:px-5 sm:pt-24 md:px-8 md:pt-32">
+        <Reveal>
+          <p className="eyebrow">{T.tuasEyebrow}</p>
+          <h2 className="mt-6 max-w-[26ch] text-[length:var(--text-section)] leading-[1.2] font-bold tracking-[-0.015em]">
+            {T.tuasTitle}
+          </h2>
+          <p className="mt-4 max-w-[64ch] text-base leading-[1.75] font-normal text-text-secondary">
+            {T.tuasBody}
+          </p>
+        </Reveal>
+        <ul className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {T.tuas.map(({ key, contoh }, i) => (
+            <Reveal key={key} index={i}>
+              <li className="card card-interactive flex h-full flex-col p-5">
+                <span className="font-mono text-caption font-medium text-primary">{T.tuasLabel(i + 1)}</span>
+                <h3 className="mt-2 text-[1.0625rem] leading-[1.35]">{ROADMAP.levers[key].nama}</h3>
+                <p className="mt-2 flex-1 text-small leading-[1.7] text-text-secondary">{ROADMAP.levers[key].tanya}</p>
+                <p className="mt-4 border-t border-black/5 pt-3 text-caption leading-[1.6]">
+                  <span className="font-semibold">{T.tuasContohLabel}: </span>
+                  <span className="text-text-secondary">{contoh}</span>
+                </p>
+              </li>
+            </Reveal>
+          ))}
+        </ul>
       </section>
 
       {/* Directions: split, stacks mobile */}
@@ -258,6 +302,29 @@ export default function Home() {
               </Reveal>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="mx-auto w-full max-w-[880px] px-4 pb-4 sm:px-5 md:px-8">
+        <Reveal>
+          <p className="eyebrow">{T.faqEyebrow}</p>
+          <h2 className="mt-6 text-[length:var(--text-section)] leading-[1.2] font-bold tracking-[-0.015em]">
+            {T.faqTitle}
+          </h2>
+        </Reveal>
+        <div className="mt-8 flex flex-col gap-3">
+          {T.faq.map(({ q, a }, i) => (
+            <details key={q} open={i === 0} className="card group px-5 py-4 [&_summary::-webkit-details-marker]:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold">
+                {q}
+                <span aria-hidden className="transition-fluid grid size-7 shrink-0 place-items-center rounded-full bg-black/5 text-text-secondary group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 max-w-[68ch] text-small leading-[1.75] text-text-secondary">{a}</p>
+            </details>
+          ))}
         </div>
       </section>
 

@@ -6,9 +6,11 @@
  */
 
 export const SITE = {
-  title: "UMIRO — Diagnosis Indikatif Usaha Mikro",
+  title: "UMIRO | Diagnosis Indikatif Usaha Mikro",
   description:
     "Jawab beberapa pertanyaan singkat, lalu ketahui satu area pemeriksaan yang paling menahan pertumbuhan usaha Anda.",
   locale: "id_ID",
-  ogImageAlt: "Pemilik usaha mikro memeriksa catatan keuangan di warung",
+  ogHeadline: "Temukan satu hambatan yang paling menahan usaha Anda.",
+  ogImageAlt:
+    "Kartu UMIRO: temukan satu hambatan yang paling menahan usaha Anda.",
 } as const;
