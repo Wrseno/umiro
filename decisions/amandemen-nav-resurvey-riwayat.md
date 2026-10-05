@@ -1,5 +1,8 @@
 # Usulan Amandemen PRD draf 5 — Button pojok dinamis + diagnosis ulang + riwayat kalkulator
 
+**Status:** Proposed (menunggu pengesahan PO)
+**Date:** 2026-10-04
+
 > Status: DRAF usulan, BELUM disahkan. PRD `design/PRD draf 5.md` tetap
 > upstream tidak berubah. RALAT: persistensi TETAP `localStorage`
 > (usulan cookie BATAL — tidak ada perubahan storage). Spec
@@ -44,13 +47,13 @@ perlu direvisi.
    bukan timpa.
 2. Daftar riwayat tampil di halaman (terbaru dulu); tiap entri dapat
    DIHAPUS langsung di halaman, tanpa konfirmasi ganda.
-3. Aturan baru: FR-010 + AC-05-09 (riwayat tumpuk-hapus), AC-05-11
-   (payload rusak; nomor AC-05-10 tetap batas pajak).
+3. Aturan baru: FR-010 + AC-05-11 (riwayat tumpuk-hapus). Nomor PRD
+   tidak digeser: AC-05-09 tetap payload rusak, AC-05-10 tetap batas pajak.
 
 ## E. Daftar baris PRD yang direvisi saat pengesahan
 
 §6 tabel Landing + aturan 5 + alur teks (button pojok, tombol Isi Survei
 Baru); §8 AC-01-01, AC-07-01/02/05 (+baru AC-07-06/07); §8 US-03 (+FR-009
 timpa); §8 US-04 (+AC-04-10, revisi AC-04-08); §8 US-05 (+FR-010,
-AC-05-09, AC-05-11); §8 ringkasan US-07 ("Menavigasi tiga item menu +
+AC-05-11); §8 ringkasan US-07 ("Menavigasi tiga item menu +
 button pojok dinamis"). TIDAK termasuk: baris storage manapun (tetap `localStorage`).

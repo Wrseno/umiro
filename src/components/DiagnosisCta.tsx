@@ -1,35 +1,38 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import Link from "next/link";
+import { useSyncExternalStore } from "react";
 import { NAV } from "@/content";
-import { hasValidResult } from "@/lib/diagnosis-status";
+import {
+  hasValidResult,
+  subscribeDiagnosisStatus,
+} from "@/lib/diagnosis-status";
 
-export function useDiagnosisTarget(pathname?: string) {
-  const initialReady = useMemo(() => hasValidResult(), []);
-  const [ready, setReady] = useState(initialReady);
+const C = NAV.diagnosisCta;
 
-  useEffect(() => {
-    const onStorage = () => setReady(hasValidResult());
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, [pathname]);
+/** Server + hydrasi selalu "Mulai Survei"; status `localStorage` dibaca setelahnya. */
+export function useDiagnosisTarget() {
+  const ready = useSyncExternalStore(
+    subscribeDiagnosisStatus,
+    hasValidResult,
+    () => false,
+  );
 
   return ready
-    ? { href: NAV.diagnosisCta.readyHref, label: NAV.diagnosisCta.readyLabel }
-    : { href: NAV.diagnosisCta.emptyHref, label: NAV.diagnosisCta.emptyLabel };
+    ? { href: C.readyHref, label: C.readyLabel, shortLabel: C.readyShortLabel }
+    : { href: C.emptyHref, label: C.emptyLabel, shortLabel: C.emptyShortLabel };
 }
 
 export function DiagnosisCta({ pathname }: { pathname: string }) {
-  const target = useDiagnosisTarget(pathname);
-  const shortLabel = target.href === "/diagnosis" ? "Diagnosis" : "Survei";
+  const target = useDiagnosisTarget();
 
   return (
-    <a
+    <Link
       href={target.href}
       aria-current={pathname === target.href ? "page" : undefined}
       className="group transition-fluid flex h-11 shrink-0 items-center gap-2 rounded-full bg-text-primary py-1 pr-1 pl-4 text-small font-semibold tracking-[0.01em] whitespace-nowrap text-white hover:shadow-[var(--shadow-ambient)] active:scale-[0.98] sm:pl-5"
     >
-      <span className="sm:hidden">{shortLabel}</span>
+      <span className="sm:hidden">{target.shortLabel}</span>
       <span className="hidden sm:inline">{target.label}</span>
       <span
         aria-hidden
@@ -49,7 +52,7 @@ export function DiagnosisCta({ pathname }: { pathname: string }) {
           />
         </svg>
       </span>
-    </a>
+    </Link>
   );
 }
 
@@ -62,9 +65,9 @@ export function DiagnosisLink({
 }) {
   const target = useDiagnosisTarget();
   return (
-    <a href={target.href} className={className}>
+    <Link href={target.href} className={className}>
       {target.label}
       {icon}
-    </a>
+    </Link>
   );
 }

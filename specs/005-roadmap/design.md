@@ -20,15 +20,14 @@ state, tanpa query param, tanpa filter.
 
 ## Components
 
-- `roadmapContent.ts` (belum dibangun): 15 butir Lampiran C diekspansi
+- `src/content/roadmap.ts` (ADR-001; lever: margin, retensi, jangkauan, kapasitas): 15 butir Lampiran C diekspansi
   jadi `{ tahap, lever, judul, langkah[], contohBiayaRendah, bukanJanji }`.
   Tiap butir: 1–2 kalimat cara + 1 contoh konkret kuliner rumahan.
-- `RoadmapPage` (belum dibangun): TOC anchor atas (`#survival`,
+- `src/app/roadmap/page.tsx`: TOC anchor atas (`#survival`,
   `#improvement`, `#growth`), tiga seksi + strip empat levers,
   catatan "tindakan adalah opsi kontekstual".
 - Anchor `#survival` dkk adalah target tautan Diagnosis (AC-06-06):
   anchor statis, bukan personalisasi.
-- `ComingSoon`: placeholder aktif saat ini.
 
 ## Domain Model
 

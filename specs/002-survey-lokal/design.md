@@ -1,12 +1,13 @@
 # Design — 002 Survey & Persistensi Lokal
 
-> Kontrak solusi Survey + payload lokal. Status: rute terpasang sebagai
-> `ComingSoon`; isi dan katalog soal menunggu gate PO. Dokumen ini
+> Kontrak solusi Survey + payload lokal. Status: `/survey` live dengan katalog v1
+> (ADR-004, Proposed); review pakar dan uji durasi masih terbuka. Dokumen ini
 > mencatat keputusan arsitektur yang sudah diambil agar implementasi
 > nanti tinggal eksekusi. Traces ke `spec.md` US-02, US-03, US-11
 > (permukaan Survey US-10, input US-08 dirujuk).
 
 **Lifecycle:** DRAFT
+**Implementation:** live — katalog/scoring per ADR-004 (Proposed)
 **Health:** REVIEW_REQUIRED
 **Traces to:** `spec.md` (unit ini) · PRD §8.5 (US-02, US-03, US-11) ·
   owner US-08 → unit 003, owner US-10 → unit 004
@@ -23,15 +24,14 @@ unit 001 (bukan string literal di halaman). Transisi US-11 murni CSS
 
 ## Components
 
-- `SurveyFlow` (client leaf, belum dibangun): render satu soal, progres
+- `Survey` (`src/app/survey/Survey.tsx`, client leaf): render satu soal, progres
   (`soal n dari N`), tombol Kembali/Lanjut, pilihan jawaban radio-card,
   opsi "Belum tahu" bila relevan.
-- `surveyCatalog.ts` (modul konten, menunggu gate): teks soal, opsi,
+- `SURVEY_CATALOG` (`src/content/survey.ts`, v1, ADR-004): teks soal, opsi,
   bobot, arah skor 0–100, versi katalog `SURVEY_CATALOG_V` (misal `1`).
   Katalog adalah SATU-SATUNYA sumber bobot/ambang.
-- `surveyStore.ts` (belum dibangun): baca/tulis `localStorage`,
+- `src/lib/survey-storage.ts`: baca/tulis `localStorage`,
   validasi payload (versi cocok + jawaban lengkap), hapus payload rusak.
-- `ComingSoon`: placeholder aktif saat ini di `src/app/survey/page.tsx`.
 
 ## Domain Model
 

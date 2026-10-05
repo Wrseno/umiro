@@ -13,29 +13,31 @@
 App Router Next.js 16 + React 19. Satu `AppShell` (client component)
 membungkus semua rute: skip-link a11y, `IslandNav` sticky, `<main
 id="konten">`, `SiteFooter`. Copy Landing terpusat di `src/content/` (ADR-001): `landing.ts`
-(`LANDING`), `nav.ts` (`NAV_STATIC` tiga entri + `DiagnosisCta` button pojok dinamis), `shared.ts`
+(`LANDING`), `nav.ts` (`NAV.links` tiga entri + `NAV.diagnosisCta` untuk button pojok dinamis), `shared.ts`
 (`SHARED`), `site.ts` (`SITE`). Halaman tidak menaruh string literal.
-Amandemen button-pojok (disetujui): menu bar HANYA 3 item statis
+Amandemen button-pojok (USULAN, belum disahkan PO — `decisions/amandemen-nav-resurvey-riwayat.md`; kode sudah mengikuti): menu bar HANYA 3 item statis
 (Beranda, Kalkulator, Roadmap); Survei/Diagnosis pindah ke button
 pojok kanan header + CTA Landing yang dinamis via `DiagnosisCta`
 (lihat Components + tasks T008).
 
-Sumber status diagnosis: baca `localStorage` kunci `umiro.survey` / `umiro.diagnosis`
-(client-side, setelah mount; SSR render fallback "Mulai Survei" agar
-tidak hydration mismatch). Util `hasValidResult()` dipakai bersama
-oleh nav, CTA hero, CTA akhir, `IslandCta` — satu fungsi, satu kondisi.
+Sumber status diagnosis: baca `localStorage` kunci `umiro.survey.v<V>` / `umiro.diagnosis.v<V>`
+via `useSyncExternalStore` (server snapshot `false` → SSR + hidrasi
+selalu "Mulai Survei", tanpa hydration mismatch; langganan event
+`storage` antar-tab + `umiro:diagnosis-status` tab-sama). Util `hasValidResult()` dipakai bersama
+oleh button pojok, CTA hero, CTA akhir, 404 — satu fungsi, satu kondisi.
 
 ## Components
 
 - `AppShell` (`src/components/AppShell.tsx`): `IslandNav` (nav desktop
-  3 item statis + tombol hamburger mobile), `SiteBrand`, `IslandCta`
+  3 item statis + tombol hamburger mobile), `SiteBrand`, `DiagnosisCta`
   (button pojok: label/href dinamis ikut status diagnosis), `SiteFooter`
   (nav bawah: Beranda/Kalkulator/Roadmap saja; kolom Batasan +
   Privasi/Syarat). Menu mobile: overlay `fixed inset-0`, tutup via
   Escape, lock `body.overflow`, tutup otomatis di `md:` via
   `matchMedia`. Menu mobile juga HANYA 3 item statis (tanpa Survei/Diagnosis).
-- `DiagnosisCta` (komponen baru, client leaf; dipakai `IslandCta`, hero
-  CTA, CTA akhir): baca `hasValidResult()`; tanpa hasil →
+- `DiagnosisCta` / `DiagnosisLink` (`src/components/DiagnosisCta.tsx`,
+  client leaf; button pojok header + CTA hero, CTA akhir, 404): hook
+  `useDiagnosisTarget()` membaca `hasValidResult()`; tanpa hasil →
   `<Link href="/survey">Mulai Survei</Link>`; ada hasil →
   `<Link href="/diagnosis">Hasil Diagnosis</Link>`. BUKAN item menu —
   button pil pojok kanan header + CTA seksi.
@@ -100,8 +102,8 @@ GeneralSans lokal + DM Sans + JetBrains Mono via `layout.tsx`.
 
 ## Migration Strategy
 
-`NAV.links` lima entri → `NAV_STATIC` tiga entri + `DiagnosisCta`.
-`IslandCta` statis → dinamis (button pojok). Copy "lima halaman MVP" → "halaman MVP" +
+`NAV.links` lima entri → tiga entri + `DiagnosisCta` (button pojok
+dinamis; nama `IslandCta` di draf lama = `DiagnosisCta`). Copy "lima halaman MVP" → "halaman MVP" +
 CTA dinamis. Perubahan copy Landing
 = edit `src/content/*.ts` + catat TODO (trivial change).
 

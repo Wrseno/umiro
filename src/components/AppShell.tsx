@@ -26,7 +26,7 @@ export function AppShell({ children }: AppShellProps) {
         href="#konten"
         className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-30 focus:rounded-full focus:bg-surface focus:px-4 focus:py-2 focus:text-small focus:font-medium"
       >
-          {SHARED.skipToContent}
+        {SHARED.skipToContent}
       </a>
       <IslandNav pathname={pathname} />
       <main
@@ -70,7 +70,7 @@ function IslandNav({ pathname }: { pathname: string }) {
         <SiteBrand />
         <div className="ml-auto flex shrink-0 items-center gap-2">
           <nav
-            aria-label="Navigasi utama"
+            aria-label={NAV.navMainLabel}
             className="ml-4 hidden items-center gap-1 md:flex"
           >
             {NAV.links.map(({ href, label }) => {
@@ -122,7 +122,7 @@ function IslandNav({ pathname }: { pathname: string }) {
           className="fixed inset-0 z-40 bg-white/85 backdrop-blur-3xl md:hidden"
         >
           <nav
-            aria-label="Menu"
+            aria-label={NAV.navMobileLabel}
             className="mx-auto flex h-full min-h-[100dvh] w-full max-w-[1240px] flex-col gap-1 overflow-y-auto px-8 pt-24 pb-10"
           >
             {NAV.links.map(({ href, label }, i) => (
@@ -166,14 +166,9 @@ function SiteBrand() {
           <path d="M3 15.5a1 1 0 0 1 .3-.7l4.4-4.4a1 1 0 0 1 1.4 0l2.1 2.1 4.1-4.1h-1.8a1 1 0 1 1 0-2h4.2a1 1 0 0 1 1 1v4.2a1 1 0 1 1-2 0V9.8l-4.8 4.8a1 1 0 0 1-1.4 0L8.4 12.5l-3.7 3.7A1 1 0 0 1 3 15.5Z" />
         </svg>
       </span>
-      {/* <span className="leading-[1.3]"> */}
       <span className="block font-display text-[1.0625rem] font-bold tracking-[-0.01em]">
         {NAV.brand}
       </span>
-      {/* <span className="mt-0.5 hidden text-caption leading-[1.6] text-text-secondary sm:block">
-          {NAV.brandSub}
-        </span> */}
-      {/* </span> */}
     </Link>
   );
 }
@@ -190,8 +185,8 @@ function SiteFooter({ pathname }: { pathname: string }) {
             {NAV.footerDescription}
           </p>
         </div>
-        <nav aria-label="Navigasi bawah">
-          <p className="overline">Halaman</p>
+        <nav aria-label={NAV.navFooterLabel}>
+          <p className="overline">{NAV.footerPagesHeading}</p>
           <ul className="mt-3 flex flex-col gap-2 text-small">
             {NAV.links.map(({ href, label }) => (
               <li key={href}>
@@ -207,7 +202,7 @@ function SiteFooter({ pathname }: { pathname: string }) {
           </ul>
         </nav>
         <div>
-          <p className="overline">Batasan</p>
+          <p className="overline">{NAV.footerLimitationsHeading}</p>
           <ul className="mt-3 flex flex-col gap-2 text-small leading-[1.7] text-text-secondary">
             {NAV.footerLimitations.map((item) => (
               <li key={item}>{item}</li>

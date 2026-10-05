@@ -12,4 +12,7 @@ export * from "./site";
 export * from "./privasi";
 export * from "./syarat";
 export * from "./notfound";
-export * from "./placeholders";
+export * from "./kalkulator";
+export * from "./roadmap";
+export * from "./survey";
+export * from "./diagnosis";
