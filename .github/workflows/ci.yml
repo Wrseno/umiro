@@ -1,0 +1,36 @@
+# Quality gate tiap push/PR: lint, typecheck, test, build (AGENTS.md)
+# + pemeriksaan struktur SDD (gagal bila ada FAIL, peringatan tidak memblokir).
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4 # versi pnpm dari `packageManager` di package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test
+      - run: pnpm build
+
+  sdd-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: SDD governance check
+        run: bash .agents/.skills/sdd-repo-governance/scripts/sdd-check.sh .
